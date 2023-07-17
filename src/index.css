@@ -1,5 +1,8 @@
 @font-face {
   font-family: "Krungthep";
+  style: normal;
+  weight: 400;
+  stretch: 100;
   src: url(/src/assets/fonts/krungthep.ttf);
 }
 body {
