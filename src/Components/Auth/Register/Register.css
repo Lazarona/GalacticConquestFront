@@ -1,0 +1,48 @@
+.container {
+  background-color: fuchsia;
+  border: 10px cyan solid;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  width: 25vw;
+}
+.input {
+  background-color: black;
+  color: white;
+  width: 100%;
+}
+.text {
+  justify-content: flex-star;
+  color: black;
+  font-size: x-large;
+}
+.titre {
+  color: cyan;
+
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.logo {
+  height: 60vh;
+  width: auto;
+  margin-left: 140px;
+}
+.connexion {
+  width: 10vw;
+  background-color: fuchsia;
+  border-radius: 25px;
+  border: 10px cyan solid;
+  position: absolute;
+  top: 2%;
+  left: 85%;
+  font-size: x-large;
+}
