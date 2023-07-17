@@ -8,12 +8,20 @@ body{
 img{
     width: 80vh ;
 }
-.logo{
+#home-container .logo{
     display: flex;
     justify-content: center;
 }
-.btn{
+#home-container  .allbouton{
     display: flex;
     justify-content: center;
     gap: 3%;
+}
+
+#home-container .bouton{
+    border-radius: 20px;
+    color: black;
+    background-color: rgb(241, 107, 239);
+    border: 3px rgb(94, 215, 248) solid ;
+    font-weight: bolder;
 }
