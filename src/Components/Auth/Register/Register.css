@@ -48,5 +48,12 @@
 }
 .jouer {
   width: 10vw;
-
+  height: 10vh;
+  position: absolute;
+  top: 88%;
+  left: 68%;
+  background-color: rgb(87, 87, 255);
+  color: cyan;
+  border: 10px cyan solid;
+  border-radius: 25px;
 }
