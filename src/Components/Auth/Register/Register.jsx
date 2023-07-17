@@ -41,7 +41,7 @@ function Register() {
               <p className="text"> Date de naissance :</p>
               <input type="text" name="birth_date" value="" className="input" />
             </label>
-           <button type="submit" onClick="" name="" ></button>
+           <button type="submit" onClick="" name="" className="jouer"></button>
           </form>
         </div>
       </div>
