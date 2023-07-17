@@ -1,0 +1,13 @@
+body{
+    background:url("../background/bg7.jpg");
+    background-size: 100vw;
+
+}
+
+img{
+    width: 100vh ;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+}
