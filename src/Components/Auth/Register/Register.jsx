@@ -49,12 +49,17 @@ function Register() {
               <p className="text"> Date de naissance :</p>
               <input type="text" name="birth_date" value="" className="input" />
             </label>
-            <button type="submit" onClick="" name="" className="jouer">
-              Jouer
-            </button>
+            <br />
+            <label htmlFor="username">
+              <p className="text"> Pseudo :</p>
+              <input type="text" name="username" value="" className="input" />
+            </label>
           </form>
         </div>
       </div>
+      <button type="submit" onClick="" name="" className="jouer">
+        Jouer
+      </button>
     </div>
   );
 }
