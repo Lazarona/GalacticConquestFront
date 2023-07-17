@@ -1,11 +1,19 @@
 import "./Register.css";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+
+  const navigate = useNavigate();
+
+  const navHome = () => {
+    navigate("/");
+  }
+
   return (
     <div>
       <button
         type="submite"
-        onClick="connexion"
+        onClick={navHome}
         name="connexion"
         className="connexion"
       >
