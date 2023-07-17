@@ -1,4 +1,6 @@
 import "./Home.css";
+import React from 'react';
+import { MDBBtn } from 'mdb-react-ui-kit';
 
 function Home() {
   return (
@@ -7,8 +9,9 @@ function Home() {
       <img src="src/Components/img/logo.png" alt="" />
     </div>
 
-    <div>
-      
+    <div className="btn">
+      <MDBBtn>Créer un compte</MDBBtn>
+      <MDBBtn>Connexion</MDBBtn>
 
     </div>
     
