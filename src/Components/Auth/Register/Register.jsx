@@ -33,7 +33,7 @@ function Register() {
 
           <form >
           
-            <MDBInput className="champs bg-dark  " type='text'  wrapperClass='mb-2' label='Pseudo text-white' name="username" />
+            <MDBInput className="champs bg-dark  " type='text'  wrapperClass='mb-2' label='Pseudo' name="username" />
           
             <MDBInput className="champs bg-dark" type='text'  wrapperClass='mb-2' label='Prénom' name="fistname" />
           

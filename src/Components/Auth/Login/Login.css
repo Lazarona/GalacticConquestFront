@@ -1,0 +1,56 @@
+#login-container .bouton{
+    border-radius: 10px;
+    color: black;
+    background-color: rgb(241, 107, 239);
+    border: 3px aqua solid ;
+    font-weight: bolder;
+    padding: 8px ;
+  
+  }
+  
+  #login-container .bouton:hover{
+    border: 0.2rem solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 .2rem #fff,
+              0 0 2rem aqua,
+              0 0 0.5rem aqua,
+              inset 0 0 0.3rem aqua; 
+  
+  }
+  
+  #login-container .logor{
+    width: 20%;
+  }
+  #login-container h2{
+    color: aqua;
+    font-size: 35px;
+    -webkit-text-stroke: 1.6px black;
+  }
+  
+  #login-container .contenue{
+    border: 5px aqua solid ;
+    border-radius: 20px;
+  }
+  
+  #login-container .champs{
+    color: aqua;
+  }
+  
+  #login-container .boutonr{
+    color: aqua;
+    border: 3px aqua solid ;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 0% 5% 0% 5%;
+    background-color: rgb(86, 42, 127);
+  }
+  
+  #login-container .boutonr:hover{
+    border: 0.2rem solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 .2rem #fff,
+              0 0 2rem aqua,
+              0 0 0.5rem aqua,
+              inset 0 0 0.3rem aqua; 
+  
+  }
