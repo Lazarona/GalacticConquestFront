@@ -1,39 +1,56 @@
-.container {
-  background-color: fuchsia;
-  border: 10px cyan solid;
-  border-radius: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.input {
-  background-color: black;
-  color: white;
-}
-.text {
-  justify-content: flex-start;
+#register-container .bouton{
+  border-radius: 10px;
   color: black;
-}
-.titre {
-  color: cyan;
+  background-color: rgb(241, 107, 239);
+  border: 3px aqua solid ;
+  font-weight: bolder;
+  padding: 8px ;
 
-  -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: black;
 }
-.logo {
-  height: 60vh;
-  width: auto;
+
+#register-container .bouton:hover{
+  border: 0.2rem solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 .2rem #fff,
+            0 0 2rem aqua,
+            0 0 0.5rem aqua,
+            inset 0 0 0.3rem aqua; 
+
 }
-.connexion {
-  width: 10vw;
-  background-color: fuchsia;
-  border-radius: 25px;
-  border: 10px cyan solid;
+
+#register-container .logor{
+  width: 20%;
 }
-.jouer {
-  background-color: rgb(87, 87, 255);
-  color: cyan;
-  border: 10px cyan solid;
-  border-radius: 25px;
+#register-container h2{
+  color: aqua;
+  font-size: 35px;
+  -webkit-text-stroke: 1.6px black;
+}
+
+#register-container .contenue{
+  border: 5px aqua solid ;
+  border-radius: 20px;
+}
+
+#register-container .champs{
+  color: aqua;
+}
+
+#register-container .boutonr{
+  color: aqua;
+  border: 3px aqua solid ;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 0% 5% 0% 5%;
+  background-color: rgb(86, 42, 127);
+}
+
+#register-container .boutonr:hover{
+  border: 0.2rem solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 .2rem #fff,
+            0 0 2rem aqua,
+            0 0 0.5rem aqua,
+            inset 0 0 0.3rem aqua; 
+
 }

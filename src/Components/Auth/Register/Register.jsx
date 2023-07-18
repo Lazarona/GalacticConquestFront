@@ -1,89 +1,69 @@
 import "./Register.css";
 import { useNavigate } from "react-router-dom";
+import React from 'react';
+import {
+  MDBInput,
+  MDBCheckbox,
+  MDBBtn
+} from 'mdb-react-ui-kit';
 
 function Register() {
-  const sendFormAPI = () => {};
+
+  const navigate = useNavigate();
+  const navHome = () => {
+    navigate("/");
+  }
+
+
+
+
+  
   return (
-    <div className="w-100 h-75">
-      <div className="row d-flex justify-content-end align-items-center mb-5">
-        <div className="col-2 d-flex">
-          <button
-            type="submit"
-            onClick="connexion"
-            name="connexion"
-            className="connexion"
-          >
-            connexion
-          </button>
+    <div id="register-container">
+      <div className="d-flex flex-row-reverse">
+          <MDBBtn className="bouton me-3 mt-3 " onClick={navHome}>Accueil</MDBBtn>
+       </div>
+
+      <div className="d-flex justify-content-center gap-5 align-items-center mt-5" >
+
+        <img src="src/Components/img/logo.png" alt="" className="logor ms-3" />
+
+        <div className="contenue px-5 py-2 ms-5 " style={{backgroundColor: "rgb(241, 107, 239)"}}>
+          <h2 className="d-flex justify-content-center p-4">INSCRIPTION</h2>
+
+          <form >
+          
+            <MDBInput className="champs bg-dark  " type='text'  wrapperClass='mb-2' label='Pseudo text-white' name="username" />
+          
+            <MDBInput className="champs bg-dark" type='text'  wrapperClass='mb-2' label='Prénom' name="fistname" />
+          
+            <MDBInput className="champs bg-dark" type='text'   wrapperClass='mb-2'  label='Nom' name="lastname" />
+        
+            <MDBInput className="champs bg-dark" type='mail' wrapperClass='mb-2'  rows={4} label='Adresse mail' name="mail" />
+    
+            <MDBInput className="champs bg-dark" type='password' wrapperClass='mb-2'  rows={4} label='Mot de passe' name="password" />
+      
+            <MDBInput className="champs bg-dark text-white-50"  type='date' wrapperClass='mb-2'  rows={4} label='Date de naissance' name="birthday" />
+            
+            <div className="d-flex justify-content-center">
+              <MDBBtn type='submit' className='boutonr mt-2 px-5 ' >
+                Play
+              </MDBBtn>
+            </div>
+          </form> 
+        
+          
         </div>
       </div>
+      
+       
+   
 
-      <div className="row d-flex align-items-center justify-content-center">
-        <div className="col">
-          <img src="src/Components/img/logo.png" className="logo" />
-        </div>
-        <div className="col">
-          <div className="container w-50">
-            <h1 className="titre">INSCRIPTION</h1>
-            <form action="" method="post" className="d-flex flex-column gap-1">
-              <label htmlFor="last_name">
-                <p className="text"> Nom :</p>
-                <input
-                  type="text"
-                  name="last_name"
-                  value=""
-                  className="input"
-                />
-              </label>
-
-              <label htmlFor="first_name">
-                <p className="text"> Prénom :</p>
-                <input
-                  type="text"
-                  name="first_name"
-                  value=""
-                  className="input"
-                />
-              </label>
-
-              <label htmlFor="username">
-                <p className="text"> Pseudo :</p>
-                <input type="text" name="username" value="" className="input" />
-              </label>
-
-              <label htmlFor="email">
-                <p className="text"> Mail :</p>
-                <input type="text" name="email" value="" className="input" />
-              </label>
-
-              <label htmlFor="password">
-                <p className="text"> Mot de passe :</p>
-                <input type="text" name="password" value="" className="input" />
-              </label>
-
-              <label htmlFor="birth_date">
-                <p className="text"> Date de naissance :</p>
-                <input
-                  type="text"
-                  name="birth_date"
-                  value=""
-                  className="input"
-                />
-              </label>
-
-              <input
-                type="submit"
-                onClick={sendFormAPI()}
-                name=""
-                className="jouer"
-                value="Jouer"
-              />
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
-  );
+
+
+);
 }
+
 
 export default Register;

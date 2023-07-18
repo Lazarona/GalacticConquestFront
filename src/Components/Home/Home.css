@@ -1,27 +1,47 @@
 body{
     background:url("../background/bg7.jpg");
     background-size: 100vw;
-    margin-top: 5%;
 
 }
 
+
 img{
-    width: 80vh ;
+    width: 55vh ;
 }
 #home-container .logo{
     display: flex;
     justify-content: center;
+    margin-top: 10%;
 }
 #home-container  .allbouton{
     display: flex;
     justify-content: center;
-    gap: 3%;
+    gap: 7%;
 }
 
 #home-container .bouton{
-    border-radius: 20px;
+    border-radius: 10px;
     color: black;
     background-color: rgb(241, 107, 239);
-    border: 3px rgb(94, 215, 248) solid ;
+    border: 3px aqua solid ;
     font-weight: bolder;
 }
+
+#home-container .bouton:hover{
+    border-radius: 2rem;
+  
+    border: 0.2rem solid #fff;
+    border-radius: 10px;
+   
+  box-shadow: 0 0 .2rem #fff,
+            0 0 .2rem #fff,
+            0 0 2rem aqua,
+            0 0 0.8rem aqua,
+            0 0 2.8rem aqua,
+            inset 0 0 0.3rem aqua;
+  }
+
+
+
+
+  
