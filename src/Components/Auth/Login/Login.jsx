@@ -68,6 +68,10 @@ function Login() {
     navigate("/");
   };
 
+  const navPasswordForget = () => {
+    navigate("/passwordforget");
+  };
+
   useEffect(() => {
     console.log("Username : ", username);
   }, [setUsername, username]);
@@ -117,7 +121,11 @@ function Login() {
               }}
             />
 
-            <a className="d-flex flex-row-reverse" href="">
+            <a
+              className="d-flex flex-row-reverse"
+              onClick={navPasswordForget}
+              href=""
+            >
               Mot de passe oublié?
             </a>
 
