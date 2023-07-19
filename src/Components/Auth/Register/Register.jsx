@@ -1,9 +1,11 @@
 import "./Register.css";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
+import { AuthContext } from "../../../app/App";
 
 function Register() {
+  const [userLogged, setUserLogged] = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [first_name, setFirst_name] = useState("");
@@ -41,6 +43,7 @@ function Register() {
     if (response.status == 400) {
       displayErrors();
     } else {
+      setUserLogged(donnees.user);
       login();
     }
   };
@@ -119,6 +122,9 @@ function Register() {
   useEffect(() => {
     console.log("Erreurs :", erreurs);
   }, [setErreurs, erreurs]);
+  useEffect(() => {
+    console.log("useContext Auth : ", userLogged);
+  }, [userLogged, setUserLogged]);
 
   return (
     <div id="register-container">
