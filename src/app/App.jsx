@@ -6,20 +6,27 @@ import Login from "../Components/Auth/Login/Login";
 import PlanetPseudo from "../Components/Planet/PlanetPseudo";
 import Dashboard from "../Components/Dashboard/Dashboard";
 import Passwordforget from "../Components/Auth/Passwordforget/Passwordforget";
+import { createContext, useState } from "react";
+
+export const AuthContext = createContext();
 
 function App() {
+  const [userLogged, setUserLogged] = useState(null);
+
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registerPlanet" element={<PlanetPseudo />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/passwordforget" element={<Passwordforget />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthContext.Provider value={[userLogged, setUserLogged]}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registerPlanet" element={<PlanetPseudo />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/passwordforget" element={<Passwordforget />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthContext.Provider>
     </div>
   );
 }
