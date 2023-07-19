@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../Components/Home/Home";
 import Register from "../Components/Auth/Register/Register";
 import Login from "../Components/Auth/Login/Login";
+import PlanetPseudo from "../Components/Planet/PlanetPseudo";
+import Dashboard from "../Components/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/registerPlanet" element={<PlanetPseudo />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
