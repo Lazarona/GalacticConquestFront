@@ -7,6 +7,7 @@ import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [erreurs, setErreurs] = useState({});
 
   const navigate = useNavigate();
 
@@ -29,15 +30,25 @@ function Login() {
     const response = await fetch("http://127.0.0.1:8000/api/login", options);
     const donnees = await response.json();
     console.log("Reponse de l'API : ", donnees);
-
+    setErreurs(donnees);
     if (response.status == 400) {
-      // alert(donnees.errors.username[0]);
-      //displayErrors(donnees.errors);
+      displayErrors();
     } else {
       // Si la requête est un succès, redirige l'utilisateur vers le choix de planete
       getToken(donnees.token);
       //redirectProfil();
     }
+  };
+
+  const displayErrors = () => {
+    return Object.keys(erreurs).map((key) => {
+      return (
+        <ul key={key}>
+          <p>{erreurs.errors.username}</p>
+          <p>{erreurs.errors.password}</p>
+        </ul>
+      );
+    });
   };
 
   // Fonction utilisé pour rediriger l'utilisateur vers sa page de profil
@@ -77,6 +88,8 @@ function Login() {
           style={{ backgroundColor: "rgb(241, 107, 239)" }}
         >
           <h2 className="d-flex justify-content-center p-4">CONNEXION</h2>
+
+          {displayErrors()}
 
           <form onSubmit={sendData}>
             <MDBInput

@@ -47,11 +47,16 @@ function Register() {
   };
 
   const displayErrors = () => {
-    return Object.keys(erreurs).map((key, e) => {
+    return Object.keys(erreurs).map((key) => {
       return (
-        <div key={key}>
-          <p>{erreurs.errors[e]}</p>
-        </div>
+        <ul key={key}>
+          <p>{erreurs.errors.email}</p>
+          <p>{erreurs.errors.username}</p>
+          <p>{erreurs.errors.first_name}</p>
+          <p>{erreurs.errors.last_name}</p>
+          <p>{erreurs.errors.password}</p>
+          <p>{erreurs.errors.birth_date}</p>
+        </ul>
       );
     });
   };
