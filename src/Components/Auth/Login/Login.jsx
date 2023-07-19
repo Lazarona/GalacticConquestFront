@@ -13,10 +13,10 @@ function Login() {
 
   const sendData = (e) => {
     e.preventDefault();
-    enter();
+    login();
   };
 
-  const enter = async () => {
+  const login = async () => {
     const options = {
       method: "POST",
       headers: {
@@ -36,11 +36,14 @@ function Login() {
     } else {
       // Si la requête est un succès, redirige l'utilisateur vers le choix de planete
       getToken(donnees.token);
-      //redirectProfil();
+      redirectProfil();
     }
   };
 
   const displayErrors = () => {
+    if (erreurs.errors == undefined) {
+      return null;
+    }
     return Object.keys(erreurs).map((key) => {
       return (
         <ul key={key}>

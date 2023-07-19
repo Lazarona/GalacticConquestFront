@@ -36,17 +36,37 @@ function Register() {
     };
     const response = await fetch(`http://127.0.0.1:8000/api/register`, options);
     const donnees = await response.json();
-    console.log("API Response", donnees); //
+    console.log("API Response (Register)", donnees); //
     setErreurs(donnees);
     if (response.status == 400) {
       displayErrors();
     } else {
-      //getToken(donnees.token);
-      //redirectPlanet();
+      login();
     }
   };
 
+  const login = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/login", options);
+    const donnees = await response.json();
+    console.log("Reponse de l'API (Login) : ", donnees);
+    getToken(donnees.token);
+    redirectPlanet();
+  };
+
   const displayErrors = () => {
+    if (erreurs.errors == undefined) {
+      return null;
+    }
     return Object.keys(erreurs).map((key) => {
       return (
         <ul key={key}>
