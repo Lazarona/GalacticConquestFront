@@ -4,8 +4,62 @@ import React, { useEffect, useState } from "react";
 import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
 
 function Register() {
-  const [data, setData] = useState({});
-  const [erreurs, setErreurs] = useState([]);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [first_name, setFirst_name] = useState("");
+  const [last_name, setLast_name] = useState("");
+  const [email, setEmail] = useState("");
+  const [birth_date, setBirth_date] = useState("");
+  const [erreurs, setErreurs] = useState({});
+
+  // Récupération des données saisies dans les inputs
+  const sendData = (e) => {
+    e.preventDefault();
+    register();
+  };
+
+  // Envoi des données dans l'API avec une requête HTML POST
+  const register = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        first_name: first_name,
+        last_name: last_name,
+        username: username,
+        birth_date: birth_date,
+      }),
+    };
+    const response = await fetch(`http://127.0.0.1:8000/api/register`, options);
+    const donnees = await response.json();
+    console.log("API Response", donnees); //
+    setErreurs(donnees);
+    if (response.status == 400) {
+      displayErrors();
+    } else {
+      //getToken(donnees.token);
+      //redirectPlanet();
+    }
+  };
+
+  const displayErrors = () => {
+    return Object.keys(erreurs).map((key, e) => {
+      return (
+        <div key={key}>
+          <p>{erreurs.errors[e]}</p>
+        </div>
+      );
+    });
+  };
+
+  // Récupère le token et le stocke dans le localStorage
+  const getToken = (token) => {
+    localStorage.setItem("token", token);
+  };
 
   // Redirection du bouton Accueil vers la page d'accueil
   const navigate = useNavigate();
@@ -13,75 +67,30 @@ function Register() {
     navigate("/");
   };
 
-  // Récupération des données saisies dans les inputs
-  const getData = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    setData(Object.fromEntries(formData));
-    sendDataAPI();
-  };
-
-  // Envoi des données dans l'API avec une requête HTML POST
-  const sendDataAPI = async () => {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: data.email,
-        password: data.password,
-        first_name: data.first_name,
-        last_name: data.last_name,
-        username: data.username,
-        birth_date: data.birth_date,
-      }),
-    };
-    const response = await fetch(`http://127.0.0.1:8000/api/register`, options);
-    const donnees = await response.json();
-    console.log("API Response", donnees); //
-    setErreurs([donnees]);
-    if (response.status == 400) {
-      // alert(donnees.errors.username[0]);
-      displayErrors();
-    } else {
-      // Si la requête est un succès, redirige l'utilisateur vers le choix de planete
-      //redirectPlanet();
-    }
-  };
-
-  const displayErrors = () => {
-    // if (erreurs.errors.first_name != undefined) {
-    //   return errors.errors.first_name;
-    // }
-    // if (erreurs.errors.last_name != undefined) {
-    //   return errors.errors.last_name;
-    // }
-    // if (erreurs.errors.email != undefined) {
-    //   return errors.errors.email;
-    // }
-    // if (erreurs.errors.birth_date != undefined) {
-    //   return errors.errors.birth_date;
-    // }
-    // if (erreurs.errors.password != undefined) {
-    //   return errors.errors.password;
-    // }
-    // if (erreurs.errors.username != undefined) {
-    //   return errors.errors.username;
-    // }
-  };
   // Fonction utilisé pour rediriger l'utilisateur vers sa page de profil
-  // const redirectPlanet = () => {
-  //   let path = "/registerPlanet";
-  //   navigate(path);
-  // };
+  const redirectPlanet = () => {
+    let path = "/registerPlanet";
+    navigate(path);
+  };
 
   useEffect(() => {
-    getData;
-    console.log("data : ", data);
-    sendDataAPI();
-  }, [setData, data]);
-
+    console.log("Username : ", username);
+  }, [setUsername, username]);
+  useEffect(() => {
+    console.log("Password : ", password);
+  }, [setPassword, password]);
+  useEffect(() => {
+    console.log("Email : ", email);
+  }, [setEmail, email]);
+  useEffect(() => {
+    console.log("First_name : ", first_name);
+  }, [setFirst_name, first_name]);
+  useEffect(() => {
+    console.log("Last_name : ", last_name);
+  }, [setLast_name, last_name]);
+  useEffect(() => {
+    console.log("Birth_date : ", birth_date);
+  }, [setBirth_date, birth_date]);
   useEffect(() => {
     console.log("Erreurs :", erreurs);
   }, [setErreurs, erreurs]);
@@ -103,15 +112,18 @@ function Register() {
         >
           <h2 className="d-flex justify-content-center p-4">INSCRIPTION</h2>
 
-          <ul className="">{displayErrors()}</ul>
+          {displayErrors()}
 
-          <form onSubmit={getData}>
+          <form onSubmit={sendData}>
             <MDBInput
               className="champs bg-dark  "
               type="text"
               wrapperClass="mb-2"
               label="Pseudo"
               name="username"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
             />
 
             <MDBInput
@@ -120,6 +132,9 @@ function Register() {
               wrapperClass="mb-2"
               label="Prénom"
               name="first_name"
+              onChange={(e) => {
+                setFirst_name(e.target.value);
+              }}
             />
 
             <MDBInput
@@ -128,6 +143,9 @@ function Register() {
               wrapperClass="mb-2"
               label="Nom"
               name="last_name"
+              onChange={(e) => {
+                setLast_name(e.target.value);
+              }}
             />
 
             <MDBInput
@@ -137,6 +155,9 @@ function Register() {
               rows={4}
               label="Adresse mail"
               name="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
 
             <MDBInput
@@ -146,6 +167,9 @@ function Register() {
               rows={4}
               label="Mot de passe"
               name="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
 
             <MDBInput
@@ -155,6 +179,9 @@ function Register() {
               rows={4}
               label="Date de naissance"
               name="birth_date"
+              onChange={(e) => {
+                setBirth_date(e.target.value);
+              }}
             />
 
             <div className="d-flex justify-content-center">

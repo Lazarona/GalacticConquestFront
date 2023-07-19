@@ -5,22 +5,14 @@ import { useState, useEffect } from "react";
 import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
 
 function Login() {
-  const [data, setData] = useState({});
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const handleUsername = (e) => {
+  const sendData = (e) => {
     e.preventDefault();
-    setData({
-      username: e.target.value,
-    });
-  };
-
-  const handlePassword = (e) => {
-    e.preventDefault();
-    setData({
-      password: e.target.value,
-    });
+    enter();
   };
 
   const enter = async () => {
@@ -30,8 +22,8 @@ function Login() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: data.username,
-        password: data.password,
+        username: username,
+        password: password,
       }),
     };
     const response = await fetch("http://127.0.0.1:8000/api/login", options);
@@ -63,8 +55,11 @@ function Login() {
   };
 
   useEffect(() => {
-    console.log("Data : ", data);
-  }, []);
+    console.log("Username : ", username);
+  }, [setUsername, username]);
+  useEffect(() => {
+    console.log("Password : ", password);
+  }, [setPassword, password]);
 
   return (
     <div id="login-container">
@@ -83,24 +78,28 @@ function Login() {
         >
           <h2 className="d-flex justify-content-center p-4">CONNEXION</h2>
 
-          <form onSubmit={enter}>
+          <form onSubmit={sendData}>
             <MDBInput
               className="champs bg-dark  "
-              onChange={handleUsername}
               type="text"
               wrapperClass="mb-2"
               label="Pseudo"
               name="username"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
             />
 
             <MDBInput
               className="champs bg-dark"
-              onChange={handlePassword}
               type="password"
               wrapperClass="mb-2"
               rows={4}
               label="Mot de passe"
               name="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
 
             <div className="d-flex justify-content-center">
