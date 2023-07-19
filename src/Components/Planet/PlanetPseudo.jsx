@@ -23,11 +23,11 @@ function PlanetPseudo() {
       },
     };
 
-    const response = await fetch(`http://127.0.0.1:8000/api/register/planet/${}`, options);
-    const data = await response.json();
+    // const response = await fetch(`http://127.0.0.1:8000/api/register/planet/${}`, options);
+    // const data = await response.json();
 
-    //à rediriger vers Dashboard
-    navigate("/dashboard");
+    // //à rediriger vers Dashboard
+    // navigate("/dashboard");
   };
 
   // if (keycode === "") {
@@ -42,7 +42,7 @@ function PlanetPseudo() {
   // }
 
   return (
-    <div>
+    <div id="dashboard">
       <h1>Bienvenue sur : </h1>
       <form onSubmit={sendData}>
         <MDBInput
@@ -54,7 +54,7 @@ function PlanetPseudo() {
             setPlanetName(e.target.value);
           }}
         />
-        <MDBBtn type="submit" className="mt-4 mb-4 px-5">
+        <MDBBtn type="submit" className="envoyer mt-4 mb-4 px-5">
           Commencer
         </MDBBtn>
       </form>
