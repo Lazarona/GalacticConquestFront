@@ -1,56 +1,49 @@
-#register-container .bouton{
+#register-container .bouton {
   border-radius: 10px;
   color: black;
   background-color: rgb(241, 107, 239);
-  border: 3px aqua solid ;
+  border: 3px aqua solid;
   font-weight: bolder;
-  padding: 8px ;
-
+  padding: 8px;
 }
 
-#register-container .bouton:hover{
+#register-container .bouton:hover {
   border: 0.2rem solid #fff;
   border-radius: 10px;
-  box-shadow: 0 0 .2rem #fff,
-            0 0 2rem aqua,
-            0 0 0.5rem aqua,
-            inset 0 0 0.3rem aqua; 
-
+  box-shadow: 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.5rem aqua,
+    inset 0 0 0.3rem aqua;
 }
 
-#register-container .logor{
+#register-container .logor {
   width: 20%;
 }
-#register-container h2{
+#register-container h2 {
   color: aqua;
   font-size: 35px;
   -webkit-text-stroke: 1.6px black;
 }
 
-#register-container .contenue{
-  border: 5px aqua solid ;
+#register-container .contenue {
+  border: 5px aqua solid;
   border-radius: 20px;
 }
 
-#register-container .champs{
+#register-container .champs {
   color: aqua;
 }
 
-#register-container .boutonr{
+#register-container .boutonr {
   color: aqua;
-  border: 3px aqua solid ;
+  border: 3px aqua solid;
   border-radius: 10px;
   font-size: 20px;
   padding: 0% 5% 0% 5%;
   background-color: rgb(86, 42, 127);
 }
 
-#register-container .boutonr:hover{
+#register-container .boutonr:hover {
   border: 0.2rem solid #fff;
   border-radius: 10px;
-  box-shadow: 0 0 .2rem #fff,
-            0 0 2rem aqua,
-            0 0 0.5rem aqua,
-            inset 0 0 0.3rem aqua; 
-
+  box-shadow: 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.5rem aqua,
+    inset 0 0 0.3rem aqua;
 }

@@ -74,7 +74,7 @@ function PlanetPseudo() {
   }, [planetName, setPlanetName]);
 
   return (
-    <div>
+    <div id="dashboard">
       <h1>Bienvenue sur : </h1>
       {displayErrors()}
       <form onSubmit={sendData}>
@@ -87,7 +87,7 @@ function PlanetPseudo() {
             setPlanetName(e.target.value);
           }}
         />
-        <MDBBtn type="submit" className="mt-4 mb-4 px-5">
+        <MDBBtn type="submit" className="envoyer mt-4 mb-4 px-5">
           Commencer
         </MDBBtn>
       </form>
