@@ -89,7 +89,6 @@ function Login() {
                 setUsername(e.target.value);
               }}
             />
-
             <MDBInput
               className="champs bg-dark"
               type="password"
@@ -101,6 +100,10 @@ function Login() {
                 setPassword(e.target.value);
               }}
             />
+
+            <a className="d-flex flex-row-reverse" href="">
+              Mot de passe oublié?
+            </a>
 
             <div className="d-flex justify-content-center">
               <MDBBtn type="submit" className="boutonr mt-4 mb-4 px-5 ">
