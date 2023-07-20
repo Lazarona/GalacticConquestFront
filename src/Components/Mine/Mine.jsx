@@ -10,31 +10,31 @@ function Mine() {
   };
 
   function updateTimer() {
-    var targetDate = new Date("<?php echo $element['auction_end']; ?>");
-    var currentDate = new Date();
-    var remainingTime = targetDate.getTime() - currentDate.getTime();
+    let targetDate = new Date("<?php echo $element['auction_end']; ?>");
+    let currentDate = new Date();
+    let remainingTime = targetDate.getTime() - currentDate.getTime();
 
-    var hours = Math.floor(remainingTime / (1000 * 60 * 60));
-    var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+    let hours = Math.floor(remainingTime / (1000 * 60 * 60));
+    let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
     // Formatage des valeurs en chaîne de caractères avec zéro en préfixe si nécessaire
-    var formattedHours = String(hours).padStart(2, "0");
-    var formattedMinutes = String(minutes).padStart(2, "0");
-    var formattedSeconds = String(seconds).padStart(2, "0");
+    let formattedHours = String(hours).padStart(2, "0");
+    let formattedMinutes = String(minutes).padStart(2, "0");
+    let formattedSeconds = String(seconds).padStart(2, "0");
 
     // Mettez à jour l'affichage du compte à rebours dans l'élément avec l'ID "timer"
     const timerElement = document.getElementById("timer");
     if (timerElement) {
       timerElement.innerHTML = `Temps restant : ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+
+      const temp_construction_total = 
     }
   }
   return (
     <div id="production">
       <div>
         <div className="d-flex justify-content-evenly">
-          {/* Reste du code ici */}
-          {/* ... */}
           <div class="card d-flex p-2 me-5">
             <div class="card-body">
               <h1 class="card-title d-flex justify-content-center">Mine</h1>
@@ -44,10 +44,11 @@ function Mine() {
 
                 {/* Affichage des horodatages */}
                 <p>
-                  debut de la construction : {temps_de_construction.getTime()}
+                  debut de la construction :{" "}
+                  {temps_de_construction.getTime()}
                 </p>
                 <p>
-                  temp de la construction : {temp_constrution_total.getTime()}
+                  temp de la construction : {temp_construction_total.getTime()}
                 </p>
                 <p>
                   Moment actuel de la cronstruction :{" "}
@@ -57,7 +58,7 @@ function Mine() {
               <div class="d-flex justify-content-center">
                 <button type="submit" class="delete" onClick={"delete"}>
                   detruire le bâtiment
-                </button>
+                </button>t
               </div>
             </div>
           </div>
