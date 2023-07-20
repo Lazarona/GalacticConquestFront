@@ -1,3 +1,8 @@
+#login-container {
+  background-image: url(src/Components/background/bg7.jpg);
+  background-size: cover;
+  padding-bottom: 19%;
+}
 #login-container .bouton {
   border-radius: 10px;
   color: black;
@@ -26,6 +31,7 @@
 #login-container .contenue {
   border: 5px aqua solid;
   border-radius: 20px;
+  margin-top: 5%;
 }
 
 #login-container .champs {
@@ -51,4 +57,11 @@
 #login-container a {
   font-size: 12px;
   color: rgb(86, 42, 127);
+}
+
+#login-container a:hover {
+  border-bottom: 2px rgb(151, 27, 218) solid;
+  margin-left: 41%;
+  font-size: 13px;
+  color: rgb(122, 19, 218);
 }
