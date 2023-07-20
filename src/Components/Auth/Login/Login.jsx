@@ -56,7 +56,7 @@ function Login() {
 
   // Fonction utilisé pour rediriger l'utilisateur vers sa page de profil
   const redirectProfil = () => {
-    let path = "/start";
+    let path = "/dashboard";
     navigate(path);
   };
 
@@ -66,6 +66,10 @@ function Login() {
 
   const navHome = () => {
     navigate("/");
+  };
+
+  const navPasswordForget = () => {
+    navigate("/passwordforget");
   };
 
   useEffect(() => {
@@ -117,7 +121,11 @@ function Login() {
               }}
             />
 
-            <a className="d-flex flex-row-reverse" href="">
+            <a
+              className="d-flex flex-row-reverse"
+              onClick={navPasswordForget}
+              href=""
+            >
               Mot de passe oublié?
             </a>
 
