@@ -7,8 +7,13 @@ import PlanetPseudo from "../Components/Planet/PlanetPseudo";
 import Dashboard from "../Components/Dashboard/Dashboard";
 import Passwordforget from "../Components/Auth/Passwordforget/Passwordforget";
 import { createContext, useState } from "react";
+<<<<<<< HEAD
 import Start from "../Components/Start/Start";
 import AttackGrid from "../Components/AttackGrid/AttackGrid";
+=======
+import Infrastructures from "../Components/Infrastructures/Infrastructures";
+
+>>>>>>> 8eed516a49de9fb64a1b18c9a4d7a4ba113857ae
 export const AuthContext = createContext();
 
 function App() {
@@ -25,8 +30,12 @@ function App() {
             <Route path="/registerPlanet" element={<PlanetPseudo />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/passwordforget" element={<Passwordforget />} />
+<<<<<<< HEAD
             <Route path="/start" element={<Start />} />
             <Route path="/attack" element={<AttackGrid />} />
+=======
+            <Route path="/infrastructures" element={<Infrastructures />} />
+>>>>>>> 8eed516a49de9fb64a1b18c9a4d7a4ba113857ae
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
