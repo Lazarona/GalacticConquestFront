@@ -16,7 +16,7 @@ function Dashboard() {
   return (
     <div id="dashboard-container">
       <img
-        class="logonav mt-3 ms-3"
+        className="logonav mt-3 ms-3"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasScrolling"
@@ -25,20 +25,20 @@ function Dashboard() {
         alt=""
       />
       <div
-        class="offcanvas offcanvas-start w-25 p-3 bg-black"
+        className="offcanvas offcanvas-start w-25 p-3 bg-black"
         data-bs-scroll="true"
         data-bs-backdrop="false"
-        tabindex="-1"
+        tabIndex="-1"
         id="offcanvasScrolling"
         aria-labelledby="offcanvasScrollingLabel"
       >
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="offcanvasScrollingLabel">
             MENU
           </h5>
           <button
             type="button"
-            class="boutonclose btn-close "
+            className="boutonclose btn-close "
             data-bs-dismiss="offcanvas"
             aria-label="FERMER"
           ></button>
