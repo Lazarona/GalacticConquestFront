@@ -7,7 +7,6 @@ import PlanetPseudo from "../Components/Planet/PlanetPseudo";
 import Dashboard from "../Components/Dashboard/Dashboard";
 import Passwordforget from "../Components/Auth/Passwordforget/Passwordforget";
 import { createContext, useState } from "react";
-import Start from "../Components/Start/Start";
 
 export const AuthContext = createContext();
 
@@ -25,7 +24,6 @@ function App() {
             <Route path="/registerPlanet" element={<PlanetPseudo />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/passwordforget" element={<Passwordforget />} />
-            <Route path="/start" element={<Start />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>

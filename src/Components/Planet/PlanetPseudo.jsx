@@ -38,6 +38,28 @@ function PlanetPseudo() {
     if (response.status == 400 || response.status == 401) {
       displayErrors();
     } else {
+      getDefaultResource();
+    }
+  };
+
+  const getDefaultResource = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/resource/${userLogged.id}`,
+      options
+    );
+    const data = await response.json();
+    console.log("API Response (Resources) : ", data);
+
+    if (response.status == 401) {
+      displayErrors();
+    } else {
       redirectProfil();
     }
   };
@@ -74,23 +96,57 @@ function PlanetPseudo() {
   }, [planetName, setPlanetName]);
 
   return (
-    <div id="dashboard">
-      <h1>Bienvenue sur : </h1>
-      {displayErrors()}
-      <form onSubmit={sendData}>
-        <MDBInput
-          label="Choisissez votre Planète"
-          type="text"
-          id="formWhite"
-          contrast
-          onChange={(e) => {
-            setPlanetName(e.target.value);
-          }}
-        />
-        <MDBBtn type="submit" className="envoyer mt-4 mb-4 px-5">
-          Commencer
-        </MDBBtn>
-      </form>
+    <div id="start-container">
+      <img
+        className="logonav "
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasScrolling"
+        aria-controls="offcanvasScrolling"
+        src="src/Components/img/nvb.png"
+        alt=""
+      />
+      <div
+        className="offcanvas offcanvas-start w-25 p-3 bg-black"
+        data-bs-scroll="true"
+        data-bs-backdrop="false"
+        tabIndex="-1"
+        id="offcanvasScrolling"
+        aria-labelledby="offcanvasScrollingLabel"
+      >
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="offcanvasScrollingLabel">
+            MENU
+          </h5>
+          <button
+            type="button"
+            className="boutonclose btn-close "
+            data-bs-dismiss="offcanvas"
+            aria-label="FERMER"
+          ></button>
+        </div>
+        <div className="offcanvas-body d-flex flex-column mb-3 gap-3">
+          <a className="boutonm">PROFIL</a>
+          <a className="boutonm">ACHAT</a>
+          <a className="boutondec">DECONNEXION</a>
+        </div>
+      </div>
+      <div className="contenu d-flex align-items-center flex-column mt-3 ">
+        <div className="title d-flex justify-content-center gap-3">
+          <h1>Bienvenue sur </h1>
+          <form onSubmit={sendData}>
+            <input
+              type="text"
+              placeholder='"Jupiter"'
+              onChange={(e) => {
+                setPlanetName(e.target.value);
+              }}
+            />
+            {displayErrors()}
+            <input type="submit" className="boutonstart" value="Commencer" />
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

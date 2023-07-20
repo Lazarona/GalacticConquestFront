@@ -1,76 +1,56 @@
-/* #page-principale .label {
-  display: flex;
-  justify-content: center;
-} */
-
-#dashboard .envoyer {
-  border-radius: 10px;
-  color: red;
-  background-color: rgb(241, 107, 239);
-  border: 3px aqua solid;
-  font-weight: bolder;
-  padding: 8px;
+#start-container {
+  background-image: url(src/Components/background/bg3.jpg);
+  background-size: cover;
 }
-
-#dashboard {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+#start-container h1 {
+  color: #00ffff;
+  -webkit-text-stroke: 0.9px black;
 }
-
-#dashboard .bienvenu {
+#start-container input {
+  border-style: none;
+  border-bottom: 3px aqua dashed;
+  background-color: rgba(255, 222, 173, 0);
+  width: 30%;
+  height: 40%;
+  font-size: 5vh;
   color: white;
+  -webkit-text-stroke: 0.9px black;
 }
-
-/* #dashboard .bienvenu .choix {
-  color: #818181;
-} */
-
-.fondimage {
-  background-image: url(bg3.jpg);
-  height: 120vh;
-  font-family: "Lato", sans-serif;
+#start-container .boutonstart {
+  color: aqua;
+  -webkit-text-stroke: 0.7px rgb(0, 0, 0);
+  border: 3px aqua solid;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 0% 5% 0% 5%;
+  background-color: rgb(86, 42, 127);
+  margin-top: 35%;
+  padding: 0.5% 5% 0.5% 5%;
 }
-
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+#start-container .boutonstart:hover {
+  border: 0.2rem solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.5rem aqua,
+    inset 0 0 0.3rem aqua;
 }
-
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+#start-container .logonav {
+  width: 50px;
 }
-
-.sidenav a:hover {
-  color: #f1f1f1;
+#start-container .boutonm {
+  color: aqua;
 }
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+#start-container .boutondec {
+  color: rgb(255, 0, 0);
 }
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
-  .sidenav a {
-    font-size: 18px;
-  }
+#start-container .boutonclose {
+  background-color: #00ffff;
+}
+#start-container h5 {
+  -webkit-text-stroke: 0.9px aqua;
+  font-size: 30px;
+  color: black;
+}
+#start-container form {
+  display: flex;
+  flex-direction: column;
 }

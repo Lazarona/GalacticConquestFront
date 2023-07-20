@@ -1,6 +1,6 @@
 #dashboard-container {
   background-image: url(src/Components/background/bg8.png);
-  background-size: cover;
+  background-size: 100vw;
   padding: 0% 0% 52% 0%;
 }
 
