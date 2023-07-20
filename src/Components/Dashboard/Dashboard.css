@@ -1,7 +1,12 @@
-#dashboard-container {
+body {
   background-image: url(src/Components/background/bg8.png);
-  background-size: 100vw;
-  padding: 0% 0% 52% 0%;
+  background-size: cover;
+  /* padding: 0% 0% 52% 0%; */
+}
+#dashboard-container {
+  display: flex;
+  align-items: end;
+  gap: 3%;
 }
 
 #dashboard-container .logonav {
@@ -9,9 +14,11 @@
 }
 #dashboard-container .boutonm {
   color: aqua;
+  cursor: pointer;
 }
 #dashboard-container .boutondec {
   color: rgb(255, 0, 0);
+  cursor: pointer;
 }
 #dashboard-container .boutonclose {
   background-color: #00ffff;
@@ -20,4 +27,7 @@
   -webkit-text-stroke: 0.9px aqua;
   font-size: 30px;
   color: black;
+}
+.icons {
+  width: 30px;
 }

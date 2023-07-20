@@ -51,6 +51,71 @@ function Dashboard() {
           </a>
         </div>
       </div>
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Entrepôt
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="#">
+              <img
+                className="icons"
+                src="src/Components/img/icone-ressource-minerai.png"
+                alt=""
+              />
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <img
+                className="icons"
+                src="src/Components/img/icone-ressource-carburant.png"
+                alt=""
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Vaisseaux
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="#">
+              Chasseur:
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              Fregate:
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              Croisseur:
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              Destroyeur:
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className="energie">
+        <h4>⚡️</h4>
+      </div>
     </div>
   );
 }
