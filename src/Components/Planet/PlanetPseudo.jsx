@@ -38,6 +38,28 @@ function PlanetPseudo() {
     if (response.status == 400 || response.status == 401) {
       displayErrors();
     } else {
+      getDefaultWarehouses();
+    }
+  };
+
+  const getDefaultWarehouses = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/default_warehouses/${userLogged.id}`,
+      options
+    );
+    const data = await response.json();
+    console.log("API Response (Warehourses) : ", data);
+
+    if (response.status == 401) {
+      displayErrors();
+    } else {
       getDefaultResource();
     }
   };
@@ -76,14 +98,15 @@ function PlanetPseudo() {
           </ul>
         );
       });
+    } else {
+      return Object.keys(erreurs).map((key) => {
+        return (
+          <ul key={key}>
+            <p>{erreurs.errors.name}</p>
+          </ul>
+        );
+      });
     }
-    return Object.keys(erreurs).map((key) => {
-      return (
-        <ul key={key}>
-          <p>{erreurs.errors.name}</p>
-        </ul>
-      );
-    });
   };
 
   const redirectProfil = () => {

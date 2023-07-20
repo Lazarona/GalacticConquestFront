@@ -43,7 +43,7 @@ function Dashboard() {
             aria-label="FERMER"
           ></button>
         </div>
-        <div class="offcanvas-body d-flex flex-column mb-3 gap-3">
+        <div className="offcanvas-body d-flex flex-column mb-3 gap-3">
           <a className="boutonm">PROFIL</a>
           <a className="boutonm">ACHAT</a>
           <a className="boutondec" onClick={navHome}>

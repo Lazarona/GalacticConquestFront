@@ -56,7 +56,7 @@ function Login() {
 
   // Fonction utilisé pour rediriger l'utilisateur vers sa page de profil
   const redirectProfil = () => {
-    let path = "/start";
+    let path = "/dashboard";
     navigate(path);
   };
 
