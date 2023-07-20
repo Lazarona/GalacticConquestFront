@@ -10,8 +10,56 @@ function Dashboard() {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className="barrenavigate">
+      <nav>
+        <ul>
+          <li className="deroulant">
+            <a href="#" className="entrepot">
+              Entrepôts &ensp;
+            </a>
+            <ul class="sous">
+              <div className="starspace"></div>
+              <li>
+                <a href="#">⛏️ Mines</a>
+              </li>
+              <li>
+                <a href="#">⛽Gasoil</a>
+              </li>
+            </ul>
+          </li>
+          <li class="deroulant">
+            <ul class="sous"></ul>
+          </li>
+        </ul>
+
+        <ul>
+          <li className="deroulant">
+            <a href="#" className="entrepot">
+              Vaisseaux &ensp;
+            </a>
+            <ul class="sous">
+              <div></div>
+              <li>
+                <a href="#">Chasseur:</a>
+              </li>
+              <li>
+                <a href="#">Fregate</a>
+              </li>
+              <li>
+                <a href="#">Croisseur</a>
+              </li>
+              <li>
+                <a href="#">Destroyeur</a>
+              </li>
+            </ul>
+          </li>
+          <li class="deroulant">
+            <ul class="sous"></ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="conteneur"></div>
     </div>
   );
 }
