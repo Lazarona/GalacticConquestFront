@@ -1,3 +1,9 @@
+#register-container {
+  background-image: url(src/Components/background/bg7.jpg);
+  background-size: cover;
+  padding: 0% 0% 15% 0%;
+}
+
 #register-container .bouton {
   border-radius: 10px;
   color: black;

@@ -1,0 +1,23 @@
+#dashboard-container {
+  background-image: url(src/Components/background/bg8.png);
+  background-size: cover;
+  padding: 0% 0% 52% 0%;
+}
+
+#dashboard-container .logonav {
+  width: 50px;
+}
+#dashboard-container .boutonm {
+  color: aqua;
+}
+#dashboard-container .boutondec {
+  color: rgb(255, 0, 0);
+}
+#dashboard-container .boutonclose {
+  background-color: #00ffff;
+}
+#dashboard-container h5 {
+  -webkit-text-stroke: 0.9px aqua;
+  font-size: 30px;
+  color: black;
+}

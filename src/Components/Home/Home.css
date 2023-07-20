@@ -1,47 +1,41 @@
-body{
-    background:url("../background/bg7.jpg");
-    background-size: 100vw;
-
+/* body {
+  background-image: url("../background/bg7.jpg");
+  background-size: cover;
+} */
+#home-container {
+  background-image: url(src/Components/background/bg7.jpg);
+  background-size: cover;
+  padding: 1% 0% 18% 0%;
 }
 
-
-img{
-    width: 55vh ;
+#home-container .logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 12%;
 }
-#home-container .logo{
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
+#home-container .logo2 {
+  width: 40vh;
 }
-#home-container  .allbouton{
-    display: flex;
-    justify-content: center;
-    gap: 7%;
-}
-
-#home-container .bouton{
-    border-radius: 10px;
-    color: black;
-    background-color: rgb(241, 107, 239);
-    border: 3px aqua solid ;
-    font-weight: bolder;
+#home-container .allbouton {
+  display: flex;
+  justify-content: center;
+  gap: 7%;
 }
 
-#home-container .bouton:hover{
-    border-radius: 2rem;
-  
-    border: 0.2rem solid #fff;
-    border-radius: 10px;
-   
-  box-shadow: 0 0 .2rem #fff,
-            0 0 .2rem #fff,
-            0 0 2rem aqua,
-            0 0 0.8rem aqua,
-            0 0 2.8rem aqua,
-            inset 0 0 0.3rem aqua;
-  }
+#home-container .bouton {
+  border-radius: 10px;
+  color: black;
+  background-color: rgb(241, 107, 239);
+  border: 3px aqua solid;
+  font-weight: bolder;
+}
 
+#home-container .bouton:hover {
+  border-radius: 2rem;
 
+  border: 0.2rem solid #fff;
+  border-radius: 10px;
 
-
-  
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.8rem aqua,
+    0 0 2.8rem aqua, inset 0 0 0.3rem aqua;
+}

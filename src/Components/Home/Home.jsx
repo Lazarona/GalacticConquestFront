@@ -16,7 +16,7 @@ function Home() {
   return (
     <div id="home-container">
       <div className="logo">
-        <img src="src/Components/img/logo.png" alt="" />
+        <img className="logo2" src="src/Components/img/logo.png" alt="" />
       </div>
 
       <div className="allbouton">
