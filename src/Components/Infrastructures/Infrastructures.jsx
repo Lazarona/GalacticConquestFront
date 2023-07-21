@@ -8,6 +8,9 @@ function Infrastructures() {
   const navHome = () => {
     navigate("/");
   };
+  const navDashboard = () => {
+    navigate("/dashboard");
+  };
 
   // function updateTimer() {
   //   let targetDate = new Date("<?php echo $element['auction_end']; ?>");
@@ -71,6 +74,7 @@ function Infrastructures() {
             className="return me-3"
             src="src/Components/img/flecheRetour.png"
             alt=""
+            onClick={navDashboard}
           />
         </div>
 

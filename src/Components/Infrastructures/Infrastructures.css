@@ -32,6 +32,7 @@
 }
 #infrastructure-container .return {
   width: 8%;
+  cursor: pointer;
 }
 
 #infrastructure-container h2 {
