@@ -147,14 +147,14 @@ html {
   background-color: #f0f0f0; /* Couleur de fond pour les cases visitées */
 /* } */
 
-.card {
+#attackgrid-container .card {
   background-color: purple;
   border: 1px solid aquamarine;
   padding: 6px;
   border-radius: 5px;
 }
 
-.grid {
+#attackgrid-container .grid {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(100, 100px);
