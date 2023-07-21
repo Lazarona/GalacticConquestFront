@@ -147,10 +147,6 @@ html {
   background-color: #f0f0f0; /* Couleur de fond pour les cases visitées */
 /* } */
 
-body {
-  background-image: url(src\Components\background\bg4.jpgs);
-}
-
 .card {
   background-color: purple;
   border: 1px solid aquamarine;
