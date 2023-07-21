@@ -6,12 +6,77 @@ import { AuthContext } from "../../app/App";
 
 function Dashboard() {
   const [userLogged, setUserLogged] = useContext(AuthContext);
+  const [reponse, setReponse] = useState([]);
 
   const navigate = useNavigate();
 
-  const navHome = () => {
+  const deconnexion = () => {
+    localStorage.removeItem("token");
     navigate("/");
   };
+
+  const navInfra = () => {
+    navigate("/infrastructures");
+  };
+
+  const navShipyard = () => {
+    navigate("/shipyard");
+  };
+
+  const getResources = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/resource", options);
+    const donnees = await response.json();
+    console.log("Reponse de l'API (Ores) : ", donnees);
+    setReponse(donnees.resource);
+  };
+
+  const displayOres = () => {
+    return Object.keys(reponse).map((key) => {
+      return (
+        <div key={key}>
+          <>{reponse[0].ore}</>
+        </div>
+      );
+    });
+  };
+
+  const displayFuel = () => {
+    return Object.keys(reponse).map((key) => {
+      return (
+        <div key={key}>
+          <>{reponse[0].fuel}</>
+        </div>
+      );
+    });
+  };
+
+  const displayEnergy = () => {
+    return Object.keys(reponse).map((key) => {
+      return (
+        <div key={key}>
+          <>{reponse[0].energy}</>
+        </div>
+      );
+    });
+  };
+
+  useEffect(() => {
+    console.log("Resource : ", reponse);
+  }, [setReponse, reponse]);
+
+  useEffect(() => {
+    const eachHour = setInterval(() => {
+      getResources();
+    }, 60000);
+    return () => clearInterval(eachHour);
+  }, []);
 
   return (
     <>
@@ -45,7 +110,7 @@ function Dashboard() {
           <div className="offcanvas-body d-flex flex-column mb-3 gap-3">
             <a className="boutonm">PROFIL</a>
             <a className="boutonm">ACHAT</a>
-            <a className="boutondec" onClick={navHome}>
+            <a className="boutondec" onClick={deconnexion}>
               DECONNEXION
             </a>
           </div>
@@ -89,7 +154,7 @@ function Dashboard() {
             src="src/Components/img/icone-ressource-minerai.png"
             alt=""
           />
-          <h2> 30000</h2>
+          <h2>{displayOres()}</h2>
         </div>
         <div className="energie">
           <img
@@ -97,10 +162,10 @@ function Dashboard() {
             src="src/Components/img/icone-ressource-carburant.png"
             alt=""
           />
-          <h2> 1000</h2>
+          <h2>{displayFuel()}</h2>
         </div>
         <div className="energie">
-          <h2> ⚡️ 45</h2>
+          <h2>{displayEnergy()}</h2>
         </div>
       </div>
       <div>
@@ -142,7 +207,9 @@ function Dashboard() {
                 </a>
               </div>
               <div className=" d-flex justify-content-center mt-3">
-                <button className="myinfra ">Mes Infrastructures</button>
+                <button className="myinfra" onClick={navInfra}>
+                  Mes Infrastructures
+                </button>
               </div>
             </div>
           </MDBPopoverBody>
@@ -171,7 +238,9 @@ function Dashboard() {
                 </a>
               </div>
               <div className=" d-flex justify-content-center mt-3">
-                <button className="myinfra2 ">Mon Chantier Spatial</button>
+                <button className="myinfra2" onClick={navShipyard}>
+                  Mon Chantier Spatial
+                </button>
               </div>
             </div>
           </MDBPopoverBody>
