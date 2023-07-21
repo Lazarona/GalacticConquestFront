@@ -54,3 +54,20 @@
   display: flex;
   flex-direction: column;
 }
+<<<<<<< HEAD
+
+#dashboard .bienvenu {
+  color: white;
+}
+
+/* #dashboard .bienvenu .choix {
+  color: #818181;
+} */
+
+.fondimage {
+  background-image: url(bg3.jpg);
+  height: 120vh;
+  font-family: "Lato", sans-serif;
+}
+=======
+>>>>>>> 8eed516a49de9fb64a1b18c9a4d7a4ba113857ae
