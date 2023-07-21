@@ -1,16 +1,8 @@
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react";
-import {
-  MDBTooltip,
-  //   MDBInput,
-  //   MDBBtn,
-  MDBPopover,
-  MDBPopoverBody,
-  MDBPopoverHeader,
-} from "mdb-react-ui-kit";
+import { MDBPopover, MDBPopoverBody, MDBPopoverHeader } from "mdb-react-ui-kit";
 import { AuthContext } from "../../app/App";
-// import { url } from "inspector";
 
 function Dashboard() {
   const [userLogged, setUserLogged] = useContext(AuthContext);
@@ -81,12 +73,12 @@ function Dashboard() {
             </li>
             <li>
               <a className="nom dropdown-item" href="#">
-                Croisseur:
+                Croiseur:
               </a>
             </li>
             <li>
               <a className="nom dropdown-item" href="#">
-                Destroyeur:
+                Destroyer:
               </a>
             </li>
           </ul>
@@ -162,7 +154,7 @@ function Dashboard() {
         >
           <MDBPopoverHeader className="titleinfra2">
             <div className="d-flex justify-content-center align-items-center">
-              <p className="infra2">CHANTIER SPACIAL</p>
+              <p className="infra2">CHANTIER SPATIAL</p>
             </div>
           </MDBPopoverHeader>
           <MDBPopoverBody className="">
@@ -179,20 +171,12 @@ function Dashboard() {
                 </a>
               </div>
               <div className=" d-flex justify-content-center mt-3">
-                <button className="myinfra2 ">Mon Chantier Spacial</button>
+                <button className="myinfra2 ">Mon Chantier Spatial</button>
               </div>
             </div>
           </MDBPopoverBody>
         </MDBPopover>
       </div>
-
-      {/* 
-      <MDBPopover btnClassName="imgPlanet" btnChildren="" placement="right">
-        <MDBPopoverHeader>Popover title</MDBPopoverHeader>
-        <MDBPopoverBody>
-          And here's some amazing content. It's very engaging. Right?
-        </MDBPopoverBody>
-      </MDBPopover> */}
     </>
   );
 }
