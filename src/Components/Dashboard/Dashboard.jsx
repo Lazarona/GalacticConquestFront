@@ -108,7 +108,12 @@ function Dashboard() {
           <h2> 1000</h2>
         </div>
         <div className="energie">
-          <h2> ⚡️ 45</h2>
+          <img
+            className="icons align-self-center"
+            src="src/Components/img/icone-ressource-energie.png"
+            alt=""
+          />
+          <h2> 45</h2>
         </div>
       </div>
       <div>
@@ -116,6 +121,7 @@ function Dashboard() {
           btnClassName="planete"
           className="popinfra "
           placement="right"
+          title="INFRASTRUCTURE"
         >
           <MDBPopoverHeader className="titleinfra">
             <div className="d-flex justify-content-center align-items-center">
@@ -159,6 +165,7 @@ function Dashboard() {
           btnClassName="planete2"
           className="popinfra2 "
           placement="right"
+          title="CHANTIER SPACIAL"
         >
           <MDBPopoverHeader className="titleinfra2">
             <div className="d-flex justify-content-center align-items-center">

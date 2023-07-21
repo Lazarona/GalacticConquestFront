@@ -26,7 +26,6 @@ function App() {
             <Route path="/registerPlanet" element={<PlanetPseudo />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/passwordforget" element={<Passwordforget />} />
-
             <Route path="/attack" element={<AttackGrid />} />
             <Route path="/infrastructures" element={<Infrastructures />} />
           </Routes>
