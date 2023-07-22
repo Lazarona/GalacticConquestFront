@@ -7,6 +7,7 @@ import { AuthContext } from "../../app/App";
 function Dashboard() {
   const [userLogged, setUserLogged] = useContext(AuthContext);
   const [reponse, setReponse] = useState([]);
+  const [createdMine, setCreatedMine] = useState([]);
   const [erreurs, setErreurs] = useState({});
 
   const navigate = useNavigate();
@@ -108,6 +109,54 @@ function Dashboard() {
     }
   };
 
+  const createMine = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        type: "mine",
+      }),
+    };
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/create/mine",
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (createMine) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setCreatedMine(donnees.mine);
+    }
+  };
+
+  const displayCreatedInfra = () => {
+    if (createdMine.errors == undefined && createdMine.message == undefined) {
+      return null;
+    }
+    if (createMine.message != undefined) {
+      return Object.keys(erreurs).map((key) => {
+        return (
+          <ul key={key}>
+            <h1>{erreurs.message}</h1>
+          </ul>
+        );
+      });
+    } else {
+      return Object.keys(createdMine).map((key) => {
+        return (
+          <ul key={key}>
+            <h1>{createdMine.errors.name}</h1>
+          </ul>
+        );
+      });
+    }
+  };
+
   useEffect(() => {
     console.log("Resource : ", reponse);
     console.log("Erreurs : ", erreurs);
@@ -123,6 +172,11 @@ function Dashboard() {
         <div id="dashboard">
           <div className="d-flex justify-content-center titleinfra2">
             {displayErrors()}
+          </div>
+          <div className="d-flex justify-content-center titleinfra2">
+            <button className="myinfra" onClick={deconnexion}>
+              Revenir à l'accueil
+            </button>
           </div>
         </div>
       ) : (
@@ -252,15 +306,18 @@ function Dashboard() {
                     />
                   </div>
                   <div className=" displayiconnes d-flex justify-content-center ">
-                    <a className="construire" href="">
+                    <a className="construire" onClick={createMine}>
                       Construire
                     </a>
-                    <a className="construire" href="">
+                    {/* <a className="construire" onClick={createPowerplant}>
                       Construire
                     </a>
-                    <a className="construire" href="">
+                    <a className="construire" onClick={createRefinery}>
                       Construire
-                    </a>
+                    </a> */}
+                  </div>
+                  <div className=" d-flex justify-content-center mt-3">
+                    {displayCreatedInfra()}
                   </div>
                   <div className=" d-flex justify-content-center mt-3">
                     <button className="myinfra" onClick={navInfra}>
