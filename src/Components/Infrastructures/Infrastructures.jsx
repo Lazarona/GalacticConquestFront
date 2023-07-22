@@ -6,6 +6,7 @@ function Infrastructures() {
   const [mines, setMines] = useState([]);
   const [powerplants, setPowerplants] = useState([]);
   const [refineries, setRefineries] = useState([]);
+  const [warehouse, setWarehouse] = useState([]);
   const [erreurs, setErreurs] = useState({});
 
   const navigate = useNavigate();
@@ -77,16 +78,49 @@ function Infrastructures() {
     setRefineries(resData.refineries);
   };
 
+  const getWarehouse = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const reqData = await fetch(
+      "http://127.0.0.1:8000/api/warehouses",
+      options
+    );
+    const resData = await reqData.json();
+    console.log("Data (Warehouses) : ", resData);
+    if (reqData.status == 401) {
+      setErreurs(resData);
+    } else {
+      setWarehouse(resData.warehouses);
+    }
+  };
+
   const displayMines = () => {
     return mines.map((e, index) => {
+      const finished_at = new Date(e.finished_at);
+      const currentDate = new Date();
+      currentDate.setHours(currentDate.getHours() - 2);
       return (
         <div key={index}>
           <ul>
             <li>Mine n°{index + 1}</li>
-            <img className="imgMine" src="src\Components\img\Mine.png" />
+            {finished_at > currentDate ? (
+              <img
+                className="imgMineUnfinished"
+                src="src\Components\img\Mine.png"
+              />
+            ) : (
+              <img className="imgMine" src="src\Components\img\Mine.png" />
+            )}
             <p>Niveau {e.level}</p>
             <p>Production : {e.production_hour} / h</p>
           </ul>
+          ------------------
         </div>
       );
     });
@@ -96,6 +130,7 @@ function Infrastructures() {
     return powerplants.map((e, index) => {
       const finished_at = new Date(e.finished_at);
       const currentDate = new Date();
+      currentDate.setHours(currentDate.getHours() - 2);
       return (
         <div key={index}>
           <ul>
@@ -119,14 +154,51 @@ function Infrastructures() {
 
   const displayRefineries = () => {
     return refineries.map((e, index) => {
+      const finished_at = new Date(e.finished_at);
+      const currentDate = new Date();
+      currentDate.setHours(currentDate.getHours() - 2);
       return (
         <div key={index}>
           <ul>
             <li>Raffinerie n°{index + 1}</li>
-            <img className="imgMine" src="src\Components\img\refinery.png" />
+            {finished_at > currentDate ? (
+              <img
+                className="imgMineUnfinished"
+                src="src\Components\img\refinery.png"
+              />
+            ) : (
+              <img className="imgMine" src="src\Components\img\refinery.png" />
+            )}
             <p>Niveau {e.level}</p>
             <p>Production : {e.production_hour} / h</p>
           </ul>
+          ------------------
+        </div>
+      );
+    });
+  };
+
+  const displayWarehouse = () => {
+    return warehouse.map((e, index) => {
+      const finished_at = new Date(e.finished_at);
+      const currentDate = new Date();
+      currentDate.setHours(currentDate.getHours() - 2);
+      return (
+        <div key={index}>
+          <ul>
+            <li>Entrepot n°{index + 1}</li>
+            {finished_at > currentDate ? (
+              <img
+                className="imgMineUnfinished"
+                src="src\Components\img\entrepot.png"
+              />
+            ) : (
+              <img className="imgMine" src="src\Components\img\entrepot.png" />
+            )}
+            <p>Niveau {e.level}</p>
+            <p>Capacité : {e.capacity}</p>
+          </ul>
+          ------------------
         </div>
       );
     });
@@ -159,6 +231,7 @@ function Infrastructures() {
     getMines();
     getPowerplants();
     getRefineries();
+    getWarehouse();
   }, []);
 
   useEffect(() => {
@@ -172,6 +245,10 @@ function Infrastructures() {
   useEffect(() => {
     console.log("Refineries : ", refineries);
   }, [refineries, setRefineries]);
+
+  useEffect(() => {
+    console.log("Warehouses : ", warehouse);
+  }, [warehouse, setWarehouse]);
   // function updateTimer() {
   //   let targetDate = new Date("<?php echo $element['auction_end']; ?>");
   //   let currentDate = new Date();
@@ -285,6 +362,19 @@ function Infrastructures() {
               <div className="card-body">
                 <div className="card-title">{displayRefineries()}</div>
                 {/* <p className="card-text"></p> */}
+                {/* <a href="#" class="btn btn-primary">
+              Go somewhere
+            </a> */}
+              </div>
+            </div>
+            <div className="card">
+              <h5 className="card-header d-flex justify-content-center">
+                ENTREPOT
+              </h5>
+              <div className="card-body">
+                <div className="card-title">{displayWarehouse()}</div>
+                {/* <p className="card-text"> key={index}</p> */}
+
                 {/* <a href="#" class="btn btn-primary">
               Go somewhere
             </a> */}

@@ -71,6 +71,6 @@
 }
 
 .imgMineUnfinished {
-  background-color: red;
+  filter: opacity(0.4);
   width: 50%;
 }

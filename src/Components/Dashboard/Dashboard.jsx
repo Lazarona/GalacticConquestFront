@@ -181,10 +181,32 @@ function Dashboard() {
     }
   };
 
+  const createWarehouse = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/create/warehouse",
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (createWarehouse) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setCreatedInfra(donnees);
+    }
+  };
+
   const displayCreatedInfra = () => {
     return (
       <div>
-        <h4>{createdInfra.message}</h4>
+        <h4 className="titlecrea">{createdInfra.message}</h4>
       </div>
     );
   };
@@ -343,6 +365,10 @@ function Dashboard() {
                       className="iconnes"
                       src="src/Components/img/icone-infrastructure-raffinerie.png"
                     />
+                    <img
+                      className="iconnes"
+                      src="src/Components/img/icone-entrepot.png"
+                    />
                   </div>
                   <div className=" displayiconnes d-flex justify-content-center ">
                     <a className="construire" onClick={createMine}>
@@ -354,12 +380,14 @@ function Dashboard() {
                     <a className="construire" onClick={createRefinery}>
                       Construire
                     </a>
+                    <a className="construire" onClick={createWarehouse}>
+                      Construire
+                    </a>
                   </div>
                   <div className=" d-flex justify-content-center mt-3">
                     {displayErrors() === null
                       ? displayCreatedInfra()
                       : displayErrors()}
-                    {/* {displayCreatedInfra()} */}
                   </div>
                   <div className=" d-flex justify-content-center mt-3">
                     <button className="myinfra" onClick={navInfra}>
