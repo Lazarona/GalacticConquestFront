@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Infrastructures.css";
 
 function Infrastructures() {
-  const [infrastructure, setInfrastructure] = useState([]);
+  const [mines, setMines] = useState([]);
 
   const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ function Infrastructures() {
     navigate("/dashboard");
   };
 
-  const getInfrastructure = async () => {
+  const getMines = async () => {
     const options = {
       method: "GET",
       headers: {
@@ -26,18 +26,18 @@ function Infrastructures() {
     const reqData = await fetch("http://127.0.0.1:8000/api/mines", options);
     const resData = await reqData.json();
     console.log("Data : ", resData);
-    setInfrastructure(resData.mines);
+    setMines(resData.mines);
   };
 
   const displayMines = () => {
-    return infrastructure.map((key, item) => {
+    return mines.map((e, index) => {
       return (
-        <div key={key}>
+        <div key={index}>
           <ul>
-            <li>Mine n°{item.id}</li>
+            <li>Mine n°{e.id}</li>
             <img className="imgMine" src="src\Components\img\Mine.png" />
-            <p>Niveau {item.level}</p>
-            <p>Production : {item.production_hour} / h</p>
+            <p>Niveau {e.level}</p>
+            <p>Production : {e.production_hour} / h</p>
           </ul>
         </div>
       );
@@ -45,12 +45,12 @@ function Infrastructures() {
   };
 
   useEffect(() => {
-    getInfrastructure();
+    getMines();
   }, []);
 
   useEffect(() => {
-    console.log("Infrastructures : ", infrastructure);
-  }, [infrastructure, setInfrastructure]);
+    console.log("Mines : ", mines);
+  }, [mines, setMines]);
 
   // function updateTimer() {
   //   let targetDate = new Date("<?php echo $element['auction_end']; ?>");
@@ -123,7 +123,7 @@ function Infrastructures() {
           <div className="card">
             <h5 className="card-header d-flex justify-content-center">MINE</h5>
             <div className="card-body">
-              <h5 className="card-title">{displayMines()}</h5>
+              <div className="card-title">{displayMines()}</div>
               {/* <p className="card-text"> key={index}</p> */}
 
               {/* <a href="#" class="btn btn-primary">
