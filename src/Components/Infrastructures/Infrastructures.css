@@ -2,8 +2,7 @@
   background-image: url(src/Components/background/bg6.webp);
   background-size: cover;
   padding-bottom: 9%;
-  /* height: 100vh;
-  background-repeat: no-repeat; */
+  height: 100vh;
 }
 
 #infrastructure-container .navbarmenu {
