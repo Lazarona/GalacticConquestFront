@@ -7,7 +7,7 @@ import { AuthContext } from "../../app/App";
 function Dashboard() {
   const [userLogged, setUserLogged] = useContext(AuthContext);
   const [reponse, setReponse] = useState([]);
-  const [createdMine, setCreatedMine] = useState([]);
+  const [createdInfra, setCreatedInfra] = useState([]);
   const [erreurs, setErreurs] = useState({});
 
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ function Dashboard() {
       return Object.keys(erreurs).map((key) => {
         return (
           <ul key={key}>
-            <h1>{erreurs.message}</h1>
+            <h4>{erreurs.message}</h4>
           </ul>
         );
       });
@@ -130,37 +130,76 @@ function Dashboard() {
     if (response.status == 401) {
       setErreurs(donnees);
     } else {
-      setCreatedMine(donnees.mine);
+      setCreatedInfra(donnees);
+    }
+  };
+
+  const createRefinery = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        type: "refinery",
+      }),
+    };
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/create/refinery",
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (createRefinery) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setCreatedInfra(donnees);
+    }
+  };
+
+  const createPowerplant = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/create/powerplant",
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (createPowerplant) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setCreatedInfra(donnees);
     }
   };
 
   const displayCreatedInfra = () => {
-    if (createdMine.errors == undefined && createdMine.message == undefined) {
-      return null;
-    }
-    if (createMine.message != undefined) {
-      return Object.keys(erreurs).map((key) => {
-        return (
-          <ul key={key}>
-            <h1>{erreurs.message}</h1>
-          </ul>
-        );
-      });
-    } else {
-      return Object.keys(createdMine).map((key) => {
-        return (
-          <ul key={key}>
-            <h1>{createdMine.errors.name}</h1>
-          </ul>
-        );
-      });
-    }
+    return (
+      <div>
+        <h4>{createdInfra.message}</h4>
+      </div>
+    );
   };
 
   useEffect(() => {
     console.log("Resource : ", reponse);
-    console.log("Erreurs : ", erreurs);
   }, [setReponse, reponse]);
+
+  useEffect(() => {
+    console.log("createdInfra : ", createdInfra);
+  }, [setCreatedInfra, createdInfra]);
+
+  useEffect(() => {
+    console.log("Erreurs : ", erreurs);
+  }, [setErreurs, erreurs]);
 
   useEffect(() => {
     getResources();
@@ -309,15 +348,18 @@ function Dashboard() {
                     <a className="construire" onClick={createMine}>
                       Construire
                     </a>
-                    {/* <a className="construire" onClick={createPowerplant}>
+                    <a className="construire" onClick={createPowerplant}>
                       Construire
                     </a>
                     <a className="construire" onClick={createRefinery}>
                       Construire
-                    </a> */}
+                    </a>
                   </div>
                   <div className=" d-flex justify-content-center mt-3">
-                    {displayCreatedInfra()}
+                    {displayErrors() === null
+                      ? displayCreatedInfra()
+                      : displayErrors()}
+                    {/* {displayCreatedInfra()} */}
                   </div>
                   <div className=" d-flex justify-content-center mt-3">
                     <button className="myinfra" onClick={navInfra}>
