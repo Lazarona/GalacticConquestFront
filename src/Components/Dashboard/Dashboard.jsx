@@ -20,6 +20,10 @@ function Dashboard() {
     navigate("/infrastructures");
   };
 
+  const navChantierSpacial = () => {
+    navigate("/chantierspacial");
+  };
+
   const navShipyard = () => {
     navigate("/shipyard");
   };
