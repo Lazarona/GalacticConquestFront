@@ -1,7 +1,7 @@
-body {
+#dashboard {
   background-image: url(src/Components/background/bg8.png);
   background-size: cover;
-  /* padding: 0% 0% 52% 0%; */
+  padding: 0% 0% 10.5% 0%;
 }
 #dashboard-container {
   display: flex;
@@ -93,7 +93,7 @@ body {
 
 .popinfra {
   margin-left: 10%;
-  margin-top: -6%;
+  /* margin-top: -6%; */
   font-family: inherit;
   --mdb-popover-max-width: 515px;
   background-color: rgba(177, 124, 245, 0.419);
@@ -154,7 +154,7 @@ body {
   border-radius: 50%;
   padding: 10px;
   border: 1.5px rgb(144, 174, 238) solid;
-  margin-bottom: 3%;
+  margin-bottom: 0%;
   margin-left: -17.5%;
   background: #5384ad;
   background: -webkit-linear-gradient(to right, #5e76e3, #2c0fbd);

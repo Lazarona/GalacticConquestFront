@@ -19,6 +19,10 @@ function Dashboard() {
     navigate("/infrastructures");
   };
 
+  const navChantierSpacial = () => {
+    navigate("/chantierspacial");
+  };
+
   const navShipyard = () => {
     navigate("/shipyard");
   };
@@ -76,7 +80,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <>
+    <div id="dashboard">
       <div id="dashboard-container">
         <img
           className="logonav mt-3 ms-3"
@@ -184,17 +188,41 @@ function Dashboard() {
           </MDBPopoverHeader>
           <MDBPopoverBody className="">
             <div className="d-flex flex-column">
-              <div className="displayiconnes d-flex justify-content-center">
+              <div className="displayiconnes d-flex justify-content-center ">
                 <img
                   className="iconnes"
+                  title="             
+                              MINE 
+
+    Coût de construction:  300u de minerai    
+    Consommation:   1u d'énergie 
+    Temps de construction:   1H
+    Ressources:  100/H
+    "
                   src="src/Components/img/icone-infrastructure-mine.png"
                 />
                 <img
                   className="iconnes"
+                  title="             
+                          CENTRALE 
+
+    Coût de construction: 500u de minerai    
+    Consommation: 0u d'énergie 
+    Temps de construction: 1H
+    Energie:  5
+             "
                   src="src/Components/img/icone-infrastructure-centrale.png"
                 />
                 <img
                   className="iconnes"
+                  title="             
+                          RAFFINERIE 
+
+    Coût de construction:  300u de minerai    
+    Consommation: 2u d'énergie 
+    Temps de construction: 1H
+    Ressources:  100/H
+    "
                   src="src/Components/img/icone-infrastructure-raffinerie.png"
                 />
               </div>
@@ -209,6 +237,7 @@ function Dashboard() {
                   Construire
                 </a>
               </div>
+
               <div className=" d-flex justify-content-center mt-3">
                 <button className="myinfra" onClick={navInfra}>
                   Mes Infrastructures
@@ -242,7 +271,7 @@ function Dashboard() {
                 </a>
               </div>
               <div className=" d-flex justify-content-center mt-3">
-                <button className="myinfra2" onClick={navShipyard}>
+                <button className="myinfra2" onClick={navChantierSpacial}>
                   Mon Chantier Spatial
                 </button>
               </div>
@@ -250,7 +279,7 @@ function Dashboard() {
           </MDBPopoverBody>
         </MDBPopover>
       </div>
-    </>
+    </div>
   );
 }
 

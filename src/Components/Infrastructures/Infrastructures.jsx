@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MDBInput, MDBCheckbox, MDBBtn } from "mdb-react-ui-kit";
 import "./Infrastructures.css";
 
 function Infrastructures() {
@@ -80,33 +79,35 @@ function Infrastructures() {
 
         {/* ---------BODY------ */}
         <div className="d-flex justify-content-center gap-4 mt-5">
-          <div class="card">
-            <h5 class="card-header d-flex justify-content-center">MINE</h5>
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text"></p>
+          <div className="card">
+            <h5 className="card-header d-flex justify-content-center">MINE</h5>
+            <div className="card-body">
+              <h5 className="card-title"></h5>
+              <p className="card-text"></p>
               {/* <a href="#" class="btn btn-primary">
                 Go somewhere
               </a> */}
             </div>
           </div>
-          <div class="card">
-            <h5 class="card-header d-flex justify-content-center">CENTRALE</h5>
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text"></p>
+          <div className="card">
+            <h5 className="card-header d-flex justify-content-center">
+              CENTRALE
+            </h5>
+            <div className="card-body">
+              <h5 className="card-title"></h5>
+              <p className="card-text"></p>
               {/* <a href="#" class="btn btn-primary">
                 Go somewhere
               </a> */}
             </div>
           </div>
-          <div class="card">
-            <h5 class="card-header d-flex justify-content-center">
+          <div className="card">
+            <h5 className="card-header d-flex justify-content-center">
               RAFFINERIE
             </h5>
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text"></p>
+            <div className="card-body">
+              <h5 className="card-title"></h5>
+              <p className="card-text"></p>
               {/* <a href="#" class="btn btn-primary">
                 Go somewhere
               </a> */}
