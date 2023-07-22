@@ -1,7 +1,8 @@
 #dashboard {
   background-image: url(src/Components/background/bg8.png);
   background-size: cover;
-  padding: 0% 0% 10.5% 0%;
+  height: 100vh;
+  padding: 0% 0% 12% 0%;
 }
 #dashboard-container {
   display: flex;

@@ -2,12 +2,12 @@
   background-image: url(src/Components/background/bg6.webp);
   background-size: cover;
   padding-bottom: 9%;
-  /* height: 100vh;
-  background-repeat: no-repeat; */
+  height: 100vh;
 }
 
 #infrastructure-container .navbarmenu {
   background-color: rgba(33, 0, 65, 0.948);
+  width: 20%;
 }
 #infrastructure-container .logonav {
   width: 50px;
@@ -34,6 +34,10 @@
 }
 #infrastructure-container .return {
   width: 8%;
+  cursor: pointer;
+}
+#infrastructure-container .return:hover {
+  width: 8.5%;
   cursor: pointer;
 }
 
