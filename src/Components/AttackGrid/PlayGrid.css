@@ -1,32 +1,61 @@
+h1 {
+  color: aqua;
+  border-radius: 10px;
+  -webkit-text-stroke: #3c1053 0.6px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(
-    5,
-    50px
-  ); /* Changer le nombre de colonnes en fonction de gridSize */
-  grid-template-rows: repeat(
-    5,
-    50px
-  ); /* Changer le nombre de lignes en fonction de gridSize */
-  gap: 5px;
+    10,
+    30px
+  ); /* Ajuster la taille de chaque case */
+  grid-template-rows: repeat(10, 30px); /* Ajuster la taille de chaque case */
+  gap: 1px;
   margin: 20px auto;
   max-width: 300px;
+  color: black;
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
-  background-color: #f0f0f0;
+  width: 30px;
+  height: 30px;
+  background-color: purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  cursor: pointer;
+  border: 1px rgba(0, 255, 255, 0.823) solid;
+  opacity: 80%;
 }
 
-.pion {
-  background-color: red; /* Couleur du pion */
+.target {
+  background-color: aquamarine;
 }
 
 .controls {
-  margin-top: 10px;
+  margin-top: 20px;
+  color: aquamarine;
+  background-color: rgb(45, 45, 112);
+}
+.sendsy {
+  color: aqua;
+  border: 3px aqua solid;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 0% 5% 0% 5%;
+  background-color: rgb(86, 42, 127);
+}
+#play-gird {
+  background-image: url(src/Components/background/bg2.jpg);
 }
 
-button {
-  margin-right: 5px;
+.goback {
+  background-color: #dfc5ec;
+  color: #3c1053;
+  font-size: 17px;
+  border-radius: 10px;
+  border: 3px rgba(0, 255, 255, 0.823) solid;
+  -webkit-text-stroke: 0.6px aqua;
 }
