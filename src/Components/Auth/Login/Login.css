@@ -1,7 +1,7 @@
 #login-container {
   background-image: url(src/Components/background/bg7.jpg);
   background-size: cover;
-  padding-bottom: 19%;
+  height: 100vh;
 }
 #login-container .bouton {
   border-radius: 10px;

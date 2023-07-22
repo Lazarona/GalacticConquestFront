@@ -147,6 +147,7 @@ html {
   background-color: #f0f0f0; /* Couleur de fond pour les cases visitées */
 /* } */
 
+<<<<<<< HEAD
 /* body {
   background-image: url(src\Components\background\bg4.jpgs);
 } */
@@ -189,4 +190,17 @@ html {
 #plateau2 {
   display: inline-block;
   margin-left: 50%;
+=======
+#attackgrid-container .card {
+  background-color: purple;
+  border: 1px solid aquamarine;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+#attackgrid-container .grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(100, 100px);
+>>>>>>> 3c2f5aca460a737effcd7d0409e084b64244a2ee
 }

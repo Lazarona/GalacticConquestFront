@@ -1,16 +1,16 @@
 #register-container {
   background-image: url(src/Components/background/bg7.jpg);
   background-size: cover;
-  padding: 0% 0% 15% 0%;
+  /* padding: 0% 0% 15% 0%; */
+  height: 100vh;
 }
 
 #register-container .bouton {
   border-radius: 10px;
   color: black;
-  background-color: aqua solid(241, 107, 239);
-  border: 3px;
+  background-color: rgb(241, 107, 239);
+  border: 3px aqua solid;
   font-weight: bolder;
-  padding: 8px;
 }
 
 #register-container .bouton:hover {
