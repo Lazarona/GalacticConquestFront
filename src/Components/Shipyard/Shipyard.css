@@ -15,12 +15,12 @@
   background-color: #1d1e22;
 } */
 
-img {
+/* img {
   display: block;
   max-width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
 
 .container {
   display: flex;

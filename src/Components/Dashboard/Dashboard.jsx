@@ -338,6 +338,13 @@ function Dashboard() {
               <h2> {displayEnergy()}</h2>
             </div>
           </div>
+          <a href="" className="attaquecontainer me-3 mt-2">
+            <img
+              className="attaque"
+              src="src/Components/img/Attaque.png"
+              alt=""
+            />
+          </a>
           <div>
             <MDBPopover
               btnClassName="planete"
