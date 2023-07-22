@@ -120,47 +120,14 @@ function PlanetPseudo() {
 
   return (
     <div id="start-container">
-      <img
-        className="logonav "
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasScrolling"
-        aria-controls="offcanvasScrolling"
-        src="src/Components/img/nvb.png"
-        alt=""
-      />
-      <div
-        className="offcanvas offcanvas-start w-25 p-3 bg-black"
-        data-bs-scroll="true"
-        data-bs-backdrop="false"
-        tabIndex="-1"
-        id="offcanvasScrolling"
-        aria-labelledby="offcanvasScrollingLabel"
-      >
-        <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="offcanvasScrollingLabel">
-            MENU
-          </h5>
-          <button
-            type="button"
-            className="boutonclose btn-close "
-            data-bs-dismiss="offcanvas"
-            aria-label="FERMER"
-          ></button>
-        </div>
-        <div className="offcanvas-body d-flex flex-column mb-3 gap-3">
-          <a className="boutonm">PROFIL</a>
-          <a className="boutonm">ACHAT</a>
-          <a className="boutondec">DECONNEXION</a>
-        </div>
-      </div>
-      <div className="contenu d-flex align-items-center flex-column mt-3 ">
-        <div className="title d-flex justify-content-center gap-3">
-          <h1>Bienvenue sur </h1>
-          <form onSubmit={sendData}>
+      <div className="contenu  ">
+        <div className="title  ">
+          <h1 className="d-flex justify-content-center">Bienvenue sur </h1>
+
+          <form className="ex" onSubmit={sendData}>
             <input
               type="text"
-              placeholder='"Jupiter"'
+              placeholder='"ex: Jupiter"'
               onChange={(e) => {
                 setPlanetName(e.target.value);
               }}
