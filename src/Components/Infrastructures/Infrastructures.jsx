@@ -3,6 +3,18 @@ import { useNavigate } from "react-router-dom";
 import "./Infrastructures.css";
 
 function Infrastructures() {
+  const [infrastructure, setInfrastructure] = useState([]);
+
+  useEffect(() => {
+    const getInfrastructure = async () => {
+      const reqData = await fetch("http://127.0.0.1:8000/api/mines");
+      const resData = await reqData.json();
+      setInfrastructure(resData);
+      console.log(resData);
+    };
+    getInfrastructure();
+  });
+
   const navigate = useNavigate();
   const navHome = () => {
     navigate("/");
@@ -82,8 +94,17 @@ function Infrastructures() {
           <div className="card">
             <h5 className="card-header d-flex justify-content-center">MINE</h5>
             <div className="card-body">
-              <h5 className="card-title"></h5>
-              <p className="card-text"></p>
+              <h5 className="card-title">
+                {infrastructure.map((infrastructure, index) => (
+                  <tr>
+                    key={index}
+                    <td>{index + 1}</td>
+                    <td>{infrastructure.type}</td>
+                  </tr>
+                ))}
+              </h5>
+              <p className="card-text"> key={index}</p>
+
               {/* <a href="#" class="btn btn-primary">
                 Go somewhere
               </a> */}
