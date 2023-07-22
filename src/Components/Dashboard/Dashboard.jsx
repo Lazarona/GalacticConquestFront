@@ -76,10 +76,7 @@ function Dashboard() {
   }, [setReponse, reponse]);
 
   useEffect(() => {
-    const eachHour = setInterval(() => {
-      getResources();
-    }, 60000);
-    return () => clearInterval(eachHour);
+    getResources();
   }, []);
 
   return (
