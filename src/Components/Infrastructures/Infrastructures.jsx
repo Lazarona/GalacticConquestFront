@@ -84,7 +84,7 @@ function Infrastructures() {
             alt=""
           />
           <div
-            className="offcanvas offcanvas-start w-25 p-3 navbarmenu"
+            className="offcanvas offcanvas-start  p-3 navbarmenu"
             data-bs-scroll="true"
             data-bs-backdrop="false"
             tabIndex="-1"
