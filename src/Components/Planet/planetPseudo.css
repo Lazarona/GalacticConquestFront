@@ -1,6 +1,6 @@
 #start-container {
   background-image: url(src/Components/background/bg3.jpg);
-  background-size: cover;
+  background-size: 100vw;
 }
 #start-container h1 {
   color: #00ffff;
@@ -63,8 +63,8 @@
   color: #818181;
 } */
 
-.fondimage {
+/* .fondimage {
   background-image: url(bg3.jpg);
   height: 120vh;
   font-family: "Lato", sans-serif;
-}
+} */
