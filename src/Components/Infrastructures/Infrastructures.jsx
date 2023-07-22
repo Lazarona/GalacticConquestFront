@@ -94,14 +94,24 @@ function Infrastructures() {
 
   const displayPowerplants = () => {
     return powerplants.map((e, index) => {
+      const finished_at = new Date(e.finished_at);
+      const currentDate = new Date();
       return (
         <div key={index}>
           <ul>
             <li>Centrale n°{index + 1}</li>
-            <img className="imgMine" src="src\Components\img\Usine.png" />
+            {finished_at > currentDate ? (
+              <img
+                className="imgMineUnfinished"
+                src="src\Components\img\Usine.png"
+              />
+            ) : (
+              <img className="imgMine" src="src\Components\img\Usine.png" />
+            )}
             <p>Niveau {e.level}</p>
             <p>Energie : 5 </p>
           </ul>
+          ------------------
         </div>
       );
     });

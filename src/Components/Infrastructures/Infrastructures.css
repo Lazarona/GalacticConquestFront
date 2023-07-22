@@ -69,3 +69,8 @@
 .imgMine {
   width: 50%;
 }
+
+.imgMineUnfinished {
+  background-color: red;
+  width: 50%;
+}
