@@ -147,19 +147,46 @@ html {
   background-color: #f0f0f0; /* Couleur de fond pour les cases visitées */
 /* } */
 
-body {
+/* body {
   background-image: url(src\Components\background\bg4.jpgs);
+} */
+.caseBataille {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 100%;
+  background-color: #ffffff;
+}
+.caseBataille2 {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background-color: red;
+}
+.caseBataille3 {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background-color: blue;
+}
+.caseBataille4 {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background-color: green;
+}
+.caseBataille5 {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background-color: yellow;
 }
 
-.card {
-  background-color: purple;
-  border: 1px solid aquamarine;
-  padding: 6px;
-  border-radius: 5px;
+#plateau1 {
+  display: inline-block;
 }
 
-.grid {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(100, 100px);
+#plateau2 {
+  display: inline-block;
+  margin-left: 50%;
 }
