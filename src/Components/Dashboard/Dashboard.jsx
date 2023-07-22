@@ -124,11 +124,13 @@ function Dashboard() {
   return (
     <>
       {localStorage.getItem("token") === null ? (
-        <div className="d-flex justify-content-center titleinfra2">
-          {displayErrors()}
+        <div id="dashboard">
+          <div className="d-flex justify-content-center titleinfra2">
+            {displayErrors()}
+          </div>
         </div>
       ) : (
-        <>
+        <div id="dashboard">
           <div id="dashboard-container">
             <img
               className="logonav mt-3 ms-3"
@@ -305,7 +307,7 @@ function Dashboard() {
               </MDBPopoverBody>
             </MDBPopover>
           </div>
-        </>
+        </div>
       )}
     </>
   );
