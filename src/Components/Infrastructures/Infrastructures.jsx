@@ -5,23 +5,52 @@ import "./Infrastructures.css";
 function Infrastructures() {
   const [infrastructure, setInfrastructure] = useState([]);
 
-  useEffect(() => {
-    const getInfrastructure = async () => {
-      const reqData = await fetch("http://127.0.0.1:8000/api/mines");
-      const resData = await reqData.json();
-      setInfrastructure(resData);
-      console.log(resData);
-    };
-    getInfrastructure();
-  });
-
   const navigate = useNavigate();
+
   const navHome = () => {
     navigate("/");
   };
   const navDashboard = () => {
     navigate("/dashboard");
   };
+
+  const getInfrastructure = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const reqData = await fetch("http://127.0.0.1:8000/api/mines", options);
+    const resData = await reqData.json();
+    console.log("Data : ", resData);
+    setInfrastructure(resData.mines);
+  };
+
+  const displayMines = () => {
+    return infrastructure.map((key, item) => {
+      return (
+        <div key={key}>
+          <ul>
+            <li>Mine n°{item.id}</li>
+            <img className="imgMine" src="src\Components\img\Mine.png" />
+            <p>Niveau {item.level}</p>
+            <p>Production : {item.production_hour} / h</p>
+          </ul>
+        </div>
+      );
+    });
+  };
+
+  useEffect(() => {
+    getInfrastructure();
+  }, []);
+
+  useEffect(() => {
+    console.log("Infrastructures : ", infrastructure);
+  }, [infrastructure, setInfrastructure]);
 
   // function updateTimer() {
   //   let targetDate = new Date("<?php echo $element['auction_end']; ?>");
@@ -94,16 +123,8 @@ function Infrastructures() {
           <div className="card">
             <h5 className="card-header d-flex justify-content-center">MINE</h5>
             <div className="card-body">
-              <h5 className="card-title">
-                {infrastructure.map((infrastructure, index) => (
-                  <tr>
-                    key={index}
-                    <td>{index + 1}</td>
-                    <td>{infrastructure.type}</td>
-                  </tr>
-                ))}
-              </h5>
-              <p className="card-text"> key={index}</p>
+              <h5 className="card-title">{displayMines()}</h5>
+              {/* <p className="card-text"> key={index}</p> */}
 
               {/* <a href="#" class="btn btn-primary">
                 Go somewhere
