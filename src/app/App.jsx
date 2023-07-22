@@ -9,7 +9,7 @@ import Passwordforget from "../Components/Auth/Passwordforget/Passwordforget";
 import { createContext, useState } from "react";
 import AttackGrid from "../Components/AttackGrid/AttackGrid";
 import Infrastructures from "../Components/Infrastructures/Infrastructures";
-import ChantierSpacial from "../Components/ChantierSpacial/ChantierSpacial";
+import ChantierSpatial from "../Components/ChantierSpatial/ChantierSpatial";
 
 export const AuthContext = createContext();
 
@@ -29,7 +29,7 @@ function App() {
             <Route path="/passwordforget" element={<Passwordforget />} />
             <Route path="/attack" element={<AttackGrid />} />
             <Route path="/infrastructures" element={<Infrastructures />} />
-            <Route path="/chantierspacial" element={<ChantierSpacial />} />
+            <Route path="/chantierspatial" element={<ChantierSpatial />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>

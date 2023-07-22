@@ -20,12 +20,8 @@ function Dashboard() {
     navigate("/infrastructures");
   };
 
-  const navChantierSpacial = () => {
-    navigate("/chantierspacial");
-  };
-
   const navShipyard = () => {
-    navigate("/shipyard");
+    navigate("/chantierspatial");
   };
 
   const getResources = async () => {
@@ -278,7 +274,7 @@ function Dashboard() {
               btnClassName="planete2"
               className="popinfra2 "
               placement="right"
-              title="CHANTIER SPACIAL"
+              title="CHANTIER SPATIAL"
             >
               <MDBPopoverHeader className="titleinfra2">
                 <div className="d-flex justify-content-center align-items-center">
