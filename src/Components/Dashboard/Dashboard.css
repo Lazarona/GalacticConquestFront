@@ -1,8 +1,9 @@
-#dashboard {
+body {
   background-image: url(src/Components/img/bgdash.png);
   background-size: cover;
-  height: 100vh;
-  padding: 0% 0% 12% 0%;
+
+  /* height: 100vh; */
+  /* padding: 0% 0% 12% 0%; */
 }
 #dashboard-container {
   display: flex;
@@ -85,7 +86,7 @@
   border-radius: 50%;
   padding: 18px;
   border: 2px rgb(189, 160, 255) solid;
-  margin-top: 19%;
+  margin-top: 20%;
   margin-left: 38%;
   background: #ad5389;
   background: -webkit-linear-gradient(to right, #3c1053, #ad5389);
@@ -235,4 +236,5 @@
 }
 .attaque {
   width: 16%;
+  cursor: pointer;
 }
