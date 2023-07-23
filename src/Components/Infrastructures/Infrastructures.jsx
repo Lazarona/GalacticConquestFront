@@ -312,7 +312,7 @@ function Infrastructures() {
           </div>
 
           {/* ---------BODY------ */}
-          <div className="d-flex justify-content-center gap-4 mt-5">
+          <div className="d-flex justify-content-center gap-5 allcont">
             <div className="card">
               <h5 className="card-header d-flex justify-content-center">
                 MINE

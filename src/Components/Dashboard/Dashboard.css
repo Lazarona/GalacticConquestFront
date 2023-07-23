@@ -1,9 +1,7 @@
 body {
   background-image: url(src/Components/img/bgdash.png);
   background-size: cover;
-
-  /* height: 100vh; */
-  /* padding: 0% 0% 12% 0%; */
+  /* width: 100vh; */
 }
 #dashboard-container {
   display: flex;

@@ -52,7 +52,9 @@
 }
 
 /* CONTAINER MINE-CENTRAL-RAFFINERIE */
-
+#infrastructure-container .allcont {
+  margin-top: 10%;
+}
 #infrastructure-container .card {
   height: 289px;
   width: 250px;

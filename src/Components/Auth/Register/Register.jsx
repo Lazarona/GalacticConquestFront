@@ -138,10 +138,10 @@ function Register() {
         <img src="src/Components/img/logo.png" alt="" className="logor ms-3" />
 
         <div
-          className="contenue px-5 py-2 ms-5 "
+          className="contenue px-5 py-2 ms-5  "
           style={{ backgroundColor: "rgb(241, 107, 239)" }}
         >
-          <h2 className="d-flex justify-content-center p-4">INSCRIPTION</h2>
+          <h2 className="d-flex justify-content-center ">INSCRIPTION</h2>
 
           {displayErrors()}
 
