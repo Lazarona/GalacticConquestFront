@@ -4,11 +4,11 @@ body {
   /* width: 100vh; */
 }
 #dashboard-container {
-  display: flex;
-  align-items: end;
-  gap: 3%;
   background-color: rgba(56, 4, 104, 0.567);
-  padding-bottom: 2%;
+  gap: 42%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 1%;
 }
 
 #dashboard-container .logonav {
@@ -244,4 +244,10 @@ body {
 .attaque {
   width: 16%;
   cursor: pointer;
+}
+.nameplanet {
+  display: contents;
+  width: 21%;
+  font-size: 44px;
+  color: rgb(243, 135, 251);
 }
