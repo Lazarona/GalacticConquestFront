@@ -1,20 +1,17 @@
 import "./PlayGrid.css";
-
 import React, { useState } from "react";
 
-const gridSize = 10;
-const fuelConso = {
-  Chasseur: 1,
-  Fregate: 2,
-  Croiseur: 4,
-  Destroyer: 8,
-};
-const retour = () => {
-  localStorage.removeItem("token");
-  navigate("/dashboard");
-};
-
 const PlayGrid = () => {
+  const gridSize = 10;
+  const fuelConso = {
+    Chasseur: 1,
+    Fregate: 2,
+    Croiseur: 4,
+    Destroyer: 8,
+  };
+  const retour = () => {
+    navigate("/dashboard");
+  };
   const [selectedTarget, setSelectedTarget] = useState(null);
   const [carburant, setCarburant] = useState(10); // Carburant initial du joueur (vous pouvez ajuster la valeur)
 

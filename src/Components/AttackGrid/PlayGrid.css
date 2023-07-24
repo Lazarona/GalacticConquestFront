@@ -36,9 +36,16 @@ h1 {
 
 .controls {
   margin-top: 20px;
+  background-color: rgba(14, 14, 172, 0.4);
   color: aquamarine;
-  background-color: rgb(45, 45, 112);
 }
+/* H2 {
+  color: aquamarine;
+  opacity: 100%;
+}
+p {
+  color: aquamarine;
+} */
 .sendsy {
   color: aqua;
   border: 3px aqua solid;
