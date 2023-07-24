@@ -216,7 +216,11 @@ function Register() {
             />
 
             <div className="d-flex justify-content-center">
-              <MDBBtn type="submit" className="boutonr mt-2 px-5 ">
+              <MDBBtn
+                type="submit"
+                className="boutonr mt-2 px-5"
+    
+              >
                 Play
               </MDBBtn>
             </div>
