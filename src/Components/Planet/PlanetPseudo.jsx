@@ -132,6 +132,7 @@ function PlanetPseudo() {
                 setPlanetName(e.target.value);
               }}
             />
+
             {displayErrors()}
             <input type="submit" className="boutonstart" value="Commencer" />
           </form>

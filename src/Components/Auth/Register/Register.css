@@ -53,3 +53,7 @@
   box-shadow: 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.5rem aqua,
     inset 0 0 0.3rem aqua;
 }
+
+#register-container h2 {
+  margin: 3% 0% 5% 0%;
+}

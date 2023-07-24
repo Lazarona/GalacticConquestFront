@@ -249,24 +249,7 @@ function Infrastructures() {
   useEffect(() => {
     console.log("Warehouses : ", warehouse);
   }, [warehouse, setWarehouse]);
-  // function updateTimer() {
-  //   let targetDate = new Date("<?php echo $element['auction_end']; ?>");
-  //   let currentDate = new Date();
-  //   let remainingTime = targetDate.getTime() - currentDate.getTime();
-  //   let hours = Math.floor(remainingTime / (1000 * 60 * 60));
-  //   let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-  //   let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-  //   // Formatage des valeurs en chaîne de caractères avec zéro en préfixe si nécessaire
-  //   let formattedHours = String(hours).padStart(2, "0");
-  //   let formattedMinutes = String(minutes).padStart(2, "0");
-  //   let formattedSeconds = String(seconds).padStart(2, "0");
-  //   // Mettez à jour l'affichage du compte à rebours dans l'élément avec l'ID "timer"
-  //   const timerElement = document.getElementById("timer");
-  //   if (timerElement) {
-  //     timerElement.innerHTML = `Temps restant : ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-  //     const temp_construction_total = null;
-  //   }
-  // }
+
   return (
     <>
       {localStorage.getItem("token") === null ? (
@@ -329,7 +312,7 @@ function Infrastructures() {
           </div>
 
           {/* ---------BODY------ */}
-          <div className="d-flex justify-content-center gap-4 mt-5">
+          <div className="d-flex justify-content-center gap-5 allcont">
             <div className="card">
               <h5 className="card-header d-flex justify-content-center">
                 MINE

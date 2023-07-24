@@ -1,4 +1,4 @@
-#fondvaisseaux {
+/* #fondvaisseaux {
   background-image: url(src\Components\background\bg1.png);
   height: 100vh;
   background-repeat: no-repeat;
@@ -6,14 +6,14 @@
   justify-content: center;
   align-items: center;
 }
-/* .fondshipy {
+.fondshipy {
   margin: 0;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #1d1e22;
-} */
+}
 
 img {
   display: block;
@@ -106,4 +106,4 @@ img {
     --widthItem: 250px;
     --heightItem: 200px;
   }
-}
+} */
