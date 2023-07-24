@@ -17,6 +17,7 @@
   border-radius: 10px;
   box-shadow: 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.5rem aqua,
     inset 0 0 0.3rem aqua;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 
 #login-container .logor {
@@ -45,6 +46,7 @@
   font-size: 20px;
   padding: 0% 5% 0% 5%;
   background-color: rgb(86, 42, 127);
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 
 #login-container .boutonr:hover {
@@ -64,4 +66,7 @@
   margin-left: 41%;
   font-size: 13px;
   color: rgb(122, 19, 218);
+}
+#mdp {
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }

@@ -28,7 +28,7 @@
   padding: 0% 5% 0% 5%;
   background-color: rgb(86, 42, 127);
   margin-top: 27%;
-
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
   padding: 0.5% 5% 0.5% 5%;
 }
 #start-container .boutonstart:hover {
