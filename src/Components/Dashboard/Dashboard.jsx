@@ -8,6 +8,7 @@ function Dashboard() {
   const [userLogged, setUserLogged] = useContext(AuthContext);
   const [reponse, setReponse] = useState([]);
   const [createdInfra, setCreatedInfra] = useState([]);
+  const [createdShipyard, setCreatedShipyard] = useState([]);
   const [erreurs, setErreurs] = useState({});
 
   const navigate = useNavigate();
@@ -203,10 +204,40 @@ function Dashboard() {
     }
   };
 
+  const createShipyard = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/create/shipyard",
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (createShipyard) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setCreatedShipyard(donnees);
+    }
+  };
+
   const displayCreatedInfra = () => {
     return (
       <div>
         <h4 className="titlecrea">{createdInfra.message}</h4>
+      </div>
+    );
+  };
+
+  const displayCreatedShipyard = () => {
+    return (
+      <div>
+        <h4 className="titlecreaship">{createdShipyard.message}</h4>
       </div>
     );
   };
@@ -424,9 +455,14 @@ function Dashboard() {
                     />
                   </div>
                   <div className=" displayiconnes2 d-flex justify-content-center ">
-                    <a className="construire2" href="">
+                    <a className="construire2" onClick={createShipyard}>
                       Construire
                     </a>
+                  </div>
+                  <div className=" displayiconnes2 d-flex justify-content-center ">
+                    {displayErrors() === null
+                      ? displayCreatedShipyard()
+                      : displayErrors()}
                   </div>
                   <div className=" d-flex justify-content-center mt-3">
                     <button className="myinfra2" onClick={navShipyard}>

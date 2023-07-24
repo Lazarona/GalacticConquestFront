@@ -188,6 +188,15 @@ body {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
+.titlecreaship {
+  background-color: rgba(3, 21, 79, 0.485);
+  border: none;
+  color: aqua;
+  font-size: 20px;
+  -webkit-text-stroke: 1.6px black;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
 .infra2 {
   display: contents;
 }
