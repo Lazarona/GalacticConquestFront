@@ -73,7 +73,7 @@ function ChantierSpatial() {
             key={index}
             index={index + 1}
             construct={() => buildHunter(e)}
-            message={displayErrors}
+            message={() => displayErrors()}
           />
         ) : (
           <ChantierCardConstruct
@@ -81,7 +81,7 @@ function ChantierSpatial() {
             index={index + 1}
             idShipYard={e.id}
             claim={() => claimShip(e)}
-            message={displayErrors}
+            message={() => displayErrors()}
           />
         );
       }
@@ -110,11 +110,30 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setHunter(donnees);
+      window.location.reload(false);
     }
   };
 
   const claimShip = async (e) => {
-    // Claim ship
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/claim/ship/${e.id}`,
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (claimShip) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setErreurs(donnees);
+    }
   };
 
   useEffect(() => {

@@ -56,38 +56,30 @@ function ChantierCardConstruct(props) {
     currentDate.setHours(currentDate.getHours() - 2);
     {
       return finished_at > currentDate ? (
-        <img
-          className="vaisseauConstruct"
-          src={imageConstruct}
-          alt="vaisseauConstruct"
-        />
+        <>
+          <img
+            className="vaisseauConstruct"
+            src={imageConstruct}
+            alt="vaisseauConstruct"
+          />
+          <div className="d-flex justify-content-center mt-3">
+            <button
+              type="button"
+              className="boutonconstruiredisabled"
+              onClick={props.claim}
+              disabled={true}
+            >
+              Recuperer
+            </button>
+          </div>
+        </>
       ) : (
-        <img
-          className="vaisseau"
-          src={imageConstruct}
-          alt="vaisseauConstruct"
-        />
-      );
-    }
-  };
-
-  useEffect(() => {
-    getConstructedShip();
-    setImageShipConstructed();
-  }, []);
-
-  useEffect(() => {
-    console.log("Constructed Ship : ", constructedShip);
-  }, [constructedShip, setConstructedShip]);
-
-  return (
-    <>
-      <div className="card">
-        <h5 className="card-header d-flex justify-content-center">
-          CHANTIER N˚{props.index}
-        </h5>
-        <div className="card-body">
-          {displayConstructingShip()}
+        <>
+          <img
+            className="vaisseau"
+            src={imageConstruct}
+            alt="vaisseauConstruct"
+          />
           <div className="d-flex justify-content-center mt-3">
             <button
               type="button"
@@ -97,9 +89,31 @@ function ChantierCardConstruct(props) {
               Recuperer
             </button>
           </div>
+        </>
+      );
+    }
+  };
+
+  useEffect(() => {
+    getConstructedShip();
+  }, []);
+
+  useEffect(() => {
+    console.log("Constructed Ship : ", constructedShip);
+    setImageShipConstructed();
+  }, [constructedShip, setConstructedShip]);
+
+  return (
+    <>
+      <div className="card">
+        <h5 className="card-header d-flex justify-content-center">
+          CHANTIER N˚{props.index}
+        </h5>
+        <div className="card-body">
           <div className="d-flex justify-content-center mt-3">
             {props.message}
           </div>
+          {displayConstructingShip()}
         </div>
       </div>
     </>
