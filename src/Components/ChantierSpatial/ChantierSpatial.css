@@ -52,11 +52,10 @@
 /* CONTAINER CHANTIER SPACIAL */
 
 #cs-container .card {
-  height: 46vh;
-  width: 77vh;
+  width: 50vh;
   background-color: rgba(146, 94, 198, 0.714);
   border: 4px solid aqua;
-  border-radius: 3%;
+  border-radius: 5%;
 }
 #cs-container .card-header {
   color: aqua;
