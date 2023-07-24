@@ -77,7 +77,179 @@ function ChantierSpatial() {
         </div>
 
         {/* ---------BODY------ */}
-        <div className="d-flex justify-content-center gap-4 mt-5">
+        <div className="d-flex justify-content-center flex-wrap gap-4 mt-3">
+          <div className="card">
+            <h5 className="card-header d-flex justify-content-center">
+              CHANTIER N˚
+            </h5>
+            <div className="card-body">
+              <div id="carousel">
+                <img
+                  className="flechedg"
+                  onClick={handlePrev}
+                  src="src/Components/img/flechesuivant2.png"
+                  alt=""
+                />
+                <img
+                  className="vaisseaux"
+                  src={images[currentImage]}
+                  alt="carousel"
+                />
+
+                <img
+                  className="flechedg"
+                  onClick={handleNext}
+                  src="src/Components/img/flechesuivant.png"
+                  alt=""
+                />
+              </div>
+              <div className="d-flex justify-content-center mt-3">
+                <button type="button" className="boutonconstruire ">
+                  Construire
+                </button>
+
+                <div className="card-title"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <h5 className="card-header d-flex justify-content-center">
+              CHANTIER N˚
+            </h5>
+            <div className="card-body">
+              <div id="carousel">
+                <img
+                  className="flechedg"
+                  onClick={handlePrev}
+                  src="src/Components/img/flechesuivant2.png"
+                  alt=""
+                />
+                <img
+                  className="vaisseaux"
+                  src={images[currentImage]}
+                  alt="carousel"
+                />
+
+                <img
+                  className="flechedg"
+                  onClick={handleNext}
+                  src="src/Components/img/flechesuivant.png"
+                  alt=""
+                />
+              </div>
+              <div className="d-flex justify-content-center mt-3">
+                <button type="button" className="boutonconstruire ">
+                  Construire
+                </button>
+
+                <div className="card-title"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <h5 className="card-header d-flex justify-content-center">
+              CHANTIER N˚
+            </h5>
+            <div className="card-body">
+              <div id="carousel">
+                <img
+                  className="flechedg"
+                  onClick={handlePrev}
+                  src="src/Components/img/flechesuivant2.png"
+                  alt=""
+                />
+                <img
+                  className="vaisseaux"
+                  src={images[currentImage]}
+                  alt="carousel"
+                />
+
+                <img
+                  className="flechedg"
+                  onClick={handleNext}
+                  src="src/Components/img/flechesuivant.png"
+                  alt=""
+                />
+              </div>
+              <div className="d-flex justify-content-center mt-3">
+                <button type="button" className="boutonconstruire ">
+                  Construire
+                </button>
+
+                <div className="card-title"></div>
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <h5 className="card-header d-flex justify-content-center">
+              CHANTIER N˚
+            </h5>
+            <div className="card-body">
+              <div id="carousel">
+                <img
+                  className="flechedg"
+                  onClick={handlePrev}
+                  src="src/Components/img/flechesuivant2.png"
+                  alt=""
+                />
+                <img
+                  className="vaisseaux"
+                  src={images[currentImage]}
+                  alt="carousel"
+                />
+
+                <img
+                  className="flechedg"
+                  onClick={handleNext}
+                  src="src/Components/img/flechesuivant.png"
+                  alt=""
+                />
+              </div>
+              <div className="d-flex justify-content-center mt-3">
+                <button type="button" className="boutonconstruire ">
+                  Construire
+                </button>
+
+                <div className="card-title"></div>
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <h5 className="card-header d-flex justify-content-center">
+              CHANTIER N˚
+            </h5>
+            <div className="card-body">
+              <div id="carousel">
+                <img
+                  className="flechedg"
+                  onClick={handlePrev}
+                  src="src/Components/img/flechesuivant2.png"
+                  alt=""
+                />
+                <img
+                  className="vaisseaux"
+                  src={images[currentImage]}
+                  alt="carousel"
+                />
+
+                <img
+                  className="flechedg"
+                  onClick={handleNext}
+                  src="src/Components/img/flechesuivant.png"
+                  alt=""
+                />
+              </div>
+              <div className="d-flex justify-content-center mt-3">
+                <button type="button" className="boutonconstruire ">
+                  Construire
+                </button>
+
+                <div className="card-title"></div>
+              </div>
+            </div>
+          </div>
           <div className="card">
             <h5 className="card-header d-flex justify-content-center">
               CHANTIER N˚
