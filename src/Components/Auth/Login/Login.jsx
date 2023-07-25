@@ -31,7 +31,7 @@ function Login() {
     const donnees = await response.json();
     console.log("Reponse de l'API : ", donnees);
     setErreurs(donnees);
-    if (response.status == 400) {
+    if (response.status == 400 || response.status == 401) {
       displayErrors();
     } else {
       // Si la requête est un succès, redirige l'utilisateur vers le choix de planete
@@ -41,19 +41,28 @@ function Login() {
   };
 
   const displayErrors = () => {
-    if (erreurs.errors == undefined) {
+    if (erreurs.errors == undefined && erreurs.message == undefined) {
       return null;
     }
-    return Object.keys(erreurs).map((key) => {
-      return (
-        <ul key={key}>
-          <p>{erreurs.errors.username}</p>
-          <p>{erreurs.errors.password}</p>
-        </ul>
-      );
-    });
+    if (erreurs.message != undefined) {
+      return Object.keys(erreurs).map((key) => {
+        return (
+          <ul key={key}>
+            <h4 className="titlecrea">{erreurs.message}</h4>
+          </ul>
+        );
+      });
+    } else {
+      return Object.keys(erreurs).map((key) => {
+        return (
+          <ul key={key}>
+            <h4>{erreurs.errors.username}</h4>
+            <h4>{erreurs.errors.password}</h4>
+          </ul>
+        );
+      });
+    }
   };
-
   // Fonction utilisé pour rediriger l'utilisateur vers sa page de profil
   const redirectProfil = () => {
     let path = "/dashboard";

@@ -1,0 +1,24 @@
+#cs-container .boutonconstruire {
+  background-color: #3c1053;
+  /* padding: 0.5% 1% 0.5% 1%; */
+  border-radius: 10px;
+  color: #dfc5ec;
+}
+.boutonconstruiredisabled {
+  background-color: #3c1053;
+  /* padding: 0.5% 1% 0.5% 1%; */
+  border-radius: 10px;
+  color: #dfc5ec;
+  filter: opacity(0.4);
+}
+#cs-container .flechedg {
+  width: 15%;
+  cursor: pointer;
+}
+.vaisseauConstruct {
+  filter: opacity(0.4);
+  width: 40%;
+}
+.vaisseau {
+  width: 40%;
+}
