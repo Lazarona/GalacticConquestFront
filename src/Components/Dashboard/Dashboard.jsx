@@ -11,6 +11,7 @@ function Dashboard() {
   const [createdShipyard, setCreatedShipyard] = useState([]);
   const [erreurs, setErreurs] = useState({});
   const [name, setName] = useState([]);
+  const [username, setUsername] = useState([]);
 
   const navigate = useNavigate();
 
@@ -235,6 +236,8 @@ function Dashboard() {
     );
   };
 
+  // Affichage du nom de la planete
+
   const planetName = async () => {
     const options = {
       method: "GET",
@@ -259,6 +262,34 @@ function Dashboard() {
       );
     });
   };
+
+  // Affichage du nom du username
+
+  const identifiant = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/user", options);
+    const donnees = await response.json();
+    console.log("Reponse de l'API (username): ", donnees);
+    setUsername(donnees.user);
+  };
+
+  const displayUsername = () => {
+    return username.map((e, index) => {
+      return (
+        <div key={index}>
+          <p className="username ">{e.username}</p>
+        </div>
+      );
+    });
+  };
+
   const displayCreatedShipyard = () => {
     return (
       <div>
@@ -284,8 +315,13 @@ function Dashboard() {
   }, [setErreurs, erreurs]);
 
   useEffect(() => {
+    console.log("Username : ", username);
+  }, [setUsername, username]);
+
+  useEffect(() => {
     getResources();
     planetName();
+    identifiant();
   }, []);
 
   return (
@@ -335,8 +371,23 @@ function Dashboard() {
                   ></button>
                 </div>
                 <div className="offcanvas-body d-flex flex-column mb-3 gap-3">
-                  <a className="boutonm">PROFIL</a>
-                  <a className="boutonm">ACHAT</a>
+                  <div className="contenuusername d-flex align-items-center ">
+                    <img
+                      className="logousername"
+                      src="src/Components/img/logousername.png"
+                      alt=""
+                    />
+                    {displayUsername()}
+                    <div className="d-flex align-items-baseline gap-2  ">
+                      <img
+                        className="imgplanetusername"
+                        src="src/Components/img/planet1.png"
+                        alt=""
+                      />
+                      {displayPlanet()}
+                    </div>
+                  </div>
+                  <a className="boutonm pt-3">ACHAT</a>
                   <a className="boutondec" onClick={deconnexion}>
                     DECONNEXION
                   </a>
@@ -400,7 +451,6 @@ function Dashboard() {
                 <h2> {displayEnergy()}</h2>
               </div>
             </div>
-            <div className="d-flex align-items-center">{displayPlanet()}</div>
           </div>
           <div className="attaquecontainer me-3 mt-2">
             <img
@@ -413,7 +463,7 @@ function Dashboard() {
           <div>
             <MDBPopover
               btnClassName="planete"
-              className="popinfra "
+              className="popinfra"
               placement="right"
               title="INFRASTRUCTURE"
             >
@@ -470,7 +520,7 @@ function Dashboard() {
               </MDBPopoverBody>
             </MDBPopover>
             <MDBPopover
-              btnClassName="planete2"
+              btnClassName="planete2 "
               className="popinfra2 "
               placement="right"
               title="CHANTIER SPATIAL"
