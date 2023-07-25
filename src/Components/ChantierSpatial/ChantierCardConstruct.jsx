@@ -2,10 +2,8 @@ import "./ChantierCard.css";
 import React, { useEffect, useState } from "react";
 
 function ChantierCardConstruct(props) {
-  const [claimShip, setClaimShip] = useState([]);
   const [imageConstruct, setImageConstruct] = useState(0);
   const [constructedShip, setConstructedShip] = useState([]);
-  const [erreurs, setErreurs] = useState({});
 
   const images = [
     "src/Components/img/chasseur5.png",
@@ -29,11 +27,9 @@ function ChantierCardConstruct(props) {
     );
     const resData = await reqData.json();
     console.log("Data (ShipConstruct) : ", resData);
-    if (reqData.status == 401) {
-      setErreurs(resData);
-    } else {
-      setErreurs(resData);
-      setConstructedShip(resData.ship);
+    setConstructedShip(resData.ship);
+    if (constructedShip.claimed == 1) {
+      window.location.reload();
     }
   };
 
@@ -49,6 +45,32 @@ function ChantierCardConstruct(props) {
     }
     if (constructedShip.type == "destroyer") {
       setImageConstruct(images[3]);
+    }
+  };
+
+  const displayErrors = () => {
+    if (
+      props.message.errors == undefined &&
+      props.message.message == undefined
+    ) {
+      return null;
+    }
+    if (props.message.message != undefined) {
+      return Object.keys(props.message).map((key) => {
+        return (
+          <ul key={key}>
+            <h4>{props.message.message}</h4>
+          </ul>
+        );
+      });
+    } else {
+      return Object.keys(props.message).map((key) => {
+        return (
+          <ul key={key}>
+            <h1>{props.message.errors.name}</h1>
+          </ul>
+        );
+      });
     }
   };
 
@@ -96,29 +118,6 @@ function ChantierCardConstruct(props) {
     }
   };
 
-  const displayErrors = () => {
-    if (erreurs.errors == undefined && erreurs.message == undefined) {
-      return null;
-    }
-    if (erreurs.message != undefined) {
-      return Object.keys(erreurs).map((key) => {
-        return (
-          <ul key={key}>
-            <h4>{erreurs.message}</h4>
-          </ul>
-        );
-      });
-    } else {
-      return Object.keys(erreurs).map((key) => {
-        return (
-          <ul key={key}>
-            <h1>{erreurs.errors.name}</h1>
-          </ul>
-        );
-      });
-    }
-  };
-
   useEffect(() => {
     getConstructedShip();
   }, []);
@@ -141,12 +140,8 @@ function ChantierCardConstruct(props) {
         <h5 className="card-header d-flex justify-content-center">
           CHANTIER N˚{props.index}
         </h5>
-        <div className="card-body">
-          <div className="d-flex justify-content-center mt-3">
-            {props.message()}
-          </div>
-          {displayConstructingShip()}
-        </div>
+        <div className="card-body">{displayConstructingShip()}</div>
+        <div>{displayErrors()}</div>
       </div>
     </>
   );

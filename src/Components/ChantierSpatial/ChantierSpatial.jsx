@@ -11,11 +11,6 @@ function ChantierSpatial() {
   const [frigate, setFrigate] = useState([]);
   const [cruiser, setCruiser] = useState([]);
   const [destroyer, setDestroyer] = useState([]);
-  const [refreshKey, setRefreshKey] = useState(0);
-
-  const handleRefresh = () => {
-    setRefreshKey((prevKey) => prevKey + 1);
-  };
 
   const navigate = useNavigate();
 
@@ -85,7 +80,7 @@ function ChantierSpatial() {
             constructFrigate={() => buildFrigate(e)}
             constructCruiser={() => buildCruiser(e)}
             constructDestroyer={() => buildDestroyer(e)}
-            message={() => displayErrors()}
+            message={erreurs}
           />
         ) : (
           <ChantierCardConstruct
@@ -93,7 +88,7 @@ function ChantierSpatial() {
             index={index + 1}
             idShipYard={e.id}
             claim={() => claimShip(e)}
-            message={() => displayErrors()}
+            message={erreurs}
           />
         );
       }
@@ -122,7 +117,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setHunter(donnees);
-      handleRefresh();
+      window.location.reload();
     }
   };
 
@@ -148,7 +143,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setFrigate(donnees);
-      handleRefresh();
+      window.location.reload();
     }
   };
 
@@ -174,7 +169,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setCruiser(donnees);
-      handleRefresh();
+      window.location.reload();
     }
   };
 
@@ -200,7 +195,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setDestroyer(donnees);
-      handleRefresh();
+      window.location.reload();
     }
   };
 
@@ -221,9 +216,10 @@ function ChantierSpatial() {
     console.log("Reponse de l'API (claimShip) : ", donnees);
     if (response.status == 401) {
       setErreurs(donnees);
+      self.forceUpdate();
     } else {
       setErreurs(donnees);
-      handleRefresh();
+      window.location.reload();
     }
   };
 
@@ -233,9 +229,9 @@ function ChantierSpatial() {
   useEffect(() => {
     console.log("Shipyards : ", shipyards);
   }, [shipyards, setShipyards]);
-  useEffect(() => {
-    console.log("Hunter : ", hunter);
-  }, [hunter, setHunter]);
+  // useEffect(() => {
+  //   console.log("Hunter : ", hunter);
+  // }, [hunter, setHunter]);
 
   return (
     <>
@@ -251,7 +247,7 @@ function ChantierSpatial() {
           </div>
         </div>
       ) : (
-        <div key={refreshKey} id="cs-container">
+        <div id="cs-container">
           <div className="navbar d-flex ">
             <img
               className="logonav mt-2 ms-3"
