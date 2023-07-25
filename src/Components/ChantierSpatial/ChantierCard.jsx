@@ -41,7 +41,31 @@ function ChantierCard(props) {
         break;
     }
   };
-
+  const displayErrors = () => {
+    if (
+      props.message.errors == undefined &&
+      props.message.message == undefined
+    ) {
+      return null;
+    }
+    if (props.message.message != undefined) {
+      return Object.keys(props.message).map((key) => {
+        return (
+          <ul key={key}>
+            <h4>{props.message.message}</h4>
+          </ul>
+        );
+      });
+    } else {
+      return Object.keys(props.message).map((key) => {
+        return (
+          <ul key={key}>
+            <h1>{props.message.errors.name}</h1>
+          </ul>
+        );
+      });
+    }
+  };
   useEffect(() => {
     console.log("Current IMG : ", currentImage);
   }, []);
@@ -82,9 +106,7 @@ function ChantierCard(props) {
               Construire
             </button>
           </div>
-          <div className="d-flex justify-content-center mt-3">
-            {props.message()}
-          </div>
+          <div>{displayErrors()}</div>
         </div>
       </div>
     </>
