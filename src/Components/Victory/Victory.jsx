@@ -9,7 +9,7 @@ const OtherUserProfile = ({ userId }) => {
     const fetchUser = async () => {
       try {
         // Appel à l'API pour récupérer les informations de l'utilisateur avec l'ID spécifié
-        const response = await axios.get(
+        const response = await get(
           `http://127.0.0.1:8000/api/Victory/planet${userId}`,
           {
             //  token d'authentification dans les headers pour autoriser l'accès à l'API
@@ -78,4 +78,4 @@ const OtherUserProfile = ({ userId }) => {
     );
   };
 };
-export default RessourcesManager;
+export default OtherUserProfile;
