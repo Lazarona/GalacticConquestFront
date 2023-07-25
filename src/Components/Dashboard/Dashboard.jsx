@@ -29,6 +29,10 @@ function Dashboard() {
     navigate("/chantierspatial");
   };
 
+  const navPlay = () => {
+    navigate("/play");
+  };
+
   const getResources = async () => {
     const options = {
       method: "GET",
@@ -540,6 +544,7 @@ function Dashboard() {
           </div>
           <div className="attaquecontainer me-3 mt-2">
             <img
+              onClick={navPlay}
               className="attaque"
               src="src/Components/img/Attaque.png"
               alt=""
