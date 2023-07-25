@@ -1,42 +1,55 @@
-#cs-container {
+#chantierspatial {
   background-image: url(src/Components/background/bg5.png);
   background-size: cover;
   height: 100vh;
 }
-#cs-container .navbarmenu {
-  background-color: rgba(33, 0, 65, 0.948);
-  width: 20%;
+/* NAVBAR DEBUT CODE */
+#cs-container {
+  background-color: rgba(56, 4, 104, 0.567);
+
+  /* padding-bottom: 1%; */
 }
+/* nav + title + btn return */
 #cs-container .logonav {
-  width: 50px;
-  margin-bottom: 5%;
+  width: 45px;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+}
+#cs-container .return {
+  width: 75px;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+}
+/* FIN nav + title + btn return */
+
+#cs-container .navbarmenu {
+  background-color: rgba(33, 0, 65, 0.973);
+  /* width: 50px;
+  margin-bottom: 5%; */
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #cs-container .boutonm {
   color: aqua;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #cs-container .boutonm:hover {
   font-size: 18px;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #cs-container .boutondec {
   color: rgb(0, 8, 255);
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #cs-container .boutondec:hover {
   font-size: 18px;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #cs-container .boutonclose {
   background-color: #c296ff;
 }
-#cs-container .return {
-  width: 8%;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
-}
-#cs-container .return:hover {
-  width: 8.5%;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+#cs-container h4 {
+  -webkit-text-stroke: 0.9px aqua;
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
 }
 
 #cs-container h2 {
@@ -73,7 +86,7 @@
 }
 #cs-container .flechedg {
   width: 15%;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 
 #cs-container .boutonconstruire {
