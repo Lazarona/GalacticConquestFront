@@ -81,11 +81,13 @@ function ChantierCardConstruct(props) {
     {
       return finished_at > currentDate ? (
         <>
-          <img
-            className="vaisseauConstruct"
-            src={imageConstruct}
-            alt="vaisseauConstruct"
-          />
+          <div className="d-flex justify-content-center">
+            <img
+              className="vaisseauConstruct"
+              src={imageConstruct}
+              alt="vaisseauConstruct"
+            />
+          </div>
           <div className="d-flex justify-content-center mt-3">
             <button
               type="button"
@@ -100,7 +102,7 @@ function ChantierCardConstruct(props) {
       ) : (
         <>
           <img
-            className="vaisseau"
+            className="vaisseaux"
             src={imageConstruct}
             alt="vaisseauConstruct"
           />

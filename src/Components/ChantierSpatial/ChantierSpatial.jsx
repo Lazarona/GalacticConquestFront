@@ -376,7 +376,7 @@ function ChantierSpatial() {
           </div>
 
           {/* ---------BODY------ */}
-          <div className="d-flex justify-content-center flex-wrap gap-4 mt-3">
+          <div className="d-flex justify-content-center flex-wrap gap-4 mt-5">
             {displayShipyards()}
           </div>
         </div>

@@ -76,7 +76,7 @@ function ChantierCard(props) {
         <h5 className="card-header d-flex justify-content-center">
           CHANTIER N˚{props.index}
         </h5>
-        <div className="card-body">
+        <div className="card-body cartebody">
           <div id="carousel">
             <img
               className="flechedg"

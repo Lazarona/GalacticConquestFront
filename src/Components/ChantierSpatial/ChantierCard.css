@@ -20,7 +20,7 @@
   width: 40%;
 }
 .vaisseaux {
-  width: 40%;
+  width: 50%;
 }
 
 .cartecontenu {
@@ -32,6 +32,11 @@
 .cardheader {
   color: aqua;
   background-color: rgba(54, 27, 81, 0.764);
+}
+.cartebody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #carousel {
   display: flex;
