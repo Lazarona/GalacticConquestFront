@@ -12,33 +12,34 @@
 #infrastructure-container .logonav {
   width: 50px;
   margin-bottom: 5%;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #infrastructure-container .boutonm {
   color: aqua;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #infrastructure-container .boutonm:hover {
   font-size: 18px;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #infrastructure-container .boutondec {
   color: rgb(0, 8, 255);
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #infrastructure-container .boutondec:hover {
   font-size: 18px;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #infrastructure-container .boutonclose {
   background-color: #c296ff;
 }
 #infrastructure-container .return {
   width: 8%;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #infrastructure-container .return:hover {
   width: 8.5%;
-   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 
 #infrastructure-container h2 {
