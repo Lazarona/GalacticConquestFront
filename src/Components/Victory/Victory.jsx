@@ -1,9 +1,7 @@
-import "src/Components/Shipyard/Victoire/Victoire.css";
+import "./Victory.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 const OtherUserProfile = ({ userId }) => {
-  
   const [user, setUser] = useState(null);
 
   useEffect(() => {
