@@ -8,6 +8,8 @@ function Infrastructures() {
   const [refineries, setRefineries] = useState([]);
   const [warehouse, setWarehouse] = useState([]);
   const [erreurs, setErreurs] = useState({});
+  const [name, setName] = useState([]);
+  const [username, setUsername] = useState([]);
 
   const navigate = useNavigate();
 
@@ -16,9 +18,6 @@ function Infrastructures() {
     navigate("/");
   };
 
-  const navHome = () => {
-    navigate("/");
-  };
   const navDashboard = () => {
     navigate("/dashboard");
   };
@@ -226,12 +225,67 @@ function Infrastructures() {
       });
     }
   };
+  // Affichage du nom de la planete
+
+  const planetName = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/planet", options);
+    const donnees = await response.json();
+    console.log("Reponse de l'API (Planet): ", donnees);
+    setName(donnees.planet);
+  };
+
+  const displayPlanet = () => {
+    return name.map((e, index) => {
+      return (
+        <div key={index}>
+          <p className="nameplanet">{e.name}</p>
+        </div>
+      );
+    });
+  };
+
+  // Affichage du nom du username
+
+  const identifiant = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/user", options);
+    const donnees = await response.json();
+    console.log("Reponse de l'API (username): ", donnees);
+    setUsername(donnees.user);
+  };
+
+  const displayUsername = () => {
+    return username.map((e, index) => {
+      return (
+        <div key={index}>
+          <p className="username ">{e.username}</p>
+        </div>
+      );
+    });
+  };
 
   useEffect(() => {
     getMines();
     getPowerplants();
     getRefineries();
     getWarehouse();
+    planetName();
+    identifiant();
   }, []);
 
   useEffect(() => {
@@ -250,6 +304,13 @@ function Infrastructures() {
     console.log("Warehouses : ", warehouse);
   }, [warehouse, setWarehouse]);
 
+  useEffect(() => {
+    console.log("Planet : ", name);
+  }, [setName, name]);
+
+  useEffect(() => {
+    console.log("Username : ", username);
+  }, [setUsername, username]);
   return (
     <>
       {localStorage.getItem("token") === null ? (
@@ -262,62 +323,80 @@ function Infrastructures() {
           </div>
         </div>
       ) : (
-        <div id="infrastructure-container">
-          <div className="navbar d-flex ">
-            <img
-              className="logonav mt-2 ms-3"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasScrolling"
-              aria-controls="offcanvasScrolling"
-              src="src/Components/img/nvb.png"
-              alt=""
-            />
-            <div
-              className="offcanvas offcanvas-start navbarmenu"
-              data-bs-scroll="true"
-              data-bs-backdrop="false"
-              tabIndex="-1"
-              id="offcanvasScrolling"
-              aria-labelledby="offcanvasScrollingLabel"
-            >
-              <div className="offcanvas-header">
-                <h5
-                  className="offcanvas-title"
-                  id="offcanvasScrollingLabel"
-                ></h5>
-                <button
-                  type="button"
-                  className="boutonclose btn-close "
-                  data-bs-dismiss="offcanvas"
-                  aria-label="FERMER"
-                ></button>
-              </div>
-              <div className="offcanvas-body d-flex flex-column mb-3 gap-3">
-                <a className="boutonm">PROFIL</a>
-                <a className="boutonm">ACHAT</a>
-                <a className="boutondec" onClick={navHome}>
-                  DECONNEXION
-                </a>
-              </div>
-            </div>
+        <div id="infrastructure">
+          <div id="infrastructure-container">
+            <div className=" d-flex justify-content-between align-items-center">
+              <img
+                className="logonav ms-3 "
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasScrolling"
+                aria-controls="offcanvasScrolling"
+                src="src/Components/img/nvb.png"
+                alt=""
+              />
 
-            <h2>MES INFRASTRUCTURES</h2>
-            <img
-              className="return me-3"
-              src="src/Components/img/flecheRetour.png"
-              alt=""
-              onClick={navDashboard}
-            />
+              <div
+                className="offcanvas offcanvas-start w-25 p-3 navbarmenu"
+                data-bs-scroll="true"
+                data-bs-backdrop="false"
+                tabIndex="-1"
+                id="offcanvasScrolling"
+                aria-labelledby="offcanvasScrollingLabel"
+              >
+                <div className="offcanvas-header">
+                  <h5
+                    className="offcanvas-title"
+                    id="offcanvasScrollingLabel"
+                  ></h5>
+                  <button
+                    type="button"
+                    className="boutonclose btn-close "
+                    data-bs-dismiss="offcanvas"
+                    aria-label="FERMER"
+                  ></button>
+                </div>
+                <div className="offcanvas-body d-flex flex-column mb-3 gap-3">
+                  <div className="contenuusername d-flex align-items-center ">
+                    <img
+                      className="logousername"
+                      src="src/Components/img/logousername.png"
+                      alt=""
+                    />
+                    {displayUsername()}
+                    <div className="d-flex align-items-baseline gap-2  ">
+                      <img
+                        className="imgplanetusername"
+                        src="src/Components/img/planet1.png"
+                        alt=""
+                      />
+                      {displayPlanet()}
+                    </div>
+                  </div>
+                  <a className="boutonm pt-3">ACHAT</a>
+                  <a className="boutondec" onClick={deconnexion}>
+                    DECONNEXION
+                  </a>
+                </div>
+              </div>
+
+              <h2>MES INFRASTRUCTURES</h2>
+              <img
+                className="return  ms-3"
+                src="src/Components/img/flecheRetour.png"
+                alt=""
+                onClick={navDashboard}
+              />
+            </div>
           </div>
 
           {/* ---------BODY------ */}
           <div className="d-flex justify-content-center gap-5 allcont">
-            <div className="card">
-              <h5 className="card-header d-flex justify-content-center">
+            <div className="card containerinfra">
+              <h5 className="card-header  cardheader d-flex justify-content-center">
                 MINE
               </h5>
-              <div className="card-body">
+              <div className="card-body cardbody">
                 <div className="card-title">{displayMines()}</div>
                 {/* <p className="card-text"> key={index}</p> */}
 
@@ -326,11 +405,11 @@ function Infrastructures() {
             </a> */}
               </div>
             </div>
-            <div className="card">
-              <h5 className="card-header d-flex justify-content-center">
+            <div className="card containerinfra">
+              <h5 className="card-header cardheader d-flex justify-content-center">
                 CENTRALE
               </h5>
-              <div className="card-body">
+              <div className="card-body cardbody">
                 <div className="card-title">{displayPowerplants()}</div>
                 {/* <p className="card-text"></p> */}
                 {/* <a href="#" class="btn btn-primary">
@@ -338,11 +417,11 @@ function Infrastructures() {
             </a> */}
               </div>
             </div>
-            <div className="card">
-              <h5 className="card-header d-flex justify-content-center">
+            <div className="card containerinfra">
+              <h5 className="card-header cardheader d-flex justify-content-center">
                 RAFFINERIE
               </h5>
-              <div className="card-body">
+              <div className="card-body cardbody">
                 <div className="card-title">{displayRefineries()}</div>
                 {/* <p className="card-text"></p> */}
                 {/* <a href="#" class="btn btn-primary">
@@ -350,11 +429,11 @@ function Infrastructures() {
             </a> */}
               </div>
             </div>
-            <div className="card">
-              <h5 className="card-header d-flex justify-content-center">
+            <div className="card containerinfra">
+              <h5 className="card-header cardheader d-flex justify-content-center">
                 ENTREPOT
               </h5>
-              <div className="card-body">
+              <div className="card-body cardbody">
                 <div className="card-title">{displayWarehouse()}</div>
                 {/* <p className="card-text"> key={index}</p> */}
 

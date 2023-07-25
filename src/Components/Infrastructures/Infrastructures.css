@@ -1,17 +1,27 @@
-#infrastructure-container {
+#infrastructure {
   background-image: url(src/Components/background/bg6.webp);
   background-size: cover;
   padding-bottom: 9%;
   height: 100vh;
 }
 
-#infrastructure-container .navbarmenu {
-  background-color: rgba(33, 0, 65, 0.948);
-  width: 20%;
+/* NAVBAR DEBUT CODE */
+#infrastructure-container {
+  background-color: rgba(56, 4, 104, 0.567);
+
+  /* padding-bottom: 1%; */
 }
+/* nav + title + btn return */
 #infrastructure-container .logonav {
-  width: 50px;
-  margin-bottom: 5%;
+  width: 45px;
+}
+#infrastructure-container .return {
+  width: 75px;
+}
+/* FIN nav + title + btn return */
+
+#infrastructure-container .navbarmenu {
+  background-color: rgba(33, 0, 65, 0.973);
 }
 #infrastructure-container .boutonm {
   color: aqua;
@@ -32,13 +42,36 @@
 #infrastructure-container .boutonclose {
   background-color: #c296ff;
 }
-#infrastructure-container .return {
-  width: 8%;
-  cursor: pointer;
+#infrastructure-container h4 {
+  -webkit-text-stroke: 0.9px aqua;
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
 }
-#infrastructure-container .return:hover {
-  width: 8.5%;
-  cursor: pointer;
+.nameplanet {
+  font-size: 21px;
+  color: aqua;
+  -webkit-text-stroke: 1px rgb(35, 2, 77);
+}
+.logoplanet1 {
+  width: 36px;
+}
+.username {
+  color: #00ffff;
+  font-size: 25px;
+}
+.logousername {
+  width: 100px;
+}
+.contenuusername {
+  flex-direction: column;
+  border: rgb(110, 0, 253) solid 1px;
+  border-radius: 5px;
+  background-color: rgba(15, 4, 29, 0.323);
+  padding-bottom: 0%;
+}
+.imgplanetusername {
+  width: 22px;
 }
 
 #infrastructure-container h2 {
@@ -52,10 +85,10 @@
 }
 
 /* CONTAINER MINE-CENTRAL-RAFFINERIE */
-#infrastructure-container .allcont {
+#infrastructure .allcont {
   margin-top: 10%;
 }
-#infrastructure-container .card {
+#infrastructure .containerinfra {
   height: 289px;
   width: 250px;
   /* overflow: auto;
@@ -63,11 +96,11 @@
   background-color: rgba(203, 152, 255, 0.702);
   border: 3px solid rgb(238, 0, 255);
 }
-#infrastructure-container .card-header {
+#infrastructure .cardheader {
   color: aqua;
   background-color: rgba(54, 27, 81, 0.764);
 }
-#infrastructure-container .card-body {
+#infrastructure .cardbody {
   overflow: auto;
   position: relative;
 }
