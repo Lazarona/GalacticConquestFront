@@ -3,7 +3,10 @@ h1 {
   border-radius: 10px;
   -webkit-text-stroke: #3c1053 0.6px;
 }
-
+#play-gird .returnptodash {
+  width: 6%;
+  cursor: pointer;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(
@@ -20,13 +23,13 @@ h1 {
 .cell {
   width: 30px;
   height: 30px;
-  background-color: purple;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 10px;
   cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
-  border: 1px rgba(0, 255, 255, 0.823) solid;
+  border: 1px green solid;
   opacity: 80%;
 }
 
@@ -36,8 +39,9 @@ h1 {
 
 .controls {
   margin-top: 20px;
-  background-color: rgba(14, 14, 172, 0.4);
+  background-color: green;
   color: aquamarine;
+  opacity: 60%;
 }
 /* H2 {
   color: aquamarine;
@@ -55,7 +59,8 @@ p {
   background-color: rgb(86, 42, 127);
 }
 #play-gird {
-  background-image: url(src/Components/background/bg2.jpg);
+  background-image: url(src/Components/background/bg9.jpg);
+  height: 100vh;
 }
 
 .goback {
@@ -65,4 +70,17 @@ p {
   border-radius: 10px;
   border: 3px rgba(0, 255, 255, 0.823) solid;
   -webkit-text-stroke: 0.6px aqua;
+}
+
+.card-attack {
+  background-color: black;
+  opacity: 80%;
+  color: green;
+}
+
+.card-histo-attac {
+  background-color: black;
+  opacity: 80%;
+  color: green;
+  height: 50%;
 }
