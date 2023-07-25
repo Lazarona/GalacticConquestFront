@@ -1,5 +1,5 @@
 import "./ChantierCard.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function ChantierCard(props) {
   const [currentImage, setCurrentImage] = useState(0);
@@ -12,12 +12,40 @@ function ChantierCard(props) {
   ];
 
   const handleNext = () => {
-    setCurrentImage(currentImage === images.length - 1 ? 0 : currentImage + 1);
+    setCurrentImage((prevImage) =>
+      prevImage === images.length - 1 ? 0 : prevImage + 1
+    );
   };
 
   const handlePrev = () => {
-    setCurrentImage(currentImage === 0 ? images.length - 1 : currentImage - 1);
+    setCurrentImage((prevImage) =>
+      prevImage === 0 ? images.length - 1 : prevImage - 1
+    );
   };
+
+  const constructShip = () => {
+    switch (currentImage) {
+      case 0:
+        props.constructHunter();
+        break;
+      case 1:
+        props.constructFrigate();
+        break;
+      case 2:
+        props.constructCruiser();
+        break;
+      case 3:
+        props.constructDestroyer();
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    console.log("Current IMG : ", currentImage);
+  }, []);
+
   return (
     <>
       <div className="card">
@@ -49,13 +77,13 @@ function ChantierCard(props) {
             <button
               type="button"
               className="boutonconstruire"
-              onClick={props.construct}
+              onClick={constructShip}
             >
               Construire
             </button>
           </div>
           <div className="d-flex justify-content-center mt-3">
-            {props.message}
+            {props.message()}
           </div>
         </div>
       </div>

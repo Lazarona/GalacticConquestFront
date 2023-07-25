@@ -8,6 +8,14 @@ function ChantierSpatial() {
   const [erreurs, setErreurs] = useState({});
   const [shipyards, setShipyards] = useState([]);
   const [hunter, setHunter] = useState([]);
+  const [frigate, setFrigate] = useState([]);
+  const [cruiser, setCruiser] = useState([]);
+  const [destroyer, setDestroyer] = useState([]);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleRefresh = () => {
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
 
   const navigate = useNavigate();
 
@@ -19,6 +27,7 @@ function ChantierSpatial() {
   const navHome = () => {
     navigate("/");
   };
+
   const navDashboard = () => {
     navigate("/dashboard");
   };
@@ -72,7 +81,10 @@ function ChantierSpatial() {
           <ChantierCard
             key={index}
             index={index + 1}
-            construct={() => buildHunter(e)}
+            constructHunter={() => buildHunter(e)}
+            constructFrigate={() => buildFrigate(e)}
+            constructCruiser={() => buildCruiser(e)}
+            constructDestroyer={() => buildDestroyer(e)}
             message={() => displayErrors()}
           />
         ) : (
@@ -110,7 +122,85 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setHunter(donnees);
-      window.location.reload(false);
+      handleRefresh();
+    }
+  };
+
+  const buildFrigate = async (e) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        type: "frigate",
+      }),
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/create/frigate/${e.id}`,
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (buildFrigate) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setFrigate(donnees);
+      handleRefresh();
+    }
+  };
+
+  const buildCruiser = async (e) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        type: "cruiser",
+      }),
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/create/cruiser/${e.id}`,
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (buildCruiser) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setCruiser(donnees);
+      handleRefresh();
+    }
+  };
+
+  const buildDestroyer = async (e) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        type: "destroyer",
+      }),
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/create/destroyer/${e.id}`,
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (buildDestroyer) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setDestroyer(donnees);
+      handleRefresh();
     }
   };
 
@@ -133,6 +223,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setErreurs(donnees);
+      handleRefresh();
     }
   };
 
@@ -160,7 +251,7 @@ function ChantierSpatial() {
           </div>
         </div>
       ) : (
-        <div id="cs-container">
+        <div key={refreshKey} id="cs-container">
           <div className="navbar d-flex ">
             <img
               className="logonav mt-2 ms-3"
