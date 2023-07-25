@@ -21,10 +21,6 @@ function ChantierSpatial() {
     navigate("/");
   };
 
-  const navHome = () => {
-    navigate("/");
-  };
-
   const navDashboard = () => {
     navigate("/dashboard");
   };
@@ -369,7 +365,7 @@ function ChantierSpatial() {
                 </div>
               </div>
 
-              <h2>CHANTIER SPATIAL</h2>
+              <h2 className="titlecs">CHANTIER SPATIAL</h2>
               <img
                 className="return me-1"
                 src="src/Components/img/flecheRetour.png"

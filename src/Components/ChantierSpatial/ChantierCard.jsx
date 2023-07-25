@@ -72,7 +72,7 @@ function ChantierCard(props) {
 
   return (
     <>
-      <div className="card">
+      <div className="card cartecontenu">
         <h5 className="card-header d-flex justify-content-center">
           CHANTIER N˚{props.index}
         </h5>

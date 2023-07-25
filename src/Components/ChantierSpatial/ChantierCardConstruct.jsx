@@ -136,11 +136,11 @@ function ChantierCardConstruct(props) {
 
   return (
     <>
-      <div className="card">
-        <h5 className="card-header d-flex justify-content-center">
+      <div className="card cartecontenu">
+        <h5 className="card-header  d-flex justify-content-center">
           CHANTIER N˚{props.index}
         </h5>
-        <div className="card-body">{displayConstructingShip()}</div>
+        <div className="card-body ">{displayConstructingShip()}</div>
         <div>{displayErrors()}</div>
       </div>
     </>
