@@ -23,7 +23,8 @@ function Home() {
         <MDBBtn className="bouton" onClick={navRegister}>
           Créer un compte
         </MDBBtn>
-        <MDBBtn className="bouton me-5" onClick={navLogin}>
+        <MDBBtn className="bouton me-5" onClick={navLogin} >
+         
           Connexion
         </MDBBtn>
       </div>

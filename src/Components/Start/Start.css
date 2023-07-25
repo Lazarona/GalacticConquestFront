@@ -1,8 +1,7 @@
 #start-container {
   background-image: url(src/Components/background/bg3.jpg);
   background-size: cover;
-  padding-top: 9%;
-  height: 100vh;
+  padding: 2% 0% 8% 2%;
 }
 #start-container h1 {
   color: #00ffff;
@@ -17,7 +16,6 @@
   font-size: 5vh;
   color: white;
   -webkit-text-stroke: 0.9px black;
-  padding-left: 3%;
 }
 #start-container .boutonstart {
   color: aqua;
@@ -27,8 +25,7 @@
   font-size: 20px;
   padding: 0% 5% 0% 5%;
   background-color: rgb(86, 42, 127);
-  margin-top: 27%;
-  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  margin-top: 35%;
   padding: 0.5% 5% 0.5% 5%;
 }
 #start-container .boutonstart:hover {
@@ -37,31 +34,20 @@
   box-shadow: 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.5rem aqua,
     inset 0 0 0.3rem aqua;
 }
-#start-container .ex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#start-container .logonav {
+  width: 50px;
+}
+#start-container .boutonm {
+  color: aqua;
+}
+#start-container .boutondec {
+  color: rgb(255, 0, 0);
+}
+#start-container .boutonclose {
+  background-color: #00ffff;
 }
 #start-container h5 {
   -webkit-text-stroke: 0.9px aqua;
   font-size: 30px;
   color: black;
 }
-#start-container form {
-  display: flex;
-  flex-direction: column;
-}
-
-#dashboard .bienvenu {
-  color: white;
-}
-
-/* #dashboard .bienvenu .choix {
-  color: #818181;
-} */
-
-/* .fondimage {
-  background-image: url(bg3.jpg);
-  height: 120vh;
-  font-family: "Lato", sans-serif;
-} */
