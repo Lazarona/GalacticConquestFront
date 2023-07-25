@@ -2,7 +2,7 @@ import "./Victory.css";
 import React, { useState, useEffect } from "react";
 
 const OtherUserProfile = ({ userId }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(1);
 
   useEffect(() => {
     //  récupérer les informations de l'utilisateur spécifié par l'ID
@@ -37,12 +37,12 @@ const OtherUserProfile = ({ userId }) => {
 
   // Si l'utilisateur est en cours de récupération, affichez un message de chargement
   if (!user) {
-    return <div>Chargement en cours...</div>;
+    return <div className="Victory">Chargement en cours...</div>;
   }
 
   const RessourcesManager = () => {
     // État local pour stocker le nombre de ressources du joueur
-    const [ressources, setRessources] = useState(1000);
+    const [ressources, setRessources] = useState();
 
     // État local pour indiquer si le joueur a gagné ou non
     const [victoire, setVictoire] = useState(false);
@@ -52,6 +52,28 @@ const OtherUserProfile = ({ userId }) => {
 
     //   Recupère l'ID de l'autre planète
     const [id, setId] = useState();
+
+    const getResources = async () => {
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/resource",
+        options
+      );
+      const donnees = await response.json();
+      console.log("Reponse de l'API (Resources) : ", donnees);
+      if (response.status == 401) {
+        setErreurs(donnees);
+      } else {
+        setRessources(donnees.resource);
+      }
+    };
 
     //  clic sur le bouton "Victoire !"
     const handleVictoire = () => {
@@ -69,13 +91,18 @@ const OtherUserProfile = ({ userId }) => {
       }
     };
 
+    useEffect(() => {
+      getResources();
+    }, []);
     return (
-      <div>
+      <div className="Victory">
         <p>Ressources actuelles: {ressources}</p>
         <button onClick={handleVictoire}>Victoire !</button>
         <button onClick={recupererRessources}>Récupérer les ressources</button>
       </div>
     );
   };
+
+  return <div className="Victory">{RessourcesManager()}</div>;
 };
 export default OtherUserProfile;
