@@ -324,6 +324,13 @@ function Dashboard() {
     identifiant();
   }, []);
 
+  useEffect(() => {
+    const eachHour = setInterval(() => {
+      getResources();
+    }, 60000);
+    return () => clearInterval(eachHour);
+  }, []);
+
   return (
     <>
       {localStorage.getItem("token") === null ? (

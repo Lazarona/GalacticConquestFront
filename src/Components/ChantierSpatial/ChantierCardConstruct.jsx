@@ -5,6 +5,7 @@ function ChantierCardConstruct(props) {
   const [claimShip, setClaimShip] = useState([]);
   const [imageConstruct, setImageConstruct] = useState(0);
   const [constructedShip, setConstructedShip] = useState([]);
+  const [erreurs, setErreurs] = useState({});
 
   const images = [
     "src/Components/img/chasseur5.png",
@@ -31,6 +32,7 @@ function ChantierCardConstruct(props) {
     if (reqData.status == 401) {
       setErreurs(resData);
     } else {
+      setErreurs(resData);
       setConstructedShip(resData.ship);
     }
   };
@@ -94,8 +96,38 @@ function ChantierCardConstruct(props) {
     }
   };
 
+  const displayErrors = () => {
+    if (erreurs.errors == undefined && erreurs.message == undefined) {
+      return null;
+    }
+    if (erreurs.message != undefined) {
+      return Object.keys(erreurs).map((key) => {
+        return (
+          <ul key={key}>
+            <h4>{erreurs.message}</h4>
+          </ul>
+        );
+      });
+    } else {
+      return Object.keys(erreurs).map((key) => {
+        return (
+          <ul key={key}>
+            <h1>{erreurs.errors.name}</h1>
+          </ul>
+        );
+      });
+    }
+  };
+
   useEffect(() => {
     getConstructedShip();
+  }, []);
+
+  useEffect(() => {
+    const eachHour = setInterval(() => {
+      getConstructedShip();
+    }, 60000);
+    return () => clearInterval(eachHour);
   }, []);
 
   useEffect(() => {
@@ -111,7 +143,7 @@ function ChantierCardConstruct(props) {
         </h5>
         <div className="card-body">
           <div className="d-flex justify-content-center mt-3">
-            {props.message}
+            {props.message()}
           </div>
           {displayConstructingShip()}
         </div>
