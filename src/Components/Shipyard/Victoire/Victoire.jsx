@@ -3,19 +3,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const OtherUserProfile = ({ userId }) => {
-  // État local pour stocker les détails de l'utilisateur
+  
   const [user, setUser] = useState(null);
 
-  // useEffect est un hook qui s'exécute lorsque le composant est monté
   useEffect(() => {
-    // Fonction asynchrone pour récupérer les informations de l'utilisateur spécifié par l'ID
+    //  récupérer les informations de l'utilisateur spécifié par l'ID
     const fetchUser = async () => {
       try {
         // Appel à l'API pour récupérer les informations de l'utilisateur avec l'ID spécifié
         const response = await axios.get(
           `http://127.0.0.1:8000/api/Victory/planet${userId}`,
           {
-            // Ici, vous devrez passer le token d'authentification dans les headers pour autoriser l'accès à l'API
+            //  token d'authentification dans les headers pour autoriser l'accès à l'API
             headers: {
               "Content-Type": "application/json",
               Authorization: `bearer ${localStorage.getItem("token")}`,
@@ -26,7 +25,7 @@ const OtherUserProfile = ({ userId }) => {
         // Mettre à jour l'état de l'utilisateur avec les données récupérées de l'API
         setUser(response.data);
       } catch (error) {
-        // En cas d'erreur lors de l'appel API, affichez l'erreur dans la console
+        //  affichez l'erreur dans la console
         console.error(
           "Erreur lors de la récupération des informations de l'utilisateur",
           error
@@ -34,9 +33,9 @@ const OtherUserProfile = ({ userId }) => {
       }
     };
 
-    // Appel de la fonction pour récupérer les informations de l'utilisateur
+    //  récupérer les informations de l'utilisateur
     fetchUser();
-  }, [userId]); // useEffect dépend de userId, donc il sera déclenché à chaque fois que userId change
+  }, [userId]); //  userId il sera déclenché à chaque fois que userId change
 
   // Si l'utilisateur est en cours de récupération, affichez un message de chargement
   if (!user) {
@@ -56,7 +55,7 @@ const OtherUserProfile = ({ userId }) => {
     //   Recupère l'ID de l'autre planète
     const [id, setId] = useState();
 
-    // Gère le clic sur le bouton "Victoire !"
+    //  clic sur le bouton "Victoire !"
     const handleVictoire = () => {
       setVictoire(true); // Définit l'état de victoire à true
     };
