@@ -9,7 +9,6 @@ import Passwordforget from "../Components/Auth/Passwordforget/Passwordforget";
 import { createContext, useState } from "react";
 import Infrastructures from "../Components/Infrastructures/Infrastructures";
 import AttackGrid from "../Components/AttackGrid/AttackGrid";
-import Shipyard from "../Components/Shipyard/Shipyard";
 import PlayGrid from "../Components/AttackGrid/PlayGrid";
 import ChantierSpatial from "../Components/ChantierSpatial/ChantierSpatial";
 
@@ -31,7 +30,6 @@ function App() {
             <Route path="/passwordforget" element={<Passwordforget />} />
             <Route path="/infrastructures" element={<Infrastructures />} />
             <Route path="/attack" element={<AttackGrid />} />
-            <Route path="/shipyard" element={<Shipyard />} />
             <Route path="/play" element={<PlayGrid />} />
             <Route path="/chantierspatial" element={<ChantierSpatial />} />
           </Routes>
