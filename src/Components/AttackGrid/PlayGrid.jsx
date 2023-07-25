@@ -58,6 +58,7 @@ const PlayGrid = () => {
         );
       }
     }
+
     return grid;
   };
 

@@ -18,6 +18,7 @@
   border-radius: 10px;
   box-shadow: 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.5rem aqua,
     inset 0 0 0.3rem aqua;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 
 #register-container .logor {
@@ -52,6 +53,7 @@
   border-radius: 10px;
   box-shadow: 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.5rem aqua,
     inset 0 0 0.3rem aqua;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 
 #register-container h2 {

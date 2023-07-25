@@ -29,6 +29,7 @@
   background-color: rgb(241, 107, 239);
   border: 3px aqua solid;
   font-weight: bolder;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 
 #home-container .bouton:hover {

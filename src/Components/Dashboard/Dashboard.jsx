@@ -324,6 +324,13 @@ function Dashboard() {
     identifiant();
   }, []);
 
+  useEffect(() => {
+    const eachHour = setInterval(() => {
+      getResources();
+    }, 60000);
+    return () => clearInterval(eachHour);
+  }, []);
+
   return (
     <>
       {localStorage.getItem("token") === null ? (
@@ -473,7 +480,7 @@ function Dashboard() {
                   <p className="infra">INFRASTRUCTURES</p>
                 </div>
               </MDBPopoverHeader>
-              <MDBPopoverBody className="">
+              <MDBPopoverBody className="pophover">
                 <div className="d-flex flex-column">
                   <div className="displayiconnes d-flex justify-content-center">
                     <img

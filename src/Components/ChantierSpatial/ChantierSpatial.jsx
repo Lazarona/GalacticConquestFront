@@ -8,6 +8,9 @@ function ChantierSpatial() {
   const [erreurs, setErreurs] = useState({});
   const [shipyards, setShipyards] = useState([]);
   const [hunter, setHunter] = useState([]);
+  const [frigate, setFrigate] = useState([]);
+  const [cruiser, setCruiser] = useState([]);
+  const [destroyer, setDestroyer] = useState([]);
 
   const navigate = useNavigate();
 
@@ -19,6 +22,7 @@ function ChantierSpatial() {
   const navHome = () => {
     navigate("/");
   };
+
   const navDashboard = () => {
     navigate("/dashboard");
   };
@@ -72,8 +76,11 @@ function ChantierSpatial() {
           <ChantierCard
             key={index}
             index={index + 1}
-            construct={() => buildHunter(e)}
-            message={() => displayErrors()}
+            constructHunter={() => buildHunter(e)}
+            constructFrigate={() => buildFrigate(e)}
+            constructCruiser={() => buildCruiser(e)}
+            constructDestroyer={() => buildDestroyer(e)}
+            message={erreurs}
           />
         ) : (
           <ChantierCardConstruct
@@ -81,7 +88,7 @@ function ChantierSpatial() {
             index={index + 1}
             idShipYard={e.id}
             claim={() => claimShip(e)}
-            message={() => displayErrors()}
+            message={erreurs}
           />
         );
       }
@@ -110,7 +117,85 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setHunter(donnees);
-      window.location.reload(false);
+      window.location.reload();
+    }
+  };
+
+  const buildFrigate = async (e) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        type: "frigate",
+      }),
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/create/frigate/${e.id}`,
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (buildFrigate) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setFrigate(donnees);
+      window.location.reload();
+    }
+  };
+
+  const buildCruiser = async (e) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        type: "cruiser",
+      }),
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/create/cruiser/${e.id}`,
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (buildCruiser) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setCruiser(donnees);
+      window.location.reload();
+    }
+  };
+
+  const buildDestroyer = async (e) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        type: "destroyer",
+      }),
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/create/destroyer/${e.id}`,
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse de l'API (buildDestroyer) : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setDestroyer(donnees);
+      window.location.reload();
     }
   };
 
@@ -131,8 +216,10 @@ function ChantierSpatial() {
     console.log("Reponse de l'API (claimShip) : ", donnees);
     if (response.status == 401) {
       setErreurs(donnees);
+      self.forceUpdate();
     } else {
       setErreurs(donnees);
+      window.location.reload();
     }
   };
 
@@ -142,9 +229,9 @@ function ChantierSpatial() {
   useEffect(() => {
     console.log("Shipyards : ", shipyards);
   }, [shipyards, setShipyards]);
-  useEffect(() => {
-    console.log("Hunter : ", hunter);
-  }, [hunter, setHunter]);
+  // useEffect(() => {
+  //   console.log("Hunter : ", hunter);
+  // }, [hunter, setHunter]);
 
   return (
     <>
