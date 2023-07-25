@@ -1,0 +1,53 @@
+#start-container {
+  background-image: url(src/Components/background/bg3.jpg);
+  background-size: cover;
+  padding: 2% 0% 8% 2%;
+}
+#start-container h1 {
+  color: #00ffff;
+  -webkit-text-stroke: 0.9px black;
+}
+#start-container input {
+  border-style: none;
+  border-bottom: 3px aqua dashed;
+  background-color: rgba(255, 222, 173, 0);
+  width: 30%;
+  height: 40%;
+  font-size: 5vh;
+  color: white;
+  -webkit-text-stroke: 0.9px black;
+}
+#start-container .boutonstart {
+  color: aqua;
+  -webkit-text-stroke: 0.7px rgb(0, 0, 0);
+  border: 3px aqua solid;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 0% 5% 0% 5%;
+  background-color: rgb(86, 42, 127);
+  margin-top: 35%;
+  padding: 0.5% 5% 0.5% 5%;
+}
+#start-container .boutonstart:hover {
+  border: 0.2rem solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 0.2rem #fff, 0 0 2rem aqua, 0 0 0.5rem aqua,
+    inset 0 0 0.3rem aqua;
+}
+#start-container .logonav {
+  width: 50px;
+}
+#start-container .boutonm {
+  color: aqua;
+}
+#start-container .boutondec {
+  color: rgb(255, 0, 0);
+}
+#start-container .boutonclose {
+  background-color: #00ffff;
+}
+#start-container h5 {
+  -webkit-text-stroke: 0.9px aqua;
+  font-size: 30px;
+  color: black;
+}

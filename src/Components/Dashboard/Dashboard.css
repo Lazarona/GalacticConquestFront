@@ -2,6 +2,7 @@ body {
   background-image: url(src/Components/img/bgdash.png);
   background-size: cover;
   /* width: 100vh; */
+  cursor: url(src/Components/img/cursorredimensionner.png), auto;
 }
 #dashboard-container {
   background-color: rgba(56, 4, 104, 0.567);
@@ -14,25 +15,27 @@ body {
 /* NAVBAR DEBUT CODE */
 #dashboard-container .logonav {
   width: 50px;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #dashboard-container .boutonm {
   color: aqua;
-  cursor: pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #dashboard-container .boutonm:hover {
   font-size: 18px;
-  cursor: pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #dashboard-container .boutondec {
   color: rgb(0, 8, 255);
-  cursor: pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #dashboard-container .boutondec:hover {
   font-size: 18px;
-  cursor: pointer;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #dashboard-container .boutonclose {
   background-color: #c296ff;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 #dashboard-container h4 {
   -webkit-text-stroke: 0.9px aqua;
@@ -78,6 +81,7 @@ body {
   color: rgb(82, 46, 126);
   --mdb-dropdown-state-color: #7445b9;
   --mdb-dropdown-state-background-color: aqua;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 
 #dashboard-container .icons {
