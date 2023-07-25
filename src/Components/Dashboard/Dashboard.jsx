@@ -379,12 +379,12 @@ function Dashboard() {
   }, [setCreatedInfra, createdInfra]);
 
   useEffect(() => {
-    console.log("Planet : ", name);
-  }, [setName, name]);
-
-  useEffect(() => {
     console.log("Erreurs : ", erreurs);
   }, [setErreurs, erreurs]);
+
+  useEffect(() => {
+    console.log("Planet : ", name);
+  }, [setName, name]);
 
   useEffect(() => {
     console.log("Username : ", username);
@@ -548,7 +548,8 @@ function Dashboard() {
 
           <div>
             <MDBPopover
-              btnClassName="planete"
+              btnClassName="planete "
+              color="#ad5389"
               className="popinfra"
               placement="right"
               title="INFRASTRUCTURE"
