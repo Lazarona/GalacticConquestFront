@@ -12,6 +12,7 @@ function Dashboard() {
   const [erreurs, setErreurs] = useState({});
   const [name, setName] = useState([]);
   const [username, setUsername] = useState([]);
+  const [allShips, setAllShips] = useState(null);
 
   const navigate = useNavigate();
 
@@ -44,6 +45,77 @@ function Dashboard() {
       setErreurs(donnees);
     } else {
       setReponse(donnees.resource);
+    }
+  };
+
+  const getAllShips = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/ships", options);
+    const donnees = await response.json();
+    console.log("Reponse de l'API (All Ships) : ", donnees);
+    setAllShips(donnees);
+  };
+
+  const displayAllShips = () => {
+    if (allShips) {
+      return <>{allShips.ships.length} Vaisseaux</>;
+    } else {
+      return <>Loading...</>;
+    }
+  };
+
+  const displayHunters = () => {
+    if (allShips) {
+      if (typeof allShips.hunters == "object") {
+        return <>Chasseur : {Object.keys(allShips.hunters).length}</>;
+      } else {
+        return <>Chasseur : {allShips.hunters.length}</>;
+      }
+    } else {
+      return <>Loading...</>;
+    }
+  };
+
+  const displayFrigates = () => {
+    if (allShips) {
+      if (typeof allShips.frigates == "object") {
+        return <>Frégate : {Object.keys(allShips.frigates).length}</>;
+      } else {
+        return <>Frégate : {allShips.frigates.length}</>;
+      }
+    } else {
+      return <>Loading...</>;
+    }
+  };
+
+  const displayCruisers = () => {
+    if (allShips) {
+      if (typeof allShips.cruisers == "object") {
+        return <>Croiseur : {Object.keys(allShips.cruisers).length}</>;
+      } else {
+        return <>Croiseur : {allShips.cruisers.length}</>;
+      }
+    } else {
+      return <>Loading...</>;
+    }
+  };
+
+  const displayDestroyers = () => {
+    if (allShips) {
+      if (typeof allShips.destroyers == "object") {
+        return <>Destroyer : {Object.keys(allShips.destroyers).length}</>;
+      } else {
+        return <>Destroyer : {allShips.destroyers.length}</>;
+      }
+    } else {
+      return <>Loading...</>;
     }
   };
 
@@ -319,14 +391,21 @@ function Dashboard() {
   }, [setUsername, username]);
 
   useEffect(() => {
+    console.log("All Ships: ", allShips);
+  }, [setAllShips, allShips]);
+
+  useEffect(() => {
     getResources();
+    getAllShips();
     planetName();
     identifiant();
+    console.log("All Ships : ", allShips);
   }, []);
 
   useEffect(() => {
     const eachHour = setInterval(() => {
       getResources();
+      getAllShips();
     }, 60000);
     return () => clearInterval(eachHour);
   }, []);
@@ -408,27 +487,27 @@ function Dashboard() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Vaisseaux
+                  {displayAllShips()}
                 </button>
                 <ul className=" allv dropdown-menu">
                   <li>
                     <a className=" nom dropdown-item" href="#">
-                      Chasseur: 45
+                      {displayHunters()}
                     </a>
                   </li>
                   <li>
                     <a className="nom dropdown-item" href="#">
-                      Fregate:
+                      {displayFrigates()}
                     </a>
                   </li>
                   <li>
                     <a className="nom dropdown-item" href="#">
-                      Croiseur:
+                      {displayCruisers()}
                     </a>
                   </li>
                   <li>
                     <a className="nom dropdown-item" href="#">
-                      Destroyer:
+                      {displayDestroyers()}
                     </a>
                   </li>
                 </ul>
