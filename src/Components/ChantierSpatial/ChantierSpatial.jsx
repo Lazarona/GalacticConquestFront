@@ -115,7 +115,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setHunter(donnees);
-      window.location.reload();
+      setErreurs("");
     }
   };
 
@@ -141,7 +141,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setFrigate(donnees);
-      window.location.reload();
+      setErreurs("");
     }
   };
 
@@ -167,7 +167,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setCruiser(donnees);
-      window.location.reload();
+      setErreurs("");
     }
   };
 
@@ -193,7 +193,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setDestroyer(donnees);
-      window.location.reload();
+      setErreurs("");
     }
   };
 
@@ -214,10 +214,8 @@ function ChantierSpatial() {
     console.log("Reponse de l'API (claimShip) : ", donnees);
     if (response.status == 401) {
       setErreurs(donnees);
-      self.forceUpdate();
     } else {
-      setErreurs(donnees);
-      window.location.reload();
+      setErreurs("");
     }
   };
 
@@ -294,6 +292,21 @@ function ChantierSpatial() {
     console.log("Username : ", username);
   }, [setUsername, username]);
 
+  useEffect(() => {
+    getShipyards();
+  }, [destroyer]);
+  useEffect(() => {
+    getShipyards();
+  }, [cruiser]);
+  useEffect(() => {
+    getShipyards();
+  }, [hunter]);
+  useEffect(() => {
+    getShipyards();
+  }, [frigate]);
+  useEffect(() => {
+    getShipyards();
+  }, [erreurs]);
   return (
     <>
       {localStorage.getItem("token") === null ? (
