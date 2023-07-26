@@ -8,6 +8,8 @@ const PlayGrid = () => {
   const [battle, setBattle] = useState(null);
   const [user, setUser] = useState(null);
   const [fuel, setFuel] = useState(null);
+  const [UserX, setUserX] = useState(null);
+  const [UserY, setUserY] = useState(null);
   const gridSize = 50;
 
   const navigate = useNavigate;
@@ -103,6 +105,10 @@ const PlayGrid = () => {
           </div>
         );
       }
+    }
+
+    function confirmBattle() {
+      console.log("");
     }
 
     return grid;
