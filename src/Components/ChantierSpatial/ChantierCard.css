@@ -63,6 +63,7 @@
   box-shadow: 0 0 0.1rem #fff, 0 0 1rem #dfc5ec, 0 0 0.3rem #dfc5ec,
     inset 0 0 0.1rem #dfc5ec;
   color: #dfc5ec;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
 .titleinfra2 {
   background-color: rgba(3, 21, 79, 0.485);
