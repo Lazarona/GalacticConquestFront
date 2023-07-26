@@ -6,8 +6,9 @@ const PlayGrid = () => {
   const [selectedTarget, setSelectedTarget] = useState(null);
   const [position, setPosition] = useState(null);
   const [battle, setBattle] = useState(null);
-
-  const gridSize = 10;
+  const [user, setUser] = useState(null);
+  const [fuel, setFuel] = useState(null);
+  const gridSize = 50;
 
   const navigate = useNavigate;
 
@@ -35,6 +36,21 @@ const PlayGrid = () => {
     setPosition(data);
   };
 
+  const getUser = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/user", options);
+    const data = await response.json();
+    console.log("Reponse de l'API (UserId): ", data);
+    setUser(data);
+  };
+
   const getBattle = async () => {
     const options = {
       method: "GET",
@@ -51,6 +67,21 @@ const PlayGrid = () => {
     const data = await response.json();
     console.log("Reponse de l'API (Battle): ", data);
     setBattle(data);
+  };
+
+  const getFuel = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/resource", options);
+    const data = await response.json();
+    console.log("Reponse de l'API (Fuel): ", data);
+    setFuel(data);
   };
 
   const renderGrid = () => {
@@ -89,6 +120,28 @@ const PlayGrid = () => {
       </div>
       <h1 className="bataille-title">Bataille Spatiale - Galaxie</h1>
 
+      <div className="col-sm-6">
+        <div className="cardattack2">
+          <div className="card-body">
+            <h5 className="card-title">Combat</h5>
+            <p className="card-text">
+              <div>
+                <div className="grid">{renderGrid()}</div>
+                {selectedTarget && (
+                  <div className="controls">
+                    <h2>
+                      Cible sélectionnée :{" "}
+                      {`${selectedTarget.x},${selectedTarget.y}`}
+                    </h2>
+                    <p>Carburant disponible : en test</p>
+                    <p></p>
+                  </div>
+                )}
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="row">
         <div className="col-sm-6">
           <div className="cardattack">
@@ -103,29 +156,8 @@ const PlayGrid = () => {
             </div>
           </div>
         </div>
-        <div className="col-sm-6">
-          <div className="cardattack2">
-            <div className="card-body">
-              <h5 className="card-title">Combat</h5>
-              <p className="card-text">
-                <div>
-                  <div className="grid">{renderGrid()}</div>
-                  {selectedTarget && (
-                    <div className="controls">
-                      <h2>
-                        Cible sélectionnée :{" "}
-                        {`${selectedTarget.x},${selectedTarget.y}`}
-                      </h2>
-                      <p>Carburant disponible : en test</p>
-                      <p></p>
-                    </div>
-                  )}
-                </div>
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
+
       <footer>
         <div className="d-flex justify-content-center">
           <button className="sendsy" onClick={() => sendShips()}>
