@@ -6,11 +6,11 @@ const PlayGrid = () => {
   const [selectedTarget, setSelectedTarget] = useState(null);
   const [positions, setPositions] = useState(null);
   const [battle, setBattle] = useState(null);
-  const [user, setUser] = useState(null);
-  const [fuel, setFuel] = useState(null);
-  const [UserX, setUserX] = useState(null);
-  const [UserY, setUserY] = useState(null);
+  const [userX, setUserX] = useState(null);
+  const [userY, setUserY] = useState(null);
   const [historic, setHistoric] = useState(null);
+  const [erreurs, setErreurs] = useState(null);
+
   const gridSize = 50;
 
   const navigate = useNavigate();
@@ -22,6 +22,10 @@ const PlayGrid = () => {
   const deconnexion = () => {
     localStorage.removeItem("token");
     navigate("/");
+  };
+
+  const selectDestination = (target) => {
+    setSelectedTarget(target);
   };
 
   // Fonction pour sélectionner une cible
@@ -48,24 +52,9 @@ const PlayGrid = () => {
     setPositions(data.planets);
   };
 
-  const getUser = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
-    const response = await fetch("http://127.0.0.1:8000/api/user", options);
-    const data = await response.json();
-    console.log("Reponse de l'API (UserId): ", data);
-    setUser(data);
-  };
-
   const getBattle = async () => {
     const options = {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -77,38 +66,15 @@ const PlayGrid = () => {
       options
     );
     const data = await response.json();
-    console.log("Reponse de l'API (Battle): ", data);
-    setBattle(data);
-    console.log("Reponse de l'API (Historic): ", data.battle_log);
-    setHistoric(data.battle_log);
-  };
 
-  const displayHistoricBattle = () => {
-    return historic.map((key, e) => {
-      return (
-        <div key={key}>
-          <p>{e.round}</p>
-          <p>{e.winner}</p>
-          <p>{e.attacker_ships}</p>
-          <p>{e.defender_ships}</p>
-        </div>
-      );
-    });
-  };
-
-  const getFuel = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
-    const response = await fetch("http://127.0.0.1:8000/api/resource", options);
-    const data = await response.json();
-    console.log("Reponse de l'API (Fuel): ", data);
-    setFuel(data);
+    if (response.status == 201) {
+      console.log("Reponse de l'API (Battle): ", data);
+      setBattle(data);
+      console.log("Reponse de l'API (Historic): ", data.battle_log);
+      setHistoric(data.battle_log);
+    } else {
+      setErreurs(data);
+    }
   };
 
   const renderGrid = () => {
@@ -120,19 +86,51 @@ const PlayGrid = () => {
             ? "cell target"
             : "cell";
 
-        grid.push(
-          <div
-            key={`${x}-${y}`}
-            className={cellClassName}
-            onClick={() => selectTarget({ x, y })}
-          >
-            {x === 0 && y === 0 ? `${x},${y}` : null}
-          </div>
-        );
+        if (x == userX && y == userY) {
+          grid.push(
+            <div
+              key={`${x}-${y}`}
+              className="cellUser"
+              onClick={() => selectTarget({ x, y })}
+            >
+              {x === 0 && y === 0 ? `${x},${y}` : null}
+            </div>
+          );
+        } else {
+          grid.push(
+            <div
+              key={`${x}-${y}`}
+              className={cellClassName}
+              onClick={() => selectDestination({ x, y })}
+            >
+              {x === 0 && y === 0 ? `${x},${y}` : null}
+            </div>
+          );
+        }
       }
     }
-
     return grid;
+  };
+
+  const displayHistoricBattle = () => {
+    if (historic) {
+      return historic.map((key, e) => {
+        return (
+          <div key={key}>
+            <p>{e.round}</p>
+            <p>{e.winner}</p>
+            <p>{e.attacker_ships}</p>
+            <p>{e.defender_ships}</p>
+          </div>
+        );
+      });
+    } else {
+      return (
+        <div>
+          <p>Waiting for battle</p>
+        </div>
+      );
+    }
   };
 
   const displayErrors = () => {
@@ -165,12 +163,6 @@ const PlayGrid = () => {
   useEffect(() => {
     console.log("Positions : ", positions);
   }, [positions, setPositions]);
-
-  function confirmBattle() {
-    if (target == user) {
-      alert("Souhaitez vous engager vos vaisseaux");
-    }
-  }
 
   return (
     <>
@@ -219,7 +211,7 @@ const PlayGrid = () => {
                             Cible sélectionnée :{" "}
                             {`${selectedTarget.x},${selectedTarget.y}`}
                           </p>
-                          <p>Carburant disponible : en test</p>
+                          <p>{displayErrors()}</p>
                           <p></p>
                         </div>
                       )}
