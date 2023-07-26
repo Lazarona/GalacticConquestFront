@@ -1,37 +1,57 @@
+import { useNavigate } from "react-router-dom";
 import "./PlayGrid.css";
 import React, { useState } from "react";
 
-// const construction = async () => {
-//   const options = {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Accept: "application/json",
-//       Authorization: `Bearer ${localStorage.getItem("token")}`,
-//     },
-//   };
-//   const response = await fetch("http://127.0.0.1:8000/api/position", options);
-//   const data = await response.json();
-//   console.log("Reponse de l'API : ", data);
-//   setReponse(data);
-// };
-
-//onnées reçues luent grâce à JSON
-
 const PlayGrid = () => {
+  const [selectedTarget, setSelectedTarget] = useState(null);
+  const [position, setPosition] = useState(null);
+  const [battle, setBattle] = useState(null);
+
+  const gridSize = 10;
+
+  const navigate = useNavigate;
+
   const dashboard = () => {
     navigate("/dashboard");
   };
-
-  const gridSize = 10;
-  const [selectedTarget, setSelectedTarget] = useState(null);
 
   // Fonction pour sélectionner une cible
   const selectTarget = (target) => {
     setSelectedTarget(target);
   };
 
-  // // Fonction pour produire plus de carburant (non implémentée ici, vous pouvez le faire selon vos besoins)
+  const getPosition = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/position", options);
+    const data = await response.json();
+    console.log("Reponse de l'API (Position): ", data);
+    setPosition(data);
+  };
+
+  const getBattle = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/attack/{defenderId}",
+      options
+    );
+    const data = await response.json();
+    console.log("Reponse de l'API (Battle): ", data);
+    setBattle(data);
+  };
 
   const renderGrid = () => {
     const grid = [];
@@ -67,26 +87,24 @@ const PlayGrid = () => {
           onClick={dashboard}
         />
       </div>
-      <h1>Bataille Spatiale - Galaxie</h1>
+      <h1 className="bataille-title">Bataille Spatiale - Galaxie</h1>
 
       <div className="row">
         <div className="col-sm-6">
-          <div> </div>
-
-          <div className="card-histo-attac" class="">
+          <div className="cardattack">
             <div className="card-body">
-              <h5 className="card-title">Historique de combat</h5>
+              <h5 id="card-title">Historique de combat</h5>
               <p className="card-text">
-                TEST d'apparition d'historique de combat
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Provident placeat numquam expedita enim veniam, fugiat
+                laudantium dolores odio iure, reiciendis quas qui quis facere
+                obcaecati aliquid doloribus autem odit excepturi!
               </p>
-              <a href="#" className="btn btn-primary">
-                Masquer l'Historique
-              </a>
             </div>
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="card-attack">
+          <div className="cardattack2">
             <div className="card-body">
               <h5 className="card-title">Combat</h5>
               <p className="card-text">
@@ -108,11 +126,13 @@ const PlayGrid = () => {
           </div>
         </div>
       </div>
-      <div className="d-flex justify-content-center">
-        <button className="sendsy" onClick={() => sendShips()}>
-          Envoyer les vaisseaux
-        </button>
-      </div>
+      <footer>
+        <div className="d-flex justify-content-center">
+          <button className="sendsy" onClick={() => sendShips()}>
+            Envoyer les vaisseaux
+          </button>
+        </div>
+      </footer>
     </div>
   );
 };
