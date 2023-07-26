@@ -468,7 +468,7 @@ body {
   --mdb-btn-disabled-bg: violet;
   --mdb-btn-disabled-border-color: violet;
 } */
-/* 
+
 @keyframes spin {
   0% {
     top: 20px;
@@ -486,7 +486,7 @@ body {
     transform: rotate(360deg);
     top: 20px;
   }
-} */
+}
 
 .popinfra {
   margin-left: 10%;
