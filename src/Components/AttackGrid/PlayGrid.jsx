@@ -10,6 +10,7 @@ const PlayGrid = () => {
   const [fuel, setFuel] = useState(null);
   const [UserX, setUserX] = useState(null);
   const [UserY, setUserY] = useState(null);
+  const [historic, setHistoric] = useState(null);
   const gridSize = 50;
 
   const navigate = useNavigate();
@@ -78,6 +79,21 @@ const PlayGrid = () => {
     const data = await response.json();
     console.log("Reponse de l'API (Battle): ", data);
     setBattle(data);
+    console.log("Reponse de l'API (Historic): ", data.battle_log);
+    setHistoric(data.battle_log);
+  };
+
+  const displayHistoricBattle = () => {
+    return historic.map((key, e) => {
+      return (
+        <div key={key}>
+          <p>{e.round}</p>
+          <p>{e.winner}</p>
+          <p>{e.attacker_ships}</p>
+          <p>{e.defender_ships}</p>
+        </div>
+      );
+    });
   };
 
   const getFuel = async () => {
@@ -116,10 +132,6 @@ const PlayGrid = () => {
       }
     }
 
-    function confirmBattle() {
-      console.log("");
-    }
-
     return grid;
   };
 
@@ -154,6 +166,12 @@ const PlayGrid = () => {
     console.log("Positions : ", positions);
   }, [positions, setPositions]);
 
+  function confirmBattle() {
+    if (target == user) {
+      alert("Souhaitez vous engager vos vaisseaux");
+    }
+  }
+
   return (
     <>
       {localStorage.getItem("token") === null ? (
@@ -184,12 +202,7 @@ const PlayGrid = () => {
               <div className="cardattack">
                 <div className="card-body">
                   <h5 id="card-title">Historique de combat</h5>
-                  <p className="card-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Provident placeat numquam expedita enim veniam, fugiat
-                    laudantium dolores odio iure, reiciendis quas qui quis
-                    facere obcaecati aliquid doloribus autem odit excepturi!
-                  </p>
+                  <p className="card-text">{displayHistoricBattle()}</p>
                 </div>
               </div>
             </div>
@@ -202,10 +215,10 @@ const PlayGrid = () => {
                       <div className="grid">{renderGrid()}</div>
                       {selectedTarget && (
                         <div className="controls">
-                          <h2>
+                          <p>
                             Cible sélectionnée :{" "}
                             {`${selectedTarget.x},${selectedTarget.y}`}
-                          </h2>
+                          </p>
                           <p>Carburant disponible : en test</p>
                           <p></p>
                         </div>
