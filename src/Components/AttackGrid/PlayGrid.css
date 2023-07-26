@@ -1,8 +1,15 @@
-h1 {
+.bataille-title {
   color: aqua;
   border-radius: 10px;
   -webkit-text-stroke: #3c1053 0.6px;
 }
+.card-title {
+  color: green;
+}
+.card-title-combat {
+  color: aqua;
+}
+
 #play-gird .returnptodash {
   width: 6%;
   cursor: pointer;
@@ -72,15 +79,30 @@ p {
   -webkit-text-stroke: 0.6px aqua;
 }
 
-.card-attack {
-  background-color: black;
-  opacity: 80%;
-  color: green;
-}
-
 .card-histo-attac {
   background-color: black;
   opacity: 80%;
   color: green;
   height: 50%;
+}
+
+div#testbloc1 {
+  float: left;
+  background: black;
+  width: 200px;
+}
+div#testbloc2 {
+  background: black;
+}
+.bataille-title {
+  left: 1000%;
+}
+.cardattack {
+  background-color: black;
+  height: 100%;
+}
+
+.cardattack {
+  overflow: auto;
+  position: relative;
 }
