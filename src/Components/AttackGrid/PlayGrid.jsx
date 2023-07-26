@@ -134,26 +134,29 @@ const PlayGrid = () => {
   };
 
   const displayErrors = () => {
-    if (erreurs.errors == undefined && erreurs.message == undefined) {
-      return null;
+    if (erreurs) {
+      if (erreurs.errors == undefined && erreurs.message == undefined) {
+        return null;
+      }
+      if (erreurs.message != undefined) {
+        return Object.keys(erreurs).map((key) => {
+          return (
+            <ul key={key}>
+              <h4 className="titlecrea">{erreurs.message}</h4>
+            </ul>
+          );
+        });
+      } else {
+        return Object.keys(erreurs).map((key) => {
+          return (
+            <ul key={key}>
+              <h1>{erreurs.errors.name}</h1>
+            </ul>
+          );
+        });
+      }
     }
-    if (erreurs.message != undefined) {
-      return Object.keys(erreurs).map((key) => {
-        return (
-          <ul key={key}>
-            <h4 className="titlecrea">{erreurs.message}</h4>
-          </ul>
-        );
-      });
-    } else {
-      return Object.keys(erreurs).map((key) => {
-        return (
-          <ul key={key}>
-            <h1>{erreurs.errors.name}</h1>
-          </ul>
-        );
-      });
-    }
+    return null;
   };
 
   useEffect(() => {
