@@ -5,10 +5,10 @@ function ChantierCard(props) {
   const [currentImage, setCurrentImage] = useState(0);
 
   const images = [
-    "src/Components/img/chasseur5.png",
-    "src/Components/img/fregate2.png",
-    "src/Components/img/Croiseur6.png",
-    "src/Components/img/Destroyeur3.png",
+    "src/Components/img/chasseur5 copie.png",
+    "src/Components/img/fregate2 copie.png",
+    "src/Components/img/Croiseur6 copie.png",
+    "src/Components/img/Destroyeur3 copie.png",
   ];
 
   const handleNext = () => {

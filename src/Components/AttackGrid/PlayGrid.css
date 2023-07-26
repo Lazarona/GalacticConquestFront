@@ -17,10 +17,10 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(
-    10,
-    30px
+    50,
+    17px
   ); /* Ajuster la taille de chaque case */
-  grid-template-rows: repeat(10, 30px); /* Ajuster la taille de chaque case */
+  grid-template-rows: repeat(50, 17px); /* Ajuster la taille de chaque case */
   gap: 1px;
   margin: 20px auto;
   max-width: 300px;
@@ -28,8 +28,8 @@
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   background-color: black;
   display: flex;
   justify-content: center;

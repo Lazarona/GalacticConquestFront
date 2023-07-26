@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 .vaisseauConstruct {
-  filter: opacity(0.4);
+  filter: opacity(0.6);
   width: 40%;
 }
 .vaisseaux {

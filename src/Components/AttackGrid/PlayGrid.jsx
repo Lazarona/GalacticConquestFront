@@ -6,8 +6,9 @@ const PlayGrid = () => {
   const [selectedTarget, setSelectedTarget] = useState(null);
   const [positions, setPositions] = useState(null);
   const [battle, setBattle] = useState(null);
-
-  const gridSize = 10;
+  const [user, setUser] = useState(null);
+  const [fuel, setFuel] = useState(null);
+  const gridSize = 50;
 
   const navigate = useNavigate();
 
@@ -44,6 +45,21 @@ const PlayGrid = () => {
     setPositions(data.planets);
   };
 
+  const getUser = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/user", options);
+    const data = await response.json();
+    console.log("Reponse de l'API (UserId): ", data);
+    setUser(data);
+  };
+
   const getBattle = async () => {
     const options = {
       method: "GET",
@@ -60,6 +76,21 @@ const PlayGrid = () => {
     const data = await response.json();
     console.log("Reponse de l'API (Battle): ", data);
     setBattle(data);
+  };
+
+  const getFuel = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/resource", options);
+    const data = await response.json();
+    console.log("Reponse de l'API (Fuel): ", data);
+    setFuel(data);
   };
 
   const renderGrid = () => {
