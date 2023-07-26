@@ -224,13 +224,6 @@ const PlayGrid = () => {
               </div>
             </div>
           </div>
-          <footer>
-            <div className="d-flex justify-content-center">
-              <button className="sendsy" onClick={() => sendShips()}>
-                Envoyer les vaisseaux
-              </button>
-            </div>
-          </footer>
         </div>
       )}
     </>
