@@ -111,3 +111,16 @@ div#testbloc2 {
 .waitvert {
   color: green;
 }
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.blinking-text {
+  animation: blink 1s infinite;
+}
