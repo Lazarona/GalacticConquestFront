@@ -374,29 +374,29 @@ function Dashboard() {
     );
   };
 
-  useEffect(() => {
-    console.log("Resource : ", reponse);
-  }, [setReponse, reponse]);
+  // useEffect(() => {
+  //   console.log("Resource : ", reponse);
+  // }, [setReponse, reponse]);
 
-  useEffect(() => {
-    console.log("createdInfra : ", createdInfra);
-  }, [setCreatedInfra, createdInfra]);
+  // useEffect(() => {
+  //   console.log("createdInfra : ", createdInfra);
+  // }, [setCreatedInfra, createdInfra]);
 
-  useEffect(() => {
-    console.log("Erreurs : ", erreurs);
-  }, [setErreurs, erreurs]);
+  // useEffect(() => {
+  //   console.log("Erreurs : ", erreurs);
+  // }, [setErreurs, erreurs]);
 
-  useEffect(() => {
-    console.log("Planet : ", name);
-  }, [setName, name]);
+  // useEffect(() => {
+  //   console.log("Planet : ", name);
+  // }, [setName, name]);
 
-  useEffect(() => {
-    console.log("Username : ", username);
-  }, [setUsername, username]);
+  // useEffect(() => {
+  //   console.log("Username : ", username);
+  // }, [setUsername, username]);
 
-  useEffect(() => {
-    console.log("All Ships: ", allShips);
-  }, [setAllShips, allShips]);
+  // useEffect(() => {
+  //   console.log("All Ships: ", allShips);
+  // }, [setAllShips, allShips]);
 
   useEffect(() => {
     getResources();
