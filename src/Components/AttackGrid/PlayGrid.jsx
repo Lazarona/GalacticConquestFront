@@ -10,7 +10,7 @@ const PlayGrid = () => {
   const [userY, setUserY] = useState(null);
   const [historic, setHistoric] = useState(null);
   const [erreurs, setErreurs] = useState(null);
-
+  const [showSelectedText, setShowSelectedText] = useState(false);
   const gridSize = 50;
 
   const navigate = useNavigate();
@@ -170,6 +170,17 @@ const PlayGrid = () => {
     console.log("Positions : ", positions);
   }, [positions, setPositions]);
 
+  useEffect(() => {
+    setShowSelectedText(false); // Réinitialise le texte sélectionné
+  }, [selectedTarget]);
+
+  useEffect(() => {
+    if (selectedTarget) {
+      // Si une cible est sélectionnée, affiche le texte "Cible sélectionnée" lettre par lettre
+      setShowSelectedText(true);
+    }
+  }, [selectedTarget]);
+
   return (
     <>
       {localStorage.getItem("token") === null ? (
@@ -206,8 +217,13 @@ const PlayGrid = () => {
                     {selectedTarget && (
                       <div className="controls">
                         <p>
-                          Cible sélectionnée :{" "}
-                          {`${selectedTarget.x},${selectedTarget.y}`}
+                          {showSelectedText ? (
+                            <TextAppearing text="Cible sélectionnée : " />
+                          ) : (
+                            "Cible sélectionnée : "
+                          )}
+                          {selectedTarget &&
+                            `${selectedTarget.x},${selectedTarget.y}`}
                         </p>
                         <p>{displayErrors()}</p>
                         <p></p>
@@ -231,6 +247,26 @@ const PlayGrid = () => {
       )}
     </>
   );
+};
+const TextAppearing = ({ text }) => {
+  const [visibleText, setVisibleText] = useState("");
+
+  useEffect(() => {
+    let currentIndex = 0;
+
+    const interval = setInterval(() => {
+      if (currentIndex <= text.length) {
+        setVisibleText(text.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 100); // Vous pouvez ajuster la vitesse d'apparition des lettres en modifiant cette valeur
+
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return <span>{visibleText}</span>;
 };
 
 export default PlayGrid;
