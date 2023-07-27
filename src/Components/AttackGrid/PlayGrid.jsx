@@ -127,7 +127,9 @@ const PlayGrid = () => {
     } else {
       return (
         <div>
-          <p>Waiting for battle</p>
+          <p className="waitvert">
+            <marquee>Waiting for battle...</marquee>
+          </p>
         </div>
       );
     }
@@ -194,32 +196,32 @@ const PlayGrid = () => {
 
           <div className="row">
             <div className="col-sm-6">
+              {" "}
+              <div className="cardattack2">
+                <h5 className="card-title">Combat</h5>
+                <p className="card-text">
+                  <div>
+                    <div className="grid">{renderGrid()}</div>
+                    {selectedTarget && (
+                      <div className="controls">
+                        <p>
+                          Cible sélectionnée :{" "}
+                          {`${selectedTarget.x},${selectedTarget.y}`}
+                        </p>
+                        <p>{displayErrors()}</p>
+                        <p></p>
+                      </div>
+                    )}
+                  </div>
+                </p>
+              </div>
+            </div>
+            <div className="col-sm-6">
+              {" "}
               <div className="cardattack">
                 <div className="card-body">
                   <h5 id="card-title">Historique de combat</h5>
                   <p className="card-text">{displayHistoricBattle()}</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div className="cardattack2">
-                <div className="card-body">
-                  <h5 className="card-title">Combat</h5>
-                  <p className="card-text">
-                    <div>
-                      <div className="grid">{renderGrid()}</div>
-                      {selectedTarget && (
-                        <div className="controls">
-                          <p>
-                            Cible sélectionnée :{" "}
-                            {`${selectedTarget.x},${selectedTarget.y}`}
-                          </p>
-                          <p>{displayErrors()}</p>
-                          <p></p>
-                        </div>
-                      )}
-                    </div>
-                  </p>
                 </div>
               </div>
             </div>
