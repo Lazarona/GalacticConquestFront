@@ -128,7 +128,9 @@ const PlayGrid = () => {
       return (
         <div>
           <p className="waitvert">
-            <marquee>Waiting for battle...</marquee>
+            <marquee width="300" scrollamount="300" scrollday="800" loop="7">
+              Waiting for battle...
+            </marquee>
           </p>
         </div>
       );
@@ -158,6 +160,7 @@ const PlayGrid = () => {
         });
       }
     }
+
     return null;
   };
 
