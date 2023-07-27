@@ -30,7 +30,7 @@ function Dashboard() {
   };
 
   const navPlay = () => {
-    navigate("/play");
+    navigate("/attack");
   };
 
   const getResources = async () => {
@@ -406,13 +406,13 @@ function Dashboard() {
     console.log("All Ships : ", allShips);
   }, []);
 
-  useEffect(() => {
-    const eachHour = setInterval(() => {
-      getResources();
-      getAllShips();
-    }, 60000);
-    return () => clearInterval(eachHour);
-  }, []);
+  // useEffect(() => {
+  //   const eachHour = setInterval(() => {
+  //     getResources();
+  //     getAllShips();
+  //   }, 60000);
+  //   return () => clearInterval(eachHour);
+  // }, []);
 
   return (
     <>

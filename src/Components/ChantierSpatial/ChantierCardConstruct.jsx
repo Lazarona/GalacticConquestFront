@@ -28,9 +28,9 @@ function ChantierCardConstruct(props) {
     const resData = await reqData.json();
     console.log("Data (ShipConstruct) : ", resData);
     setConstructedShip(resData.ship);
-    if (constructedShip.claimed == 1) {
-      window.location.reload();
-    }
+    // if (constructedShip.claimed == 1) {
+    //   window.location.reload();
+    // }
   };
 
   const setImageShipConstructed = () => {
@@ -122,13 +122,6 @@ function ChantierCardConstruct(props) {
 
   useEffect(() => {
     getConstructedShip();
-  }, []);
-
-  useEffect(() => {
-    const eachHour = setInterval(() => {
-      getConstructedShip();
-    }, 60000);
-    return () => clearInterval(eachHour);
   }, []);
 
   useEffect(() => {
