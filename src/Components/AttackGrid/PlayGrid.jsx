@@ -10,8 +10,16 @@ const PlayGrid = () => {
   const [userY, setUserY] = useState(null);
   const [historic, setHistoric] = useState(null);
   const [erreurs, setErreurs] = useState(null);
+  const [showSelectedText, setShowSelectedText] = useState(false);
 
   const gridSize = 50;
+
+  const positionsArray = Object.values(positions || {}).map((planet) => ({
+    x: planet.position_x,
+    y: planet.position_y,
+    user_id: planet.user_id,
+    ...planet,
+  }));
 
   const navigate = useNavigate();
 
@@ -53,6 +61,9 @@ const PlayGrid = () => {
   };
 
   const getBattle = async () => {
+    const defenderID = positionsArray.find((planet) => planet.user_id);
+    const userID = defenderID.user_id;
+    console.log("Defender ID :", defenderID);
     const options = {
       method: "POST",
       headers: {
@@ -62,7 +73,7 @@ const PlayGrid = () => {
       },
     };
     const response = await fetch(
-      `http://127.0.0.1:8000/api/attack/${null}`,
+      `http://127.0.0.1:8000/api/attack/${userID}`,
       options
     );
     const data = await response.json();
@@ -86,7 +97,10 @@ const PlayGrid = () => {
             ? "cell target"
             : "cell";
 
-        if (x == userX && y == userY) {
+        const planet = positionsArray.find(
+          (planet) => planet.x === x && planet.y === y
+        );
+        if (planet) {
           grid.push(
             <div
               key={`${x}-${y}`}
@@ -127,9 +141,9 @@ const PlayGrid = () => {
     } else {
       return (
         <div>
-          <p className="waitvert">
+          <div className="waitvert">
             <div className="blinking-text">Waiting for battle...</div>
-          </p>
+          </div>
         </div>
       );
     }
@@ -144,7 +158,7 @@ const PlayGrid = () => {
         return Object.keys(erreurs).map((key) => {
           return (
             <ul key={key}>
-              <h4 className="titlecrea">{erreurs.message}</h4>
+              <p>{erreurs.message}</p>
             </ul>
           );
         });
@@ -164,11 +178,26 @@ const PlayGrid = () => {
 
   useEffect(() => {
     getPositions();
+    console.log(
+      "defender ID : ",
+      positionsArray.find((planet) => planet.id)
+    );
   }, []);
 
   useEffect(() => {
-    console.log("Positions : ", positions);
+    console.log("Positions : ", positionsArray);
   }, [positions, setPositions]);
+
+  useEffect(() => {
+    setShowSelectedText(false); // Réinitialise le texte sélectionné
+  }, [selectedTarget]);
+
+  useEffect(() => {
+    if (selectedTarget) {
+      // Si une cible est sélectionnée, affiche le texte "Cible sélectionnée" lettre par lettre
+      setShowSelectedText(true);
+    }
+  }, [selectedTarget]);
 
   return (
     <>
@@ -200,29 +229,35 @@ const PlayGrid = () => {
               {" "}
               <div className="cardattack2">
                 <h5 className="card-title">Combat</h5>
-                <p className="card-text">
+                <div className="card-text">
                   <div>
                     <div className="grid">{renderGrid()}</div>
                     {selectedTarget && (
                       <div className="controls">
                         <p>
-                          Cible sélectionnée :{" "}
-                          {`${selectedTarget.x},${selectedTarget.y}`}
+                          {showSelectedText ? (
+                            <TextAppearing text="Cible sélectionnée : " />
+                          ) : (
+                            "Cible sélectionnée : "
+                          )}
+                          {selectedTarget &&
+                            `${selectedTarget.x},${selectedTarget.y}`}
                         </p>
-                        <p>{displayErrors()}</p>
+                        {/* <p>{displayErrors()}</p> */}
                         <p></p>
                       </div>
                     )}
                   </div>
-                </p>
+                </div>
               </div>
             </div>
             <div className="col-sm-6">
               {" "}
               <div className="cardattack">
                 <div className="card-body">
+                  <div className="card-text">{displayErrors()}</div>
                   <h5 id="card-title">Historique de combat</h5>
-                  <p className="card-text">{displayHistoricBattle()}</p>
+                  <div className="card-text">{displayHistoricBattle()}</div>
                 </div>
               </div>
             </div>
@@ -231,6 +266,26 @@ const PlayGrid = () => {
       )}
     </>
   );
+};
+const TextAppearing = ({ text }) => {
+  const [visibleText, setVisibleText] = useState("");
+
+  useEffect(() => {
+    let currentIndex = 0;
+
+    const interval = setInterval(() => {
+      if (currentIndex <= text.length) {
+        setVisibleText(text.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 100); // Vous pouvez ajuster la vitesse d'apparition des lettres en modifiant cette valeur
+
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return <span>{visibleText}</span>;
 };
 
 export default PlayGrid;

@@ -40,6 +40,19 @@
   opacity: 80%;
 }
 
+.cellUser {
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
+  border: 1px red solid;
+  opacity: 80%;
+}
+
 .target {
   background-color: aquamarine;
 }

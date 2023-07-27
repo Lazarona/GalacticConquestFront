@@ -8,11 +8,11 @@ import Dashboard from "../Components/Dashboard/Dashboard";
 import Passwordforget from "../Components/Auth/Passwordforget/Passwordforget";
 import { createContext, useState } from "react";
 import Infrastructures from "../Components/Infrastructures/Infrastructures";
-import AttackGrid from "../Components/AttackGrid/AttackGrid";
 import PlayGrid from "../Components/AttackGrid/PlayGrid";
 import ChantierSpatial from "../Components/ChantierSpatial/ChantierSpatial";
 import Victory from "../Components/Victory/Victory";
 import ResetPassword from "../Components/Auth/ResetPassword/ResetPassword";
+import Battle from "../Components/AttackGrid/Battle";
 
 export const AuthContext = createContext();
 
@@ -31,7 +31,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/passwordforget" element={<Passwordforget />} />
             <Route path="/infrastructures" element={<Infrastructures />} />
-            <Route path="/attack" element={<AttackGrid />} />
+            <Route path="/attack" element={<Battle />} />
             <Route path="/play" element={<PlayGrid />} />
             <Route path="/chantierspatial" element={<ChantierSpatial />} />
             <Route path="/victory" element={<Victory />} />

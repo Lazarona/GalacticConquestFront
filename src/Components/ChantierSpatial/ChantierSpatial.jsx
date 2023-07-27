@@ -68,29 +68,37 @@ function ChantierSpatial() {
   };
 
   const displayShipyards = () => {
-    return shipyards.map((e, index) => {
-      {
-        return e.construction_state == 0 ? (
-          <ChantierCard
-            key={index}
-            index={index + 1}
-            constructHunter={() => buildHunter(e)}
-            constructFrigate={() => buildFrigate(e)}
-            constructCruiser={() => buildCruiser(e)}
-            constructDestroyer={() => buildDestroyer(e)}
-            message={erreurs}
-          />
-        ) : (
-          <ChantierCardConstruct
-            key={index}
-            index={index + 1}
-            idShipYard={e.id}
-            claim={() => claimShip(e)}
-            message={erreurs}
-          />
-        );
-      }
-    });
+    if (shipyards) {
+      return shipyards.map((e, index) => {
+        {
+          return e.construction_state == 0 ? (
+            <ChantierCard
+              key={index}
+              index={index + 1}
+              constructHunter={() => buildHunter(e)}
+              constructFrigate={() => buildFrigate(e)}
+              constructCruiser={() => buildCruiser(e)}
+              constructDestroyer={() => buildDestroyer(e)}
+              message={erreurs}
+            />
+          ) : (
+            <ChantierCardConstruct
+              key={index}
+              index={index + 1}
+              idShipYard={e.id}
+              claim={() => claimShip(e)}
+              message={erreurs}
+            />
+          );
+        }
+      });
+    } else {
+      return (
+        <div>
+          <p>Loading...</p>
+        </div>
+      );
+    }
   };
 
   const buildHunter = async (e) => {
@@ -216,6 +224,7 @@ function ChantierSpatial() {
       setErreurs(donnees);
     } else {
       setErreurs("");
+      getShipyards();
     }
   };
 
@@ -278,9 +287,9 @@ function ChantierSpatial() {
     identifiant();
   }, []);
 
-  useEffect(() => {
-    console.log("Shipyards : ", shipyards);
-  }, [shipyards, setShipyards]);
+  // useEffect(() => {
+  //   console.log("Shipyards : ", shipyards);
+  // }, [shipyards, setShipyards]);
   // useEffect(() => {
   //   console.log("Hunter : ", hunter);
   // }, [hunter, setHunter]);
@@ -292,18 +301,18 @@ function ChantierSpatial() {
     console.log("Username : ", username);
   }, [setUsername, username]);
 
-  useEffect(() => {
-    getShipyards();
-  }, [destroyer]);
-  useEffect(() => {
-    getShipyards();
-  }, [cruiser]);
-  useEffect(() => {
-    getShipyards();
-  }, [hunter]);
-  useEffect(() => {
-    getShipyards();
-  }, [frigate]);
+  // useEffect(() => {
+  //   getShipyards();
+  // }, [destroyer]);
+  // useEffect(() => {
+  //   getShipyards();
+  // }, [cruiser]);
+  // useEffect(() => {
+  //   getShipyards();
+  // }, [hunter]);
+  // useEffect(() => {
+  //   getShipyards();
+  // }, [frigate]);
   useEffect(() => {
     getShipyards();
   }, [erreurs]);
