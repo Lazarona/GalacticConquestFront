@@ -49,7 +49,7 @@ export default function Battle() {
             } else {
               return (
                 <li key={e.id}>
-                  Planète : {e.name} Position : {e.position_x} {e.position_y}{" "}
+                  Planète : {e.name} Position :{e.position_x} x {e.position_y}{" "}
                   <button onClick={() => getBattle(e.user_id)}>Attack</button>
                 </li>
               );
@@ -166,7 +166,16 @@ export default function Battle() {
         return null;
       }
       if (erreurs.message != undefined) {
-        return <p>{erreurs.message}</p>;
+        if (erreurs.fuelConsumed == undefined) {
+          return <p>{erreurs.message}</p>;
+        } else {
+          return (
+            <p>
+              {erreurs.message} You need {erreurs.fuelConsumed} fuel to travel{" "}
+              {erreurs.distance} light years.
+            </p>
+          );
+        }
       } else {
         return Object.keys(erreurs).map((key) => {
           return (
