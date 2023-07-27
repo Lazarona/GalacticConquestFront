@@ -5,25 +5,28 @@ const OtherUserProfile = ({ userId }) => {
   const [user, setUser] = useState(1);
 
   useEffect(() => {
-    //  récupérer les informations de l'utilisateur spécifié par l'ID
+    // récupérer les informations de l'utilisateur spécifié par l'ID
     const fetchUser = async () => {
       try {
         // Appel à l'API pour récupérer les informations de l'utilisateur avec l'ID spécifié
-        const response = await get(
-          `http://127.0.0.1:8000/api/Victory/planet${userId}`,
-          {
-            //  token d'authentification dans les headers pour autoriser l'accès à l'API
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const response = await fetch(``, {
+          // token d'authentification dans les headers pour autoriser l'accès à l'API
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        if (!response.ok) {
+          // Handle the error if the response is not ok
+          throw new Error("Network response was not ok");
+        }
 
         // Mettre à jour l'état de l'utilisateur avec les données récupérées de l'API
-        setUser(response.data);
+        const userData = await response.json();
+        setUser(userData.data);
       } catch (error) {
-        //  affichez l'erreur dans la console
+        // affichez l'erreur dans la console
         console.error(
           "Erreur lors de la récupération des informations de l'utilisateur",
           error
@@ -31,11 +34,11 @@ const OtherUserProfile = ({ userId }) => {
       }
     };
 
-    //  récupérer les informations de l'utilisateur
+    // récupérer les informations de l'utilisateur
     fetchUser();
-  }, [userId]); //  userId il sera déclenché à chaque fois que userId change
+  }, [userId]); // userId il sera déclenché à chaque fois que userId change
 
-  // Si l'utilisateur est en cours de récupération, affichez un message de chargement
+  // If the user is being retrieved, display a loading message
   if (!user) {
     return <div className="Victory">Chargement en cours...</div>;
   }
@@ -51,7 +54,7 @@ const OtherUserProfile = ({ userId }) => {
     const pourcentageRecupere = 0.1;
 
     //   Recupère l'ID de l'autre planète
-    const [id, setId] = useState();
+    // const [id, setId] = useState();
 
     const getResources = async () => {
       const options = {
