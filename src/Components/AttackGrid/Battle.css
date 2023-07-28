@@ -3,7 +3,7 @@
   cursor: pointer;
 }
 #fond-battle {
-  background-image: url(src\Components\img\crossDash.png.png);
+  background-image: url(src/Components/background/bg9.jpg);
   height: 100vh;
 }
 
@@ -17,13 +17,9 @@
 .planet-position {
   color: white;
 }
-
-/*TEST */
-.click-coordinates {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: white;
-  padding: 5px;
-  border: 1px solid black;
+.img-fluid {
+  opacity: 60%;
+  height: 100%;
+  width: 100%;
+  cursor: crosshair;
 }
