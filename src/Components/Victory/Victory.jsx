@@ -1,6 +1,6 @@
 import "./Victory.css";
 import React, { useState, useEffect } from "react";
-// import "src/app/App.jsx";
+
 const OtherUserProfile = ({ userId }) => {
   const [user, setUser] = useState(true);
   // État local pour stocker le nombre de ressources du joueur

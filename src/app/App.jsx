@@ -13,7 +13,7 @@ import ChantierSpatial from "../Components/ChantierSpatial/ChantierSpatial";
 import Victory from "../Components/Victory/Victory";
 import ResetPassword from "../Components/Auth/ResetPassword/ResetPassword";
 import Battle from "../Components/AttackGrid/Battle";
-import RangKing from "../Components/Auth/Rangking/Rangking";
+import Ranking from "../Components/Auth/Ranking/Ranking";
 export const AuthContext = createContext();
 
 function App() {
@@ -37,6 +37,8 @@ function App() {
             <Route path="/victory" element={<Victory />} />
             <Route path="/rangKing" element={<RangKing />} />
             <Route path="/resetpassword" element={<ResetPassword />} />
+            <Route path="/resetpassword" element={<ResetPassword />} />
+            <Route path="/ranking" element={<Ranking />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>

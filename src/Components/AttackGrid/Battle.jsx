@@ -214,6 +214,25 @@ export default function Battle() {
     console.log("Positions : ", positions);
   }, [positions, setPositions]);
 
+  //////////////// POSITION
+  const handleImageClick = (event) => {
+    const imageRect = event.target.getBoundingClientRect();
+    const x = event.clientX - imageRect.left;
+    const y = event.clientY - imageRect.top;
+
+    if (x >= 0 && x <= 999 && y >= 0 && y <= 999) {
+      // Afficher les coordonnées uniquement si elles sont dans les limites de l'image
+      setClickCoordinates({ x, y });
+      setShowCoordinates(true);
+
+      setTimeout(() => {
+        setShowCoordinates(false);
+      }, 3000); //3secondes
+    } else {
+      setShowCoordinates(false);
+    }
+  };
+
   return (
     <>
       <div id="fond-battle">
@@ -241,6 +260,28 @@ export default function Battle() {
             <div>{displayOpponents()}</div>
             <div>{displayErrors()}</div>
             <div>{displayHistoricBattle()}</div>
+          </div>
+        )}
+        <img
+          src="src\Components\img\GBattle.jpg"
+          class="img-fluid"
+          alt="Responsive image"
+          onClick={handleImageClick}
+        />
+        {/* Afficher les coordonnées à côté de la souris */}
+        {showCoordinates && (
+          <div
+            style={{
+              position: "fixed",
+              top: clickCoordinates.y,
+              left: clickCoordinates.x + 10, // Décalage pour éviter le chevauchement avec la souris
+              backgroundColor: "white",
+              padding: "5px",
+              border: "1px solid black",
+            }}
+          >
+            Coordonnées X: {clickCoordinates.x}, Coordonnées Y:{" "}
+            {clickCoordinates.y}
           </div>
         )}
       </div>
