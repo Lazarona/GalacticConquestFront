@@ -35,11 +35,8 @@ function App() {
             <Route path="/play" element={<PlayGrid />} />
             <Route path="/chantierspatial" element={<ChantierSpatial />} />
             <Route path="/victory" element={<Victory />} />
-<<<<<<< HEAD
             <Route path="/rangKing" element={<RangKing />} />
-=======
             <Route path="/resetpassword" element={<ResetPassword />} />
->>>>>>> a5de74cb33e280632c048fcbbb08a5efe8b4c9ac
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
