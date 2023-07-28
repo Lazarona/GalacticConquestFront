@@ -63,7 +63,7 @@ export default function Ranking() {
               return (
                 <h1 key={key}>
                   <li>
-                    {e.username} 🏆 : {e.victories}
+                    🥇 {e.username} 🏆 : {e.victories}
                   </li>
                 </h1>
               );
@@ -72,7 +72,7 @@ export default function Ranking() {
               return (
                 <h2 key={key}>
                   <li>
-                    {e.username} 🏆 : {e.victories}
+                    🥈 {e.username} 🏆 : {e.victories}
                   </li>
                 </h2>
               );
@@ -81,7 +81,7 @@ export default function Ranking() {
               return (
                 <h4 key={key}>
                   <li>
-                    {e.username} 🏆 : {e.victories}
+                    🥉 {e.username} 🏆 : {e.victories}
                   </li>
                 </h4>
               );
