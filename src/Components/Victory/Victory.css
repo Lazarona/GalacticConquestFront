@@ -1,6 +1,24 @@
-.Victory {
+.victory {
   background-image: url(src/Components/img/TYMKqZ.webp);
   height: 100vh;
   background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+}
+.coupe {
+  display: flex;
+  flex-direction: row;
   color: aqua;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-size-adjust: 55px;
+}
+.coupee {
+  height: 15vh;
+  width: auto;
+}
+.tt {
+  color: gold;
 }
