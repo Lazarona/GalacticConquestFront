@@ -2,7 +2,7 @@ import "./Victory.css";
 import React, { useState, useEffect } from "react";
 
 const OtherUserProfile = ({ userId }) => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   // État local pour stocker le nombre de ressources du joueur
   const [ressources, setRessources] = useState({});
 
@@ -24,6 +24,9 @@ const OtherUserProfile = ({ userId }) => {
             Authorization: `bearer ${localStorage.getItem("token")}`,
           },
         });
+        useEffect(() => {
+          console.log("test", ressources);
+        }, [ressources]);
 
         if (!response.ok) {
           // Handle the error if the response is not ok
@@ -35,10 +38,10 @@ const OtherUserProfile = ({ userId }) => {
         setUser(userData.data);
       } catch (error) {
         // affichez l'erreur dans la console
-        console.error(
-          "Erreur lors de la récupération des informations de l'utilisateur",
-          error
-        );
+        // console.error(
+        //   "Erreur lors de la récupération des informations de l'utilisateur",
+        //   error
+        // );
       }
     };
 
@@ -48,7 +51,11 @@ const OtherUserProfile = ({ userId }) => {
 
   // If the user is being retrieved, display a loading message
   if (!user) {
-    return <div className="Victory">Chargement en cours...</div>;
+    return (
+      <div className="defaite">
+        <img src="src/Components/img/downloadfile.png" className="defaitee" />
+      </div>
+    );
   }
   useEffect(() => {
     console.log("test", ressources);
@@ -121,19 +128,19 @@ const OtherUserProfile = ({ userId }) => {
   };
 
   // Fonction pour récupérer les ressources en cas de victoire
-  const recupererRessources = () => {
-    if (victoire) {
-      // Si le joueur a gagné, on calcule le nombre de ressources à récupérer
-      const ressourcesRecuperees = ressources.map((item) => {
-        const { ore, fuel, energy } = item;
-        return {
-          ore: Math.floor(ore * pourcentageRecupere),
-          fuel: Math.floor(fuel * pourcentageRecupere),
-          energy: Math.floor(energy * pourcentageRecupere),
-        };
-      });
-    }
-  };
+  // const recupererRessources = () => {
+  //   if (victoire) {
+  //     // Si le joueur a gagné, on calcule le nombre de ressources à récupérer
+  //     const ressourcesRecuperees = ressources.map((item) => {
+  //       const { ore, fuel, energy } = item;
+  //       return {
+  //         ore: Math.floor(ore * pourcentageRecupere),
+  //         fuel: Math.floor(fuel * pourcentageRecupere),
+  //         energy: Math.floor(energy * pourcentageRecupere),
+  //       };
+  //     });
+  //   }
+  // };
   useEffect(() => {
     getResources();
   }, []);

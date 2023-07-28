@@ -22,3 +22,24 @@
 .tt {
   color: gold;
 }
+.ttt {
+  color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-size-adjust: 55px;
+}
+.defaite {
+  background-image: url(src/Components/img/TYMKqZ.webp);
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.defaitee {
+  height: 25vh;
+  width: auto;
+}
