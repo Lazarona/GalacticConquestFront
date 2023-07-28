@@ -1,13 +1,95 @@
 import "./ResetPassword.css";
-import { useNavigate } from "react-router-dom";
-import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
 
 function ResetPassword() {
+  const [erreurs, setErreurs] = useState({});
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    console.log(token);
+  }, []);
+
   const navigate = useNavigate();
+
+  const token = toString(useParams());
 
   const navHome = () => {
     navigate("/");
+  };
+
+  const redirectProfil = () => {
+    let path = "/dashboard";
+    navigate(path);
+  };
+
+  function sendPW(e) {
+    e.preventDefault();
+    sendPassword();
+  }
+
+  const sendPassword = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        password: password,
+        token: token,
+      }),
+    };
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/password/reset`,
+      options
+    );
+    const donnees = await response.json();
+    console.log("Reponse Backend : ", donnees);
+    if (response.status == 401) {
+      setErreurs(donnees);
+    } else {
+      setErreurs(donnees);
+      login();
+    }
+  };
+
+  const login = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/login", options);
+    const donnees = await response.json();
+    console.log("Reponse de l'API : ", donnees);
+    setErreurs(donnees);
+    if (response.status == 400 || response.status == 401) {
+      displayErrors();
+    } else {
+      // Si la requête est un succès, redirige l'utilisateur vers le choix de planete
+      getToken(donnees.token);
+      redirectProfil();
+    }
+  };
+
+  const displayErrors = () => {
+    if (erreurs.errors == undefined && erreurs.message == undefined) {
+      return null;
+    }
+    if (erreurs.errors) {
+      return Object.keys(erreurs).map((key) => {
+        return <p key={key}>{erreurs.errors.email}</p>;
+      });
+    }
+    if (erreurs.message) {
+      return <p>{erreurs.message}</p>;
+    }
   };
 
   return (
@@ -34,14 +116,19 @@ function ResetPassword() {
 
             <h3>Réinitialiser le mot de passe:</h3>
 
-            <form>
+            <div>{displayErrors()}</div>
+
+            <form onSubmit={sendPW}>
               <MDBInput
                 className="champs bg-dark"
-                type="mail"
+                type="text"
                 wrapperClass="mb-2"
                 rows={4}
                 label="Nouveau mot de passe"
                 name="Nouveau mot de passe"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
 
               <div className="d-flex justify-content-center">

@@ -73,7 +73,7 @@ function Register() {
     return Object.keys(erreurs).map((key) => {
       return (
         <ul key={key}>
-          <p>{erreurs.errors.email}</p>
+          <p>{erreurs.errors}</p>
           <p>{erreurs.errors.username}</p>
           <p>{erreurs.errors.first_name}</p>
           <p>{erreurs.errors.last_name}</p>
@@ -216,11 +216,7 @@ function Register() {
             />
 
             <div className="d-flex justify-content-center">
-              <MDBBtn
-                type="submit"
-                className="boutonr mt-2 px-5"
-    
-              >
+              <MDBBtn type="submit" className="boutonr mt-2 px-5">
                 Play
               </MDBBtn>
             </div>

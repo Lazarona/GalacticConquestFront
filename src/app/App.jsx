@@ -35,7 +35,7 @@ function App() {
             <Route path="/play" element={<PlayGrid />} />
             <Route path="/chantierspatial" element={<ChantierSpatial />} />
             <Route path="/victory" element={<Victory />} />
-            <Route path="/resetpassword" element={<ResetPassword />} />
+            <Route path="/ResetPassword/:token" element={<ResetPassword />} />
             <Route path="/ranking" element={<Ranking />} />
           </Routes>
         </BrowserRouter>

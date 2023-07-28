@@ -7,7 +7,7 @@ import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [erreurs, setErreurs] = useState({});
+  const [erreurs, setErreurs] = useState(undefined);
 
   const navigate = useNavigate();
 
@@ -41,26 +41,30 @@ function Login() {
   };
 
   const displayErrors = () => {
-    if (erreurs.errors == undefined && erreurs.message == undefined) {
-      return null;
-    }
-    if (erreurs.message != undefined) {
-      return Object.keys(erreurs).map((key) => {
-        return (
-          <ul key={key}>
-            <h4 className="titlecrea">{erreurs.message}</h4>
-          </ul>
-        );
-      });
+    if (erreurs) {
+      if (erreurs.errors == undefined && erreurs.message == undefined) {
+        return null;
+      }
+      if (erreurs.message != undefined) {
+        return Object.keys(erreurs).map((key) => {
+          return (
+            <ul key={key}>
+              <h4 className="titlecrea">{erreurs.message}</h4>
+            </ul>
+          );
+        });
+      } else {
+        return Object.keys(erreurs).map((key) => {
+          return (
+            <ul key={key}>
+              <h4>{erreurs.errors.username}</h4>
+              <h4>{erreurs.errors.password}</h4>
+            </ul>
+          );
+        });
+      }
     } else {
-      return Object.keys(erreurs).map((key) => {
-        return (
-          <ul key={key}>
-            <h4>{erreurs.errors.username}</h4>
-            <h4>{erreurs.errors.password}</h4>
-          </ul>
-        );
-      });
+      return null;
     }
   };
   // Fonction utilisé pour rediriger l'utilisateur vers sa page de profil
