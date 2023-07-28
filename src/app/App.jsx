@@ -12,7 +12,7 @@ import PlayGrid from "../Components/AttackGrid/PlayGrid";
 import ChantierSpatial from "../Components/ChantierSpatial/ChantierSpatial";
 import Victory from "../Components/Victory/Victory";
 import Battle from "../Components/AttackGrid/Battle";
-
+import RangKing from "../Components/Auth/Rangking/Rangking";
 export const AuthContext = createContext();
 
 function App() {
@@ -34,6 +34,7 @@ function App() {
             <Route path="/play" element={<PlayGrid />} />
             <Route path="/chantierspatial" element={<ChantierSpatial />} />
             <Route path="/victory" element={<Victory />} />
+            <Route path="/rangKing" element={<RangKing />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
