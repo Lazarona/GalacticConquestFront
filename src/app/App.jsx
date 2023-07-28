@@ -11,6 +11,7 @@ import Infrastructures from "../Components/Infrastructures/Infrastructures";
 import PlayGrid from "../Components/AttackGrid/PlayGrid";
 import ChantierSpatial from "../Components/ChantierSpatial/ChantierSpatial";
 import Victory from "../Components/Victory/Victory";
+import ResetPassword from "../Components/Auth/ResetPassword/ResetPassword";
 import Battle from "../Components/AttackGrid/Battle";
 import RangKing from "../Components/Auth/Rangking/Rangking";
 export const AuthContext = createContext();
@@ -34,7 +35,11 @@ function App() {
             <Route path="/play" element={<PlayGrid />} />
             <Route path="/chantierspatial" element={<ChantierSpatial />} />
             <Route path="/victory" element={<Victory />} />
+<<<<<<< HEAD
             <Route path="/rangKing" element={<RangKing />} />
+=======
+            <Route path="/resetpassword" element={<ResetPassword />} />
+>>>>>>> a5de74cb33e280632c048fcbbb08a5efe8b4c9ac
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>

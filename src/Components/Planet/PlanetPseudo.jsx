@@ -91,13 +91,7 @@ function PlanetPseudo() {
       return null;
     }
     if (erreurs.message != undefined) {
-      return Object.keys(erreurs).map((key) => {
-        return (
-          <ul key={key}>
-            <p>{erreurs.message}</p>
-          </ul>
-        );
-      });
+      return <p>{erreurs.message}</p>;
     } else {
       return Object.keys(erreurs).map((key) => {
         return (
