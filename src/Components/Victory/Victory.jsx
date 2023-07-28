@@ -1,8 +1,8 @@
 import "./Victory.css";
 import React, { useState, useEffect } from "react";
-
+// import "src/app/App.jsx";
 const OtherUserProfile = ({ userId }) => {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
   // État local pour stocker le nombre de ressources du joueur
   const [ressources, setRessources] = useState({});
 
@@ -44,11 +44,35 @@ const OtherUserProfile = ({ userId }) => {
         // );
       }
     };
-
+    const displayHistoricBattle = () => {
+      if (historic) {
+        battle.gainedOre, battle.gainedFuel;
+      }
+      return (
+        <div>
+          <p>Minerais gagnés : {battle.gainedOre}</p>
+          <p>Fuel gagné : {battle.gainedFuel}</p>
+        </div>
+      );
+    };
     // récupérer les informations de l'utilisateur
     fetchUser();
   }, [userId]); // userId il sera déclenché à chaque fois que userId change
-
+  // Calculate and return the stolen resources based on the victory status
+  const calculateStolenResources = () => {
+    if (ressources && victoire) {
+      const ressourcesRecuperees = Object.keys(ressources).map((key) => {
+        const { ore, fuel, energy } = ressources[key];
+        return {
+          ore: Math.floor(ore * pourcentageRecupere),
+          fuel: Math.floor(fuel * pourcentageRecupere),
+          energy: Math.floor(energy * pourcentageRecupere),
+        };
+      });
+      return ressourcesRecuperees;
+    }
+    return null;
+  };
   // If the user is being retrieved, display a loading message
   if (!user) {
     return (
@@ -122,25 +146,25 @@ const OtherUserProfile = ({ userId }) => {
     }
   };
 
-  //  clic sur le bouton "Victoire !"
+  // clic sur le bouton "Victoire !"
   const handleVictoire = () => {
     setVictoire(true); // Définit l'état de victoire à true
+
+    // Si le joueur a gagné, on calcule le nombre de ressources à récupérer
+    if (ressources && victoire) {
+      const ressourcesRecuperees = Object.keys(ressources).map((key) => {
+        const { ore, fuel, energy } = ressources[key];
+        return {
+          ore: Math.floor(ore * pourcentageRecupere),
+          fuel: Math.floor(fuel * pourcentageRecupere),
+          energy: Math.floor(energy * pourcentageRecupere),
+        };
+      });
+      // Use the ressourcesRecuperees to update the state for the stolen resources
+      setRessources(ressourcesRecuperees);
+    }
   };
 
-  // Fonction pour récupérer les ressources en cas de victoire
-  // const recupererRessources = () => {
-  //   if (victoire) {
-  //     // Si le joueur a gagné, on calcule le nombre de ressources à récupérer
-  //     const ressourcesRecuperees = ressources.map((item) => {
-  //       const { ore, fuel, energy } = item;
-  //       return {
-  //         ore: Math.floor(ore * pourcentageRecupere),
-  //         fuel: Math.floor(fuel * pourcentageRecupere),
-  //         energy: Math.floor(energy * pourcentageRecupere),
-  //       };
-  //     });
-  //   }
-  // };
   useEffect(() => {
     getResources();
   }, []);
@@ -168,13 +192,13 @@ const OtherUserProfile = ({ userId }) => {
       <h3 className="tt">Ressources récupérées :</h3>
       <ul>
         <li>
-          <p className="tt">ore : </p>
+          <p className="tt">ore : {calculateStolenResources()?.ore} </p>
         </li>
         <li>
-          <p className="tt">fuel : </p>
+          <p className="tt">fuel : {calculateStolenResources()?.fuel} </p>
         </li>
         <li>
-          <p className="tt">energy : </p>
+          <p className="tt">energy : {calculateStolenResources()?.energy} </p>
         </li>
       </ul>
     </div>
