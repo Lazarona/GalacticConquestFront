@@ -2,3 +2,28 @@
   width: 6%;
   cursor: pointer;
 }
+#fond-battle {
+  background-image: url(src\Components\img\crossDash.png.png);
+  height: 100vh;
+}
+
+.blinking-text {
+  animation: blink 1s infinite;
+}
+.battle-wait {
+  opacity: 200%;
+  color: green;
+}
+.planet-position {
+  color: white;
+}
+
+/*TEST */
+.click-coordinates {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid black;
+}

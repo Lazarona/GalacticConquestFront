@@ -130,10 +130,10 @@ function Login() {
               }}
             />
 
-            <a id='mdp'
+            <a
+              id="mdp"
               className="d-flex flex-row-reverse"
               onClick={navPasswordForget}
-              href=""
             >
               Mot de passe oublié?
             </a>

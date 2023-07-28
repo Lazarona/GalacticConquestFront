@@ -1,0 +1,31 @@
+#rangking {
+  background-image: url(src/Components/background/bg9.jpg);
+  height: 100vh;
+}
+.card-header {
+  color: aquamarine;
+}
+.text-center {
+  height: 100%;
+  width: 60%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 70%;
+  background-color: rgb(17, 17, 81);
+  color: wheat;
+}
+
+.card-footer .text-body-secondary {
+  color: beige;
+}
+/* .click-coordinates {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid black;
+} */
+
+/* TEST POUR ATTACK */

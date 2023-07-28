@@ -152,7 +152,7 @@ export default function Battle() {
     } else {
       return (
         <div>
-          <div className="waitvert">
+          <div className="battle-wait">
             <div className="blinking-text">Waiting for battle...</div>
           </div>
         </div>
@@ -216,32 +216,34 @@ export default function Battle() {
 
   return (
     <>
-      {localStorage.getItem("token") === null ? (
-        <div id="dashboard">
-          <div className="d-flex justify-content-center titleinfra2">
-            {displayErrors()}
+      <div id="fond-battle">
+        {localStorage.getItem("token") === null ? (
+          <div id="dashboard">
+            <div className="d-flex justify-content-center titleinfra2">
+              {displayErrors()}
+            </div>
+            <div className="d-flex justify-content-center titleinfra2">
+              <button className="myinfra" onClick={deconnexion}>
+                Revenir à l'accueil
+              </button>
+            </div>
           </div>
-          <div className="d-flex justify-content-center titleinfra2">
-            <button className="myinfra" onClick={deconnexion}>
-              Revenir à l'accueil
-            </button>
+        ) : (
+          <div>
+            <div className="d-flex flex-row-reverse">
+              <img
+                className="returnptodash"
+                src="src/Components/img/flecheRetour.png"
+                alt=""
+                onClick={navDashboard}
+              />
+            </div>
+            <div>{displayOpponents()}</div>
+            <div>{displayErrors()}</div>
+            <div>{displayHistoricBattle()}</div>
           </div>
-        </div>
-      ) : (
-        <div>
-          <div className="d-flex flex-row-reverse">
-            <img
-              className="returnptodash"
-              src="src/Components/img/flecheRetour.png"
-              alt=""
-              onClick={navDashboard}
-            />
-          </div>
-          <div>{displayOpponents()}</div>
-          <div>{displayErrors()}</div>
-          <div>{displayHistoricBattle()}</div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }
