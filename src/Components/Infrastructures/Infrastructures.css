@@ -125,3 +125,23 @@
   filter: opacity(0.4);
   width: 50%;
 }
+.colortext {
+  color: rgb(62, 62, 62);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.btndelete {
+  background-color: rgb(225, 8, 8);
+  color: whitesmoke;
+  font-size: 10px;
+  border: rgb(225, 8, 8) solid 1px;
+  border-radius: 10vh;
+}
+.btndelete:hover {
+  background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  font-size: 11px;
+  border: rgb(255, 0, 0) solid 1px;
+  border-radius: 10px;
+}

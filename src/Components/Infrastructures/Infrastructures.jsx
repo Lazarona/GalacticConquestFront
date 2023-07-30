@@ -13,15 +13,18 @@ function Infrastructures() {
 
   const navigate = useNavigate();
 
+  // Deconnexion User + redirection HOME
   const deconnexion = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
 
+  // redirection Dashboard
   const navDashboard = () => {
     navigate("/dashboard");
   };
 
+  // recuperation du backend Mine
   const getMines = async () => {
     const options = {
       method: "GET",
@@ -41,6 +44,7 @@ function Infrastructures() {
     }
   };
 
+  // recuperation du backend Central
   const getPowerplants = async () => {
     const options = {
       method: "GET",
@@ -59,6 +63,7 @@ function Infrastructures() {
     setPowerplants(resData.powerPlants);
   };
 
+  // recuperation du backend Raffinerie
   const getRefineries = async () => {
     const options = {
       method: "GET",
@@ -77,6 +82,7 @@ function Infrastructures() {
     setRefineries(resData.refineries);
   };
 
+  // recuperation du backend Entrepot
   const getWarehouse = async () => {
     const options = {
       method: "GET",
@@ -99,13 +105,14 @@ function Infrastructures() {
     }
   };
 
+  // Affichage des ressources
   const displayMines = () => {
     return mines.map((e, index) => {
       const finished_at = new Date(e.finished_at);
       const currentDate = new Date();
       currentDate.setHours(currentDate.getHours() - 2);
       return (
-        <div key={index}>
+        <div className="colortext" key={index}>
           <ul>
             <li>Mine n°{index + 1}</li>
             {finished_at > currentDate ? (
@@ -118,11 +125,31 @@ function Infrastructures() {
             )}
             <p>Niveau {e.level}</p>
             <p>Production : {e.production_hour} / h</p>
+            {finished_at > currentDate ? (
+              <button className="btndeletenone d-none" name="delete">
+                Suprimer
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btndelete"
+                name="delete"
+                onClick={() => handleDelete(e)}
+              >
+                Suprimer
+              </button>
+            )}
           </ul>
           ------------------
         </div>
       );
     });
+  };
+
+  const handleDelete = (mine) => {
+    const updatedMines = mines.filter((e) => e !== mine);
+    setMines(updatedMines);
+    localStorage.removeItem(mines);
   };
 
   const displayPowerplants = () => {
@@ -131,7 +158,7 @@ function Infrastructures() {
       const currentDate = new Date();
       currentDate.setHours(currentDate.getHours() - 2);
       return (
-        <div key={index}>
+        <div className="colortext" key={index}>
           <ul>
             <li>Centrale n°{index + 1}</li>
             {finished_at > currentDate ? (
@@ -143,7 +170,16 @@ function Infrastructures() {
               <img className="imgMine" src="src\Components\img\Usine.png" />
             )}
             <p>Niveau {e.level}</p>
-            <p>Energie : 5 </p>
+            <p>Energie : 5 </p>{" "}
+            {finished_at > currentDate ? (
+              <button className="btndeletenone d-none" name="delete">
+                Suprimer
+              </button>
+            ) : (
+              <button type="button" className="btndelete" name="delete">
+                Suprimer
+              </button>
+            )}
           </ul>
           ------------------
         </div>
@@ -157,7 +193,7 @@ function Infrastructures() {
       const currentDate = new Date();
       currentDate.setHours(currentDate.getHours() - 2);
       return (
-        <div key={index}>
+        <div className="colortext" key={index}>
           <ul>
             <li>Raffinerie n°{index + 1}</li>
             {finished_at > currentDate ? (
@@ -170,6 +206,15 @@ function Infrastructures() {
             )}
             <p>Niveau {e.level}</p>
             <p>Production : {e.production_hour} / h</p>
+            {finished_at > currentDate ? (
+              <button className="btndeletenone d-none" name="delete">
+                Suprimer
+              </button>
+            ) : (
+              <button type="button" className="btndelete" name="delete">
+                Suprimer
+              </button>
+            )}
           </ul>
           ------------------
         </div>
@@ -183,8 +228,8 @@ function Infrastructures() {
       const currentDate = new Date();
       currentDate.setHours(currentDate.getHours() - 2);
       return (
-        <div key={index}>
-          <ul>
+        <div className="colortext" key={index}>
+          <ul className="colortext">
             <li>Entrepot n°{index + 1}</li>
             {finished_at > currentDate ? (
               <img
@@ -202,7 +247,9 @@ function Infrastructures() {
       );
     });
   };
+  //  ------------------------------Fin affichage R--------------------------------------
 
+  // Affichage Erreurs
   const displayErrors = () => {
     if (erreurs.errors == undefined && erreurs.message == undefined) {
       return null;
@@ -225,7 +272,7 @@ function Infrastructures() {
       });
     }
   };
-  // Affichage du nom de la planete
+  // Recupere + affichage du nom de la planete
 
   const planetName = async () => {
     const options = {
@@ -252,7 +299,7 @@ function Infrastructures() {
     });
   };
 
-  // Affichage du nom du username
+  // Recupere + affichage du nom du username
 
   const identifiant = async () => {
     const options = {
