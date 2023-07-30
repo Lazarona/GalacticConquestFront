@@ -23,3 +23,37 @@
   width: 100%;
   cursor: crosshair;
 }
+.liAdversaire {
+  background-color: rgba(3, 21, 79, 0.485);
+  border: none;
+  color: aqua;
+  font-size: 20px;
+  -webkit-text-stroke: 1px black;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.btnBattle {
+  background-color: #3c1053;
+  padding: 0.5% 1% 0.5% 1%;
+  border-radius: 10px;
+  color: #dfc5ec;
+}
+
+.errorText {
+  background-color: rgba(3, 21, 79, 0.485);
+  border: none;
+  color: aqua;
+  font-size: 20px;
+  -webkit-text-stroke: 1px black;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.historicBattle {
+  background-color: rgba(3, 21, 79, 0.485);
+  border: none;
+  color: aqua;
+  font-size: 20px;
+  -webkit-text-stroke: 1px black;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
