@@ -33,6 +33,10 @@ function Dashboard() {
     navigate("/attack");
   };
 
+  const navRanking = () => {
+    navigate("/ranking");
+  };
+
   const getResources = async () => {
     const options = {
       method: "GET",
@@ -495,24 +499,16 @@ function Dashboard() {
                 </button>
                 <ul className=" allv dropdown-menu">
                   <li>
-                    <a className=" nom dropdown-item" href="#">
-                      {displayHunters()}
-                    </a>
+                    <p className=" nom dropdown-item">{displayHunters()}</p>
                   </li>
                   <li>
-                    <a className="nom dropdown-item" href="#">
-                      {displayFrigates()}
-                    </a>
+                    <p className="nom dropdown-item">{displayFrigates()}</p>
                   </li>
                   <li>
-                    <a className="nom dropdown-item" href="#">
-                      {displayCruisers()}
-                    </a>
+                    <p className="nom dropdown-item">{displayCruisers()}</p>
                   </li>
                   <li>
-                    <a className="nom dropdown-item" href="#">
-                      {displayDestroyers()}
-                    </a>
+                    <p className="nom dropdown-item">{displayDestroyers()}</p>
                   </li>
                 </ul>
               </div>
@@ -540,8 +536,18 @@ function Dashboard() {
                 />
                 <h2> {displayEnergy()}</h2>
               </div>
+              <div className="classement">
+                <img
+                  className="coupe"
+                  onClick={navRanking}
+                  src="src/Components/img/coupe.png"
+                  alt=""
+                />
+                <p className="classementp">Classement</p>
+              </div>
             </div>
           </div>
+
           <div className="attaquecontainer me-3 mt-2">
             <img
               onClick={navPlay}

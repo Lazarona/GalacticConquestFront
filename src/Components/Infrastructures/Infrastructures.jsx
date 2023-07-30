@@ -176,7 +176,12 @@ function Infrastructures() {
                 Suprimer
               </button>
             ) : (
-              <button type="button" className="btndelete" name="delete">
+              <button
+                type="button"
+                className="btndelete"
+                name="delete"
+                onClick={() => handleDeletepowerplants(e)}
+              >
                 Suprimer
               </button>
             )}
@@ -185,6 +190,11 @@ function Infrastructures() {
         </div>
       );
     });
+  };
+  const handleDeletepowerplants = (powerplant) => {
+    const updatedPowerplants = powerplants.filter((e) => e !== powerplant);
+    setPowerplants(updatedPowerplants);
+    localStorage.removeItem(powerplants);
   };
 
   const displayRefineries = () => {
@@ -211,7 +221,12 @@ function Infrastructures() {
                 Suprimer
               </button>
             ) : (
-              <button type="button" className="btndelete" name="delete">
+              <button
+                type="button"
+                className="btndelete"
+                name="delete"
+                onClick={() => handleDeleteRefineries(e)}
+              >
                 Suprimer
               </button>
             )}
@@ -220,6 +235,11 @@ function Infrastructures() {
         </div>
       );
     });
+  };
+  const handleDeleteRefineries = (refinerie) => {
+    const updatedRefineries = refineries.filter((e) => e !== refinerie);
+    setRefineries(updatedRefineries);
+    localStorage.removeItem(refineries);
   };
 
   const displayWarehouse = () => {

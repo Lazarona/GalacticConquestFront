@@ -9,7 +9,6 @@ body {
   gap: 15%;
   display: flex;
   align-items: center;
-  padding-bottom: 1%;
 }
 
 /* NAVBAR DEBUT CODE */
@@ -333,7 +332,6 @@ body {
   gap: 15%;
   display: flex;
   align-items: center;
-  padding-bottom: 1%;
 }
 
 #dashboard-container .logonav {
@@ -656,4 +654,17 @@ body {
 }
 .imgplanetusername {
   width: 22px;
+}
+
+.coupe {
+  width: 37px;
+}
+.classement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  color: #00ffff;
+  margin-top: 1%;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
