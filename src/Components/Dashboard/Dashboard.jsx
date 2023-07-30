@@ -499,24 +499,16 @@ function Dashboard() {
                 </button>
                 <ul className=" allv dropdown-menu">
                   <li>
-                    <a className=" nom dropdown-item" href="#">
-                      {displayHunters()}
-                    </a>
+                    <p className=" nom dropdown-item">{displayHunters()}</p>
                   </li>
                   <li>
-                    <a className="nom dropdown-item" href="#">
-                      {displayFrigates()}
-                    </a>
+                    <p className="nom dropdown-item">{displayFrigates()}</p>
                   </li>
                   <li>
-                    <a className="nom dropdown-item" href="#">
-                      {displayCruisers()}
-                    </a>
+                    <p className="nom dropdown-item">{displayCruisers()}</p>
                   </li>
                   <li>
-                    <a className="nom dropdown-item" href="#">
-                      {displayDestroyers()}
-                    </a>
+                    <p className="nom dropdown-item">{displayDestroyers()}</p>
                   </li>
                 </ul>
               </div>
