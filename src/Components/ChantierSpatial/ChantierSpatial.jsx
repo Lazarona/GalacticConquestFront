@@ -301,18 +301,18 @@ function ChantierSpatial() {
     console.log("Username : ", username);
   }, [setUsername, username]);
 
-  // useEffect(() => {
-  //   getShipyards();
-  // }, [destroyer]);
-  // useEffect(() => {
-  //   getShipyards();
-  // }, [cruiser]);
-  // useEffect(() => {
-  //   getShipyards();
-  // }, [hunter]);
-  // useEffect(() => {
-  //   getShipyards();
-  // }, [frigate]);
+  useEffect(() => {
+    getShipyards();
+  }, [destroyer]);
+  useEffect(() => {
+    getShipyards();
+  }, [cruiser]);
+  useEffect(() => {
+    getShipyards();
+  }, [hunter]);
+  useEffect(() => {
+    getShipyards();
+  }, [frigate]);
   useEffect(() => {
     getShipyards();
   }, [erreurs]);

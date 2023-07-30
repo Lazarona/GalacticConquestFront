@@ -9,6 +9,8 @@ export default function Battle() {
   const [historic, setHistoric] = useState(null);
   const [erreurs, setErreurs] = useState(null);
   const [userID, setUserID] = useState(null);
+  const [showCoordinates, setShowCoordinates] = useState(false);
+  const [clickCoordinates, setClickCoordinates] = useState(null);
 
   const navigate = useNavigate();
 
@@ -48,9 +50,14 @@ export default function Battle() {
               return null;
             } else {
               return (
-                <li key={e.id}>
+                <li className="liAdversaire" key={e.id}>
                   Planète : {e.name} Position :{e.position_x} x {e.position_y}{" "}
-                  <button onClick={() => getBattle(e.user_id)}>Attack</button>
+                  <button
+                    className="btnBattle"
+                    onClick={() => getBattle(e.user_id)}
+                  >
+                    Attack
+                  </button>
                 </li>
               );
             }
@@ -95,7 +102,7 @@ export default function Battle() {
     if (historic) {
       if (historic.length == 0) {
         return (
-          <div>
+          <div className="historicBattle">
             <p>Your opponent didn't have an army</p>
             <p>Minerais gagnés : {battle.gainedOre}</p>
             <p>Fuel gagné : {battle.gainedFuel}</p>
@@ -104,7 +111,7 @@ export default function Battle() {
         );
       } else {
         return (
-          <div>
+          <div className="historicBattle">
             {battle.gainedOre == null ? (
               <>
                 <h2>You lost</h2>
@@ -167,10 +174,10 @@ export default function Battle() {
       }
       if (erreurs.message != undefined) {
         if (erreurs.fuelConsumed == undefined) {
-          return <p>{erreurs.message}</p>;
+          return <p className="errorText">{erreurs.message}</p>;
         } else {
           return (
-            <p>
+            <p className="errorText">
               {erreurs.message} You need {erreurs.fuelConsumed} fuel to travel{" "}
               {erreurs.distance} light years.
             </p>
