@@ -33,6 +33,10 @@ function Dashboard() {
     navigate("/attack");
   };
 
+  const navRanking = () => {
+    navigate("/ranking");
+  };
+
   const getResources = async () => {
     const options = {
       method: "GET",
@@ -540,8 +544,18 @@ function Dashboard() {
                 />
                 <h2> {displayEnergy()}</h2>
               </div>
+              <div className="classement">
+                <img
+                  className="coupe"
+                  onClick={navRanking}
+                  src="src/Components/img/coupe.png"
+                  alt=""
+                />
+                <p className="classementp">Classement</p>
+              </div>
             </div>
           </div>
+
           <div className="attaquecontainer me-3 mt-2">
             <img
               onClick={navPlay}
