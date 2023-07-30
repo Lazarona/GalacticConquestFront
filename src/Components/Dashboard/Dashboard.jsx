@@ -75,17 +75,17 @@ function Dashboard() {
     }
   };
 
-  const displayHunters = () => {
+  function displayHunters() {
     if (allShips) {
       if (typeof allShips.hunters == "object") {
-        return <>Chasseur : {Object.keys(allShips.hunters).length}</>;
+        return <>Chasseur: {Object.keys(allShips.hunters).length}</>;
       } else {
-        return <>Chasseur : {allShips.hunters.length}</>;
+        return <>Chasseur: {allShips.hunters.length}</>;
       }
     } else {
       return <>Loading...</>;
     }
-  };
+  }
 
   const displayFrigates = () => {
     if (allShips) {
@@ -339,7 +339,7 @@ function Dashboard() {
     });
   };
 
-  // Affichage du nom du username
+  // Affichage du username
 
   const identifiant = async () => {
     const options = {

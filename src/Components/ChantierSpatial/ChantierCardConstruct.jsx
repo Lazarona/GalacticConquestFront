@@ -125,7 +125,6 @@ function ChantierCardConstruct(props) {
   }, []);
 
   useEffect(() => {
-    console.log("Constructed Ship : ", constructedShip);
     setImageShipConstructed();
   }, [constructedShip, setConstructedShip]);
 

@@ -124,6 +124,7 @@ function ChantierSpatial() {
     } else {
       setHunter(donnees);
       setErreurs("");
+      getShipyards();
     }
   };
 
@@ -150,6 +151,7 @@ function ChantierSpatial() {
     } else {
       setFrigate(donnees);
       setErreurs("");
+      getShipyards();
     }
   };
 
@@ -176,6 +178,7 @@ function ChantierSpatial() {
     } else {
       setCruiser(donnees);
       setErreurs("");
+      getShipyards();
     }
   };
 
@@ -202,6 +205,7 @@ function ChantierSpatial() {
     } else {
       setDestroyer(donnees);
       setErreurs("");
+      getShipyards();
     }
   };
 
@@ -301,21 +305,21 @@ function ChantierSpatial() {
     console.log("Username : ", username);
   }, [setUsername, username]);
 
-  useEffect(() => {
-    getShipyards();
-  }, [destroyer]);
-  useEffect(() => {
-    getShipyards();
-  }, [cruiser]);
-  useEffect(() => {
-    getShipyards();
-  }, [hunter]);
-  useEffect(() => {
-    getShipyards();
-  }, [frigate]);
-  useEffect(() => {
-    getShipyards();
-  }, [erreurs]);
+  // useEffect(() => {
+  //   getShipyards();
+  // }, [destroyer]);
+  // useEffect(() => {
+  //   getShipyards();
+  // }, [cruiser]);
+  // useEffect(() => {
+  //   getShipyards();
+  // }, [hunter]);
+  // useEffect(() => {
+  //   getShipyards();
+  // }, [frigate]);
+  // useEffect(() => {
+  //   getShipyards();
+  // }, [erreurs]);
   return (
     <>
       {localStorage.getItem("token") === null ? (

@@ -124,9 +124,10 @@ export default function Ranking() {
             />
           </div>
           <div className="card text-center">
-            <div className="card-header">Classement Galactique</div>
+            <div className="card-header">
+              <h1>Classement Galactique</h1>
+            </div>
             <div className="card-body">
-              <h5 className="card-title victorius">VICTORIUS</h5>
               <div className="card-text">{displayRanking()}</div>
             </div>
           </div>
