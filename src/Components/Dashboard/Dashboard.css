@@ -666,4 +666,5 @@ body {
   font-size: 10px;
   color: #00ffff;
   margin-top: 1%;
+  cursor: url(src/Components/img/cursor2redimensioner.png), pointer;
 }
