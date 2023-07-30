@@ -16,11 +16,6 @@ function Dashboard() {
 
   const navigate = useNavigate();
 
-  const deconnexion = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
-
   const navInfra = () => {
     navigate("/infrastructures");
   };
@@ -36,6 +31,26 @@ function Dashboard() {
   const navRanking = () => {
     navigate("/ranking");
   };
+
+  const deconnexion = () => {
+    backDisconnect();
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
+  async function backDisconnect() {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const response = await fetch("http://127.0.0.1:8000/api/logout", options);
+    const donnees = await response.json();
+    console.log("Reponse de l'API (Logout) : ", donnees);
+  }
 
   const getResources = async () => {
     const options = {
