@@ -1,5 +1,5 @@
 import "./ResetPassword.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { redirect, useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
 
@@ -8,15 +8,19 @@ function ResetPassword() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    console.log(token);
+    console.log("token : ", token);
   }, []);
 
   const navigate = useNavigate();
 
-  const token = toString(useParams());
+  const token = Object.values(useParams()).toString();
 
   const navHome = () => {
     navigate("/");
+  };
+
+  const navLogin = () => {
+    navigate("/login");
   };
 
   const redirectProfil = () => {
@@ -50,31 +54,7 @@ function ResetPassword() {
       setErreurs(donnees);
     } else {
       setErreurs(donnees);
-      login();
-    }
-  };
-
-  const login = async () => {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    };
-    const response = await fetch("http://127.0.0.1:8000/api/login", options);
-    const donnees = await response.json();
-    console.log("Reponse de l'API : ", donnees);
-    setErreurs(donnees);
-    if (response.status == 400 || response.status == 401) {
-      displayErrors();
-    } else {
-      // Si la requête est un succès, redirige l'utilisateur vers le choix de planete
-      getToken(donnees.token);
-      redirectProfil();
+      navLogin();
     }
   };
 
