@@ -1,10 +1,20 @@
+.titleB {
+  text-align: center;
+  color: rgb(180, 96, 180);
+  color: #c6e2ff;
+  text-shadow: 0 0 6px rgba(202, 228, 225, 0.92),
+    0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52),
+    0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78),
+    0 0 54px rgba(30, 132, 242, 0.92);
+}
+
 .returnptodash {
   width: 6%;
   cursor: pointer;
 }
 #fond-battle {
   background-image: url(src/Components/background/bg9.jpg);
-  height: 100vh;
+  height: 234vh;
 }
 
 .blinking-text {
@@ -14,46 +24,43 @@
   opacity: 200%;
   color: green;
 }
+
 .planet-position {
-  color: white;
+  color: green;
 }
-.img-fluid {
-  opacity: 60%;
-  height: 100%;
-  width: 100%;
+.cursorTarget {
   cursor: crosshair;
 }
-.liAdversaire {
-  background-color: rgba(3, 21, 79, 0.485);
-  border: none;
-  color: aqua;
-  font-size: 20px;
-  -webkit-text-stroke: 1px black;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+
+.coordinates-display {
+  color: white;
 }
-.btnBattle {
-  background-color: #3c1053;
-  padding: 0.5% 1% 0.5% 1%;
-  border-radius: 10px;
-  color: #dfc5ec;
+.affichPosi {
+  color: white;
+}
+.retroHistory {
+  background-color: black;
+  height: 100px;
+  width: 100px;
+}
+/* Battle.css */
+
+.blue-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: blue;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.errorText {
-  background-color: rgba(3, 21, 79, 0.485);
-  border: none;
-  color: aqua;
-  font-size: 20px;
-  -webkit-text-stroke: 1px black;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+.cursorTarget {
+  cursor: crosshair;
 }
-.historicBattle {
-  background-color: rgba(3, 21, 79, 0.485);
-  border: none;
-  color: aqua;
-  font-size: 20px;
-  -webkit-text-stroke: 1px black;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+.positionAdv {
+  color: rgb(168, 90, 168);
+}
+
+.messErreurB {
+  text-shadow: 2px 2px 2px red;
 }
