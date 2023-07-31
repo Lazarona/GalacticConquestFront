@@ -9,8 +9,7 @@ export default function Battle() {
   const [historic, setHistoric] = useState(null);
   const [erreurs, setErreurs] = useState(null);
   const [userID, setUserID] = useState(null);
-  const [showCoordinates, setShowCoordinates] = useState(false);
-  const [clickCoordinates, setClickCoordinates] = useState(null);
+  const [clickCoordo, setClickCoordo] = useState({ x: 0, y: 0 });
 
   const navigate = useNavigate();
 
@@ -65,7 +64,7 @@ export default function Battle() {
               return null;
             } else {
               return (
-                <li className="liAdversaire" key={e.id}>
+                <li className="positionAdv" key={e.id}>
                   Planète : {e.name} Position :{e.position_x} x {e.position_y}{" "}
                   <button
                     className="btnBattle"
@@ -148,7 +147,14 @@ export default function Battle() {
                     </div>
                   );
                 })}
-                ;
+                <div
+                  id="cursorTarget"
+                  style={{
+                    backgroundColor:
+                      battle.gainedOre === null ? "red" : "initial",
+                  }}
+                  //passe au rouge si perdu
+                />
               </>
             ) : (
               <>
@@ -189,7 +195,7 @@ export default function Battle() {
       }
       if (erreurs.message != undefined) {
         if (erreurs.fuelConsumed == undefined) {
-          return <p className="errorText">{erreurs.message}</p>;
+          return <p className="messErreurB">{erreurs.message}</p>;
         } else {
           return (
             <p className="errorText">
@@ -237,75 +243,70 @@ export default function Battle() {
   }, [positions, setPositions]);
 
   //////////////// POSITION
+
   const handleImageClick = (event) => {
     const imageRect = event.target.getBoundingClientRect();
+    //La méthode Element.getBoundingClientRect()
+    //retourne un objet DOMRect fournissant des informations sur la taille
     const x = event.clientX - imageRect.left;
     const y = event.clientY - imageRect.top;
-
-    if (x >= 0 && x <= 999 && y >= 0 && y <= 999) {
-      // Afficher les coordonnées uniquement si elles sont dans les limites de l'image
-      setClickCoordinates({ x, y });
-      setShowCoordinates(true);
-
-      setTimeout(() => {
-        setShowCoordinates(false);
-      }, 3000); //3secondes
-    } else {
-      setShowCoordinates(false);
-    }
+    setClickCoordo({ x, y });
   };
 
   return (
     <>
       <div id="fond-battle">
-        {localStorage.getItem("token") === null ? (
-          <div id="dashboard">
-            <div className="d-flex justify-content-center titleinfra2">
-              {displayErrors()}
+        <div>
+          <h1 className="titleB">Bataille intergalactique</h1>
+          {localStorage.getItem("token") === null ? (
+            <div id="dashboard">
+              <div className="d-flex justify-content-center titleinfra2">
+                {displayErrors()}
+              </div>
+              <div className="d-flex justify-content-center titleinfra2">
+                <button className="myinfra" onClick={deconnexion}>
+                  Revenir à l'accueil
+                </button>
+              </div>
             </div>
-            <div className="d-flex justify-content-center titleinfra2">
-              <button className="myinfra" onClick={deconnexion}>
-                Revenir à l'accueil
-              </button>
+          ) : (
+            <div>
+              <div className="d-flex flex-row-reverse">
+                <img
+                  className="returnptodash"
+                  src="src/Components/img/flecheRetour.png"
+                  alt=""
+                  onClick={navDashboard}
+                />
+              </div>
+
+              <div>{displayOpponents()}</div>
+              <div>{displayErrors()}</div>
+              <p className="affichPosi">
+                <p>
+                  Position x:{clickCoordo.x}, Position y:{clickCoordo.y}
+                </p>
+              </p>
+              <div class="col-4">
+                <div className="retroHistory">{displayHistoricBattle()}</div>
+              </div>
             </div>
-          </div>
-        ) : (
-          <div>
-            <div className="d-flex flex-row-reverse">
+          )}{" "}
+          <div class="row justify-content-around custom-line">
+            <div class="col-4"></div>
+            <div className="cursorTarget" onClick={handleImageClick}>
+              {" "}
               <img
-                className="returnptodash"
-                src="src/Components/img/flecheRetour.png"
-                alt=""
-                onClick={navDashboard}
-              />
+                src="src\Components\img\vieoConquetGa.gif"
+                class="rounded mx-auto d-block"
+                alt="..."
+                onMouseMove={handleImageClick}
+                width="1000"
+                height="1000"
+              ></img>
             </div>
-            <div>{displayOpponents()}</div>
-            <div>{displayErrors()}</div>
-            <div>{displayHistoricBattle()}</div>
           </div>
-        )}
-        <img
-          src="src\Components\img\GBattle.jpg"
-          class="img-fluid"
-          alt="Responsive image"
-          onClick={handleImageClick}
-        />
-        {/* Afficher les coordonnées à côté de la souris */}
-        {showCoordinates && (
-          <div
-            style={{
-              position: "fixed",
-              top: clickCoordinates.y,
-              left: clickCoordinates.x + 10, // Décalage pour éviter le chevauchement avec la souris
-              backgroundColor: "white",
-              padding: "5px",
-              border: "1px solid black",
-            }}
-          >
-            Coordonnées X: {clickCoordinates.x}, Coordonnées Y:{" "}
-            {clickCoordinates.y}
-          </div>
-        )}
+        </div>
       </div>
     </>
   );
