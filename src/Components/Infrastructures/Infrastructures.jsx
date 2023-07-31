@@ -178,9 +178,26 @@ function Infrastructures() {
 
   const handleDelete = (mine) => {
     const updatedMines = mines.filter((e) => e !== mine);
+    deleteInfra(mine.id);
     setMines(updatedMines);
-    localStorage.removeItem(mines);
   };
+
+  async function deleteInfra(infraID) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const reqData = await fetch(
+      `http://127.0.0.1:8000/api/infrastructures/${infraID}/destroy`,
+      options
+    );
+    const resData = await reqData.json();
+    console.log("Data (Delete Infra): ", resData);
+  }
 
   const displayPowerplants = () => {
     return powerplants.map((e, index) => {
@@ -238,8 +255,8 @@ function Infrastructures() {
   };
   const handleDeletepowerplants = (powerplant) => {
     const updatedPowerplants = powerplants.filter((e) => e !== powerplant);
+    deleteInfra(powerplant.id);
     setPowerplants(updatedPowerplants);
-    localStorage.removeItem(powerplants);
   };
 
   const displayRefineries = () => {
@@ -298,8 +315,9 @@ function Infrastructures() {
   };
   const handleDeleteRefineries = (refinerie) => {
     const updatedRefineries = refineries.filter((e) => e !== refinerie);
+    console.log("Refinery : ", refinerie);
+    deleteInfra(refinerie.id);
     setRefineries(updatedRefineries);
-    localStorage.removeItem(refineries);
   };
 
   const displayWarehouse = () => {
