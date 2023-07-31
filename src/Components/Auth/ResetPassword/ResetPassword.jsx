@@ -20,7 +20,7 @@ function ResetPassword() {
   };
 
   const navLogin = () => {
-    navigate("/login");
+    location.href = "http://localhost:5176/login";
   };
 
   const redirectProfil = () => {
