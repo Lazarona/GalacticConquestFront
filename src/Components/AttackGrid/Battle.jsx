@@ -296,14 +296,14 @@ export default function Battle() {
             <div class="col-4"></div>
             <div className="cursorTarget" onClick={handleImageClick}>
               {" "}
-              {/* <img
+              <img
                 src="src\Components\img\vieoConquetGa.gif"
                 class="rounded mx-auto d-block"
                 alt="..."
                 onMouseMove={handleImageClick}
                 width="1000"
                 height="1000"
-              ></img> */}
+              ></img>
             </div>
           </div>
         </div>
