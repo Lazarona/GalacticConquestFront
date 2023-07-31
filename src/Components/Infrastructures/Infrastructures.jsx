@@ -125,11 +125,18 @@ function Infrastructures() {
             )}
             <p>Niveau {e.level}</p>
             <p>Production : {e.production_hour} / h</p>
-            {finished_at > currentDate ? (
+          </ul>{" "}
+          {finished_at > currentDate ? (
+            <div>
               <button className="btndeletenone d-none" name="delete">
                 Suprimer
               </button>
-            ) : (
+              <button className="btnmodifiernone d-none" name="modifier">
+                Modifier
+              </button>
+            </div>
+          ) : (
+            <div className="d-flex gap-2">
               <button
                 type="button"
                 className="btndelete"
@@ -138,8 +145,16 @@ function Infrastructures() {
               >
                 Suprimer
               </button>
-            )}
-          </ul>
+              <button
+                type="button"
+                className="btnmodifier"
+                name="modifier"
+                // onClick={() => handleDeleteRefineries(e)}
+              >
+                Modifier
+              </button>
+            </div>
+          )}
           ------------------
         </div>
       );
@@ -170,12 +185,19 @@ function Infrastructures() {
               <img className="imgMine" src="src\Components\img\Usine.png" />
             )}
             <p>Niveau {e.level}</p>
-            <p>Energie : 5 </p>{" "}
-            {finished_at > currentDate ? (
+            <p>Energie : 5 </p>
+          </ul>{" "}
+          {finished_at > currentDate ? (
+            <div>
               <button className="btndeletenone d-none" name="delete">
                 Suprimer
               </button>
-            ) : (
+              <button className="btnmodifiernone d-none" name="modifier">
+                Modifier
+              </button>
+            </div>
+          ) : (
+            <div className="d-flex gap-2">
               <button
                 type="button"
                 className="btndelete"
@@ -184,8 +206,16 @@ function Infrastructures() {
               >
                 Suprimer
               </button>
-            )}
-          </ul>
+              <button
+                type="button"
+                className="btnmodifier"
+                name="modifier"
+                // onClick={() => handleDeleteRefineries(e)}
+              >
+                Modifier
+              </button>
+            </div>
+          )}
           ------------------
         </div>
       );
@@ -216,11 +246,18 @@ function Infrastructures() {
             )}
             <p>Niveau {e.level}</p>
             <p>Production : {e.production_hour} / h</p>
-            {finished_at > currentDate ? (
+          </ul>{" "}
+          {finished_at > currentDate ? (
+            <div>
               <button className="btndeletenone d-none" name="delete">
                 Suprimer
               </button>
-            ) : (
+              <button className="btnmodifiernone d-none" name="modifier">
+                Modifier
+              </button>
+            </div>
+          ) : (
+            <div className="d-flex gap-2">
               <button
                 type="button"
                 className="btndelete"
@@ -229,8 +266,16 @@ function Infrastructures() {
               >
                 Suprimer
               </button>
-            )}
-          </ul>
+              <button
+                type="button"
+                className="btnmodifier"
+                name="modifier"
+                // onClick={() => handleDeleteRefineries(e)}
+              >
+                Modifier
+              </button>
+            </div>
+          )}
           ------------------
         </div>
       );
