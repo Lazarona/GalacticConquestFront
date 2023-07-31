@@ -1,6 +1,6 @@
 import "./Victory.css";
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 const OtherUserProfile = ({ userId }) => {
   const [user, setUser] = useState(true);
   // État local pour stocker le nombre de ressources du joueur
@@ -12,6 +12,11 @@ const OtherUserProfile = ({ userId }) => {
   // Pourcentage des ressources à récupérer en cas de victoire
   const pourcentageRecupere = 0.1;
 
+  const navigate = useNavigate();
+
+  const navPlay = () => {
+    navigate("/attack");
+  };
   useEffect(() => {
     // récupérer les informations de l'utilisateur spécifié par l'ID
     const fetchUser = async () => {
@@ -78,6 +83,11 @@ const OtherUserProfile = ({ userId }) => {
     return (
       <div className="defaite">
         <img src="src/Components/img/downloadfile.png" className="defaitee" />
+        <div className="jump">
+          <button onClick={navPlay} className="V">
+            retourner l'écran d'attaque
+          </button>
+        </div>
       </div>
     );
   }
@@ -201,6 +211,10 @@ const OtherUserProfile = ({ userId }) => {
           <p className="tt">energy : {calculateStolenResources()?.energy} </p>
         </li>
       </ul>
+
+      <button onClick={navPlay} className="V">
+        retourner l'écran d'attaque
+      </button>
     </div>
   );
 };
