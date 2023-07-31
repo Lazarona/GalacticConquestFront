@@ -83,7 +83,7 @@ function ResetPassword() {
 
         <div className="d-flex justify-content-center gap-5 align-items-center mt-5">
           <img
-            src="src/Components/img/logo.png"
+            src="http://localhost:5176/src/Components/img/logo.png"
             alt=""
             className="logor ms-3"
           />

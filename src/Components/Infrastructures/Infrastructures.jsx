@@ -224,11 +224,6 @@ function Infrastructures() {
       );
     });
   };
-  const handleDeletepowerplants = (powerplant) => {
-    const updatedPowerplants = powerplants.filter((e) => e !== powerplant);
-    deleteInfra(powerplant.id);
-    setPowerplants(updatedPowerplants);
-  };
 
   const displayRefineries = () => {
     return refineries.map((e, index) => {
