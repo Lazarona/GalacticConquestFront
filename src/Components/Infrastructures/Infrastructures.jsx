@@ -202,35 +202,6 @@ function Infrastructures() {
             <p>Niveau {e.level}</p>
             <p>Energie : 5 </p>
           </ul>{" "}
-          {finished_at > currentDate ? (
-            <div>
-              <button className="btndeletenone d-none" name="delete">
-                Suprimer
-              </button>
-              <button className="btnmodifiernone d-none" name="modifier">
-                Modifier
-              </button>
-            </div>
-          ) : (
-            <div className="d-flex gap-2">
-              <button
-                type="button"
-                className="btndelete"
-                name="delete"
-                onClick={() => handleDeletepowerplants(e)}
-              >
-                Suprimer
-              </button>
-              <button
-                type="button"
-                className="btnmodifier"
-                name="modifier"
-                // onClick={() => handleDeleteRefineries(e)}
-              >
-                Modifier
-              </button>
-            </div>
-          )}
           ------------------
         </div>
       );
